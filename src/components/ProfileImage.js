@@ -1,5 +1,5 @@
 let imageStyles = {
-  border: "2px solid var(--bs-info)",
+  border: "2px solid var(--bs-green)",
   borderRadius: "50%",
 };
 
