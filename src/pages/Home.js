@@ -4,6 +4,7 @@ import Blogs from "./Blogs";
 import Blog from "./Blog";
 import AddBlog from "./AddBlog";
 import Profile from "./Profile";
+import Login from "./Login";
 import PageNotFound from "./PageNotFound";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         <Route path="profile" element={<Profile />} />
         <Route path="blog" element={<Blog />} />
         <Route path="addblog" element={<AddBlog />} />
+        <Route path="login" element={<Login />} />
         
         <Route path="*" element={<PageNotFound />} />
       </Routes>

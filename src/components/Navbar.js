@@ -38,6 +38,11 @@ export default function Navbar() {
                   <ProfileImage dimensions="2rem" />
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
