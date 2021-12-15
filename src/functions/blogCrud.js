@@ -7,24 +7,6 @@ const blogs = [
     "date_created": "12/07/2021",
     "date_modified": "14/08/2021",
     "author": "Arjun Singh Lubana"
-  },
-  {
-    "id": 2,
-    "data": {
-      
-    },
-    "date_created": "12/07/2021",
-    "date_modified": "14/08/2021",
-    "author": "Arjun Singh Lubana"
-  },
-  {
-    "id": 3,
-    "data": {
-      
-    },
-    "date_created": "12/07/2021",
-    "date_modified": "14/08/2021",
-    "author": "Arjun Singh Lubana"
   }
 ]
 
