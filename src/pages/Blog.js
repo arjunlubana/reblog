@@ -1,6 +1,10 @@
+import { Link } from "react-router-dom";
 export default function Blog() {
   return (
     <div className="container w-75 mx-auto">
+      <Link to="/blog/edit">
+       Edit
+      </Link>
       <h1 className="text-center">Blog Title</h1>
       <h2 className="text-center">Catching phrase for the blog</h2>
       <img src="./assets/image1.jpg" alt="..." className="blog-image"/>

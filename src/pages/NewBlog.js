@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function AddBlog() {
+export default function NewBlog() {
   const [value, setValue] = useState("");
 
   const handleChange = (event) => {

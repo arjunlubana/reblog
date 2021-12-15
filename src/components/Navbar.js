@@ -25,7 +25,7 @@ export default function Navbar() {
           <div className="collapse navbar-collapse flex-grow-0" id="navbarNav">
             <ul className="navbar-nav justify-content-center align-items-center">
               <li className="nav-item">
-                <Link className="nav-link" to="/addblog">
+                <Link className="nav-link" to="/newblog">
                   <IconContext.Provider
                     value={{ color: "var(--bs-green)", size: "2rem" }}
                   >

@@ -1,12 +1,13 @@
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Blogs from "./Blogs";
+import NewBlog from "./NewBlog";
 import Blog from "./Blog";
-import AddBlog from "./AddBlog";
-import Profile from "./Profile";
+import Blogs from "./Blogs";
 import Login from "./Login";
 import PageNotFound from "./PageNotFound";
+import Profile from "./Profile";
 import SignUp from "./SignUp";
+import EditBlog from "./EditBlog";
 
 export default function Home() {
   return (
@@ -15,11 +16,13 @@ export default function Home() {
       <Routes>
         <Route index element={<Blogs />} />
         <Route path="profile" element={<Profile />} />
-        <Route path="blog" element={<Blog />} />
-        <Route path="addblog" element={<AddBlog />} />
+        <Route path="newblog" element={<NewBlog />} />
+        <Route path="blog" element={<Blog />}>
+          <Route path="edit" element={<EditBlog />} />
+        </Route>
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
-        
+
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
