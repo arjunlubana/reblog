@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 export default function Blogs() {
   return (
@@ -15,6 +15,8 @@ export default function Blogs() {
           <Link to="/blog" className="stretched-link"></Link>
         </div>
       </div>
+
+      <Outlet></Outlet>
     </div>
   );
 }

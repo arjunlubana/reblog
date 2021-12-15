@@ -14,12 +14,15 @@ export default function Home() {
     <>
       <Navbar />
       <Routes>
-        <Route index element={<Blogs />} />
+        <Route path="/">
+          <Route index element={<Blogs />} />
+          <Route path="blog">
+            <Route index element={<Blog />} />
+            <Route path="edit" element={<EditBlog />} />
+          </Route>
+        </Route>
         <Route path="profile" element={<Profile />} />
         <Route path="newblog" element={<NewBlog />} />
-        <Route path="blog" element={<Blog />}>
-          <Route path="edit" element={<EditBlog />} />
-        </Route>
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
 

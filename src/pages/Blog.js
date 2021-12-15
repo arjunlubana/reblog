@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 export default function Blog() {
   return (
     <div className="container w-75 mx-auto">
@@ -36,6 +36,9 @@ export default function Blog() {
       <div>
         <h4>Related Content</h4>
       </div>
+      <Outlet>
+        
+      </Outlet>
     </div>
   );
 }
