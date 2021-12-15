@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Editor, EditorState, RichUtils } from "draft-js";
 import Toolbar from "./Toolbar";
+import AddBlog, { addBlog } from "../functions/blogCrud"
 import "draft-js/dist/Draft.css";
 
 export default function BlogEditor() {
@@ -17,17 +18,23 @@ export default function BlogEditor() {
     return "not handled";
   };
 
-
+  const saveContent = () => {
+    addBlog(editorState)
+  };
   return (
-    <div className="p-2">
-      <Toolbar editorState={editorState} setEditorState={setEditorState}/>
-      <hr />
-      <Editor
-        editorState={editorState}
-        onChange={setEditorState}
-        handleKeyCommand={handleKeyCommand}
-        placeholder="Whats on your mind ..."
-      />
+    <div>
+      <Toolbar editorState={editorState} setEditorState={setEditorState} />
+      <button className="btn btn-info m-1" onClick={saveContent}>
+        Save
+      </button>
+      <div className="p-4">
+        <Editor
+          editorState={editorState}
+          onChange={setEditorState}
+          handleKeyCommand={handleKeyCommand}
+          placeholder="Whats on your mind ..."
+        />
+      </div>
     </div>
   );
 }
