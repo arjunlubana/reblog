@@ -1,25 +1,10 @@
-import { useState } from "react";
+import BlogEditor from "../components/BlogEditor"
 
 export default function NewBlog() {
-  const [value, setValue] = useState("");
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    alert("A name was submitted: " + value);
-    event.preventDefault();
-  };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={value} onChange={handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+    <div className="card w-50 mx-auto my-4">
+      <BlogEditor />
     </div>
   );
 }

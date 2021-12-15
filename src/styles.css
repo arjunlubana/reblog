@@ -3,6 +3,7 @@ header{
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: 1000;
 }
 
 .card-image{
@@ -20,4 +21,9 @@ header{
   height: 100px;
   border: 2px solid var(--bs-info);
   border-radius: 50%;
+}
+
+#toolbar{
+  position: sticky;
+  top: 5rem;
 }
