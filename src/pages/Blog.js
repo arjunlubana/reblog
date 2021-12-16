@@ -13,7 +13,7 @@ export default function Blog() {
   console.log(editorState);
   return (
     <div className="container w-75 mx-auto">
-      <Link to="/blog/edit">Edit</Link>
+      <Link to={`/blog/${params.blogId}/edit`}>Edit</Link>
       <div className="card w-75 mx-auto p-4">
         <Editor
           editorState={editorState}

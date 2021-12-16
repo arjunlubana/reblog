@@ -21,7 +21,7 @@ export default function Home() {
           <Route index element={<Blogs />} />
           <Route path="blog">
             <Route path=":blogId" element={<Blog />} />
-            <Route path="edit" element={<EditBlog />} />
+            <Route path=":blogId/edit" element={<EditBlog />} />
           </Route>
         </Route>
         <Route path="profile" element={<Profile />} />
