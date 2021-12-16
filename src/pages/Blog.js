@@ -14,13 +14,15 @@ export default function Blog() {
   return (
     <div className="container w-75 mx-auto">
       <Link to="/blog/edit">Edit</Link>
-      <h2>{params.blogId}</h2>
-      <Editor editorState={editorState} onChange={setEditorState} readOnly={true}/>
+      <div className="card w-75 mx-auto p-4">
+        <Editor
+          editorState={editorState}
+          onChange={setEditorState}
+          readOnly={true}
+        />
+      </div>
       <div>
         <h4>Comments</h4>
-      </div>
-
-      <div>
         <h4>Related Content</h4>
       </div>
       <Outlet></Outlet>
