@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getBlogsData } from "../functions/blogCrud";
 import { useState, useEffect } from "react";
 
@@ -7,7 +7,7 @@ export default function Blogs() {
 
   useEffect(() => {
     const blogsData = getBlogsData();
-    setBlogs(blogsData)
+    setBlogs(blogsData);
   }, [blogs]);
 
   return (
@@ -26,7 +26,6 @@ export default function Blogs() {
           </div>
         </div>
       ))}
-      <Outlet></Outlet>
     </div>
   );
 }

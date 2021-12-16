@@ -1,9 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { Editor, EditorState, convertFromRaw, convertToRaw } from "draft-js";
-import { getBlogData } from "../functions/blogCrud";
+import { deleteBlogData, getBlogData, updateBlogData } from "../functions/blogCrud";
 import BlogEditor from "../components/BlogEditor";
-import { updateBlogData } from "../functions/blogCrud";
 
 export default function Blog({ edit }) {
   const params = useParams();
@@ -17,10 +16,15 @@ export default function Blog({ edit }) {
     updateBlogData(params.blogId, convertToRaw(editorState.getCurrentContent()));
   };
 
+  const deleteBlog = () => {
+    deleteBlogData(params.blogId)
+  }
+
   if (!edit) {
     return (
       <div className="container w-75 mx-auto">
-        <Link to={`/blog/${params.blogId}/edit`}>Edit</Link>
+        <Link className="btn btn-info" to={`/blog/${params.blogId}/edit`}>Edit</Link>
+        <Link className="btn btn-info" onClick={deleteBlog} to="/">Delete</Link>
         <div className="card w-75 mx-auto p-4">
           <Editor
             editorState={editorState}

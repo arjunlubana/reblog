@@ -1,4 +1,4 @@
-const blogs = [];
+var blogs = [];
 
 export function getBlogsData() {
   return blogs;
@@ -20,11 +20,12 @@ export function addBlogData(blog_data) {
 
   blog.data = blog_data;
   blogs.push(blog);
-  console.log(blogs);
 }
 
 export function updateBlogData(id, data) {
   getBlogData(id).data = data;
 }
 
-export function deleteBlogData() {}
+export function deleteBlogData(id) {
+  blogs = blogs.filter((blog) => blog.id !== parseInt(id));
+}
