@@ -15,7 +15,7 @@ export default function Blog() {
     <div className="container w-75 mx-auto">
       <Link to="/blog/edit">Edit</Link>
       <h2>{params.blogId}</h2>
-      <Editor editorState={editorState} onChange={setEditorState} />
+      <Editor editorState={editorState} onChange={setEditorState} readOnly={true}/>
       <div>
         <h4>Comments</h4>
       </div>
