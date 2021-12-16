@@ -1,14 +1,12 @@
-import { useState } from "react";
-import { Editor, EditorState, RichUtils, convertToRaw } from "draft-js";
+import { Editor, RichUtils } from "draft-js";
 import Toolbar from "./Toolbar";
-import AddBlog, { addBlog } from "../functions/blogCrud"
 import "draft-js/dist/Draft.css";
 
-export default function BlogEditor() {
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
-
+export default function BlogEditor({
+  editorState,
+  setEditorState,
+  saveContent,
+}) {
   const handleKeyCommand = (command, editorState) => {
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
@@ -16,10 +14,6 @@ export default function BlogEditor() {
       return "handled";
     }
     return "not handled";
-  };
-
-  const saveContent = () => {
-    addBlog(convertToRaw(editorState.getCurrentContent()))
   };
   return (
     <div>
