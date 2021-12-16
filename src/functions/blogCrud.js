@@ -1,29 +1,30 @@
-const blogs = [
-]
+const blogs = [];
 
-export function getBlogs() {
+export function getBlogsData() {
   return blogs;
 }
 
-export function getBlog(id) {
+export function getBlogData(id) {
   const blog = blogs.filter((blog) => blog.id === parseInt(id));
-  return blog[0]
+  return blog[0];
 }
 
-export function addBlog(blog_data) {
+export function addBlogData(blog_data) {
   let blog = {
     id: 10,
     data: {},
     date_created: "12/07/2021",
     date_modified: "14/08/2021",
     author: "Arjun Singh Lubana",
-  }
+  };
 
   blog.data = blog_data;
-  blogs.push(blog)
-  console.log(blogs)
+  blogs.push(blog);
+  console.log(blogs);
 }
 
-export function updateBlog() {}
+export function updateBlogData(id, data) {
+  getBlogData(id).data = data;
+}
 
-export function deleteBlog() {}
+export function deleteBlogData() {}

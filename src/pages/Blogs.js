@@ -1,12 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
-import { getBlogs } from "../functions/blogCrud";
+import { getBlogsData } from "../functions/blogCrud";
 import { useState, useEffect } from "react";
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    const blogsData = getBlogs();
+    const blogsData = getBlogsData();
     setBlogs(blogsData)
   }, [blogs]);
 

@@ -1,7 +1,9 @@
+import Blog from "./Blog";
+
 export default function EditBlog() {
   return (
     <div>
-      Edit Blog
+      <Blog edit={true} />
     </div>
-  )
+  );
 }
