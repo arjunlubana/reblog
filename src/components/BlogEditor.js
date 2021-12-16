@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Editor, EditorState, RichUtils } from "draft-js";
+import { Editor, EditorState, RichUtils, convertToRaw } from "draft-js";
 import Toolbar from "./Toolbar";
 import AddBlog, { addBlog } from "../functions/blogCrud"
 import "draft-js/dist/Draft.css";
@@ -19,7 +19,7 @@ export default function BlogEditor() {
   };
 
   const saveContent = () => {
-    addBlog(editorState)
+    addBlog(convertToRaw(editorState.getCurrentContent()))
   };
   return (
     <div>

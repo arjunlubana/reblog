@@ -1,13 +1,4 @@
 const blogs = [
-  {
-    "id": 1,
-    "data": {
-      
-    },
-    "date_created": "12/07/2021",
-    "date_modified": "14/08/2021",
-    "author": "Arjun Singh Lubana"
-  }
 ]
 
 export function getBlogs() {
@@ -15,7 +6,8 @@ export function getBlogs() {
 }
 
 export function getBlog(id) {
-  return blogs.filter((blog) => blog["id"] === id);
+  const blog = blogs.filter((blog) => blog.id === parseInt(id));
+  return blog[0]
 }
 
 export function addBlog(blog_data) {

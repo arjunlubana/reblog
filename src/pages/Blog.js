@@ -1,14 +1,21 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import { useState } from "react";
-import { Editor, EditorState } from "draft-js";
-export default function Blog({blogData}) {
-  // const [editorState, setEditorState] = useState(() => {
-  //   EditorState.createWithContent(blogData)
-  // })
+import { Editor, EditorState, convertFromRaw } from "draft-js";
+import { getBlog } from "../functions/blogCrud";
+
+export default function Blog() {
+  const params = useParams();
+  const blog = getBlog(params.blogId);
+  const contentState = convertFromRaw(blog.data);
+  const [editorState, setEditorState] = useState(() =>
+    EditorState.createWithContent(contentState)
+  );
+  console.log(editorState);
   return (
     <div className="container w-75 mx-auto">
       <Link to="/blog/edit">Edit</Link>
-      blog
+      <h2>{params.blogId}</h2>
+      <Editor editorState={editorState} onChange={setEditorState} />
       <div>
         <h4>Comments</h4>
       </div>

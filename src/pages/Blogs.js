@@ -22,7 +22,7 @@ export default function Blogs() {
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </p>
-            <Link to="/blog/:blogId" className="stretched-link"></Link>
+            <Link to={`/blog/${blog.id}`} className="stretched-link"></Link>
           </div>
         </div>
       ))}

@@ -20,7 +20,7 @@ export default function Home() {
         <Route path="/">
           <Route index element={<Blogs />} />
           <Route path="blog">
-            <Route index element={<Blog />} />
+            <Route path=":blogId" element={<Blog />} />
             <Route path="edit" element={<EditBlog />} />
           </Route>
         </Route>
