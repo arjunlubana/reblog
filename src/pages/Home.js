@@ -8,16 +8,12 @@ import PageNotFound from "./PageNotFound";
 import Profile from "./Profile";
 import SignUp from "./SignUp";
 import EditBlog from "./EditBlog";
-import { useState } from "react";
-
 
 export default function Home() {
 
-  const [logged, setLogged] = useState(false);
-
   return (
     <>
-      <Navbar logged={logged}/>
+      <Navbar />
       <Routes>
         <Route path="/">
           <Route index element={<Blogs />} />
