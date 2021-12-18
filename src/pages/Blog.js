@@ -25,7 +25,7 @@ export default function Blog({ edit }) {
       <div className="container w-75 mx-auto">
         <Link className="btn btn-info" to={`/blog/${params.blogId}/edit`}>Edit</Link>
         <Link className="btn btn-info" onClick={deleteBlog} to="/">Delete</Link>
-        <div className="card w-75 mx-auto p-4">
+        <div className="w-75 mx-auto p-4">
           <Editor
             editorState={editorState}
             onChange={setEditorState}

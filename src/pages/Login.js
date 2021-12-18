@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import LoginUser from "../functions/loginUser";
 
-export default function Login() {
+export default function Login({setLogged}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  let navigate = useNavigate()
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -18,11 +19,15 @@ export default function Login() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    LoginUser(email, password)
+    const logged = LoginUser(email, password);
+    setLogged(logged)
+    if(logged){
+      navigate("/")
+    }
     
   };
   return (
-    <div className="card w-25 my-5 mx-auto p-4">
+    <div className="card w-50 my-5 mx-auto p-4">
       <div className="text-center fs-4">Reblog</div>
       <form
         onSubmit={handleSubmit}

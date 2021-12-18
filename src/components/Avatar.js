@@ -3,7 +3,7 @@ let imageStyles = {
   borderRadius: "50%",
 };
 
-export default function ProfileImage({ dimensions }) {
+export default function Avatar({ dimensions }) {
   return (
     <img
       src="./assets/profile.jpg"
@@ -13,6 +13,6 @@ export default function ProfileImage({ dimensions }) {
   );
 }
 
-ProfileImage.defaultProps = {
+Avatar.defaultProps = {
   dimensions: "100px",
 };
