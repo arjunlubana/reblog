@@ -2,7 +2,7 @@
 
 A blog site bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Built with React, Bootstrap and DraftJs
+Built with React, Bootstrap 5 and DraftJs
 
 ## Available Scripts
 
