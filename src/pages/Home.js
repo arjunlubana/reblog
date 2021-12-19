@@ -12,6 +12,7 @@ import SignUp from "./SignUp";
 import EditBlog from "./EditBlog";
 
 export default function Home() {
+  // State to monitor user login status
   const [logged, setLogged] = useState(false);
 
   if (logged) {
