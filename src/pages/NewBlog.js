@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { EditorState, convertToRaw } from "draft-js";
 import BlogEditor from "../components/BlogEditor";
-import { addBlogData } from "../functions/blogCrud";
+import { addBlogData } from "../functions/blog-crud";
 
 export default function NewBlog() {
   const [editorState, setEditorState] = useState(() =>

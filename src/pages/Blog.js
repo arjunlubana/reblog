@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { Editor, EditorState, convertFromRaw, convertToRaw } from "draft-js";
-import { deleteBlogData, getBlogData, updateBlogData } from "../functions/blogCrud";
+import { deleteBlogData, getBlogData, updateBlogData } from "../functions/blog-crud";
 import BlogEditor from "../components/BlogEditor";
 
 export default function Blog({ edit }) {

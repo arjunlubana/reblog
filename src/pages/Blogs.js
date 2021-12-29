@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-import { getBlogsData } from "../functions/blogCrud";
+import { getBlogsData } from "../functions/blog-crud";
 import { useState, useEffect } from "react";
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    const blogsData = getBlogsData();
-    setBlogs(blogsData);
-  }, [blogs]);
-
+    getBlogsData().then((data) => {
+      setBlogs(data);
+    });
+  }, []);
   return (
     <div className="container-fluid w-75 mx-auto" id="blogs">
       <h1 className="text-center">Blogs</h1>
