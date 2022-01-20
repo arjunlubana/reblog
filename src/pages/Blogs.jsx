@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { getBlogsData } from "../functions/blog-crud";
+import { getBlogsData } from "../lib/blog-crud";
 import { useState, useEffect } from "react";
 
 export default function Blogs() {

@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import LoginUser from "../functions/login-user";
+import LoginUser from "../lib/login-user";
 
 export default function Login({setLogged}) {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   let navigate = useNavigate()
 
@@ -11,19 +11,20 @@ export default function Login({setLogged}) {
     const name = event.target.name;
     const value = event.target.value;
 
-    if (name === "email"){
-      setEmail(value)
+    if (name === "username"){
+      setUsername(value)
     }else if (name === "password"){
       setPassword(value)
     }
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    const logged = LoginUser(email, password);
-    setLogged(logged)
-    if(logged){
-      navigate("/")
-    }
+    LoginUser(username, password).then((data) => {
+      console.log(data)
+      if(data){
+        navigate("/")
+      }
+    })
     
   };
   return (
@@ -33,12 +34,12 @@ export default function Login({setLogged}) {
         onSubmit={handleSubmit}
         className="card-body d-flex flex-column gap-1"
       >
-        <label htmlFor="email">E-mail</label>
+        <label htmlFor="username">Username</label>
         <input
-          type="email"
-          id="email"
-          value={email}
-          name="email"
+          type="text"
+          id="username"
+          value={username}
+          name="username"
           onChange={handleChange}
         />
         <label htmlFor="password">Password</label>
@@ -59,5 +60,5 @@ export default function Login({setLogged}) {
         <Link to="/">Forgot Password ?</Link>
       </small>
     </div>
-  );
+  )
 }

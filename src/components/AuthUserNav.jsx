@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { LoggedContext } from "../functions/login-context";
+import { LoggedContext } from "../lib/login-context";
 import { Link } from "react-router-dom";
 import Avatar from "./Avatar";
 import { FaPlusCircle, FaSignOutAlt } from "react-icons/fa";
