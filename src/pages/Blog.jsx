@@ -31,6 +31,12 @@ export default function Blog({ render }) {
   return isLoading ? (
     <div>Loading</div>
   ) : (
-    render(params.blogId, editorState, setEditorState, deleteBlog, updateBlog)
+    render({
+      blogId: params.blogId,
+      editorState: editorState,
+      setEditorState: setEditorState,
+      deleteBlog: deleteBlog,
+      updateBlog: updateBlog,
+    })
   );
 }

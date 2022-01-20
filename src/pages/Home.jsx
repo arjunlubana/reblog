@@ -28,7 +28,7 @@ export default function Home() {
                 path=":blogId"
                 element={
                   <Blog
-                    render={(blogId, editorState, setEditorState, deleteBlog) => (
+                    render={({blogId, editorState, setEditorState, deleteBlog}) => (
                       <ViewBlog
                         blogId={blogId}
                         editorState={editorState}
@@ -43,7 +43,7 @@ export default function Home() {
                 path=":blogId/edit"
                 element={
                   <Blog
-                    render={(blogId, editorState, setEditorState, deleteBlog, updateBlog) => (
+                    render={({editorState, setEditorState,updateBlog}) => (
                       <EditBlog
                         editorState={editorState}
                         setEditorState={setEditorState}
