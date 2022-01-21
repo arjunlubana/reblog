@@ -20,9 +20,10 @@ export default function Home() {
   const [logged, setLogged] = useState(true);
 
   useEffect(() => {
-    getBlogsData().then((data) => {
-      setBlogs(data);
-    });
+    (async () => {
+      const blogsData = await getBlogsData();
+      setBlogs(blogsData);
+    })();
   }, []);
 
   if (logged) {
@@ -74,7 +75,10 @@ export default function Home() {
             </Route>
           </Route>
           <Route path="profile" element={<Profile />} />
-          <Route path="newblog" element={<NewBlog />} />
+          <Route
+            path="newblog"
+            element={<NewBlog blogs={blogs} setBlogs={setBlogs} />}
+          />
           <Route path="login" element={<Login setLogged={setLogged} />} />
           <Route path="signup" element={<SignUp />} />
 

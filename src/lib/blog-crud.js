@@ -45,9 +45,7 @@ export async function updateBlogData(id, blog_data) {
     redirect: "follow",
   };
 
-  const response = await fetch(`http://localhost:5000/api/blogs/${id}/update`, requestOptions);
-  const result = await response.json();
-  return result;
+  await fetch(`http://localhost:5000/api/blogs/${id}/update`, requestOptions);
 }
 
 export async function deleteBlogData(id) {

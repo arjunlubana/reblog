@@ -10,7 +10,7 @@ export default function AuthUserNav({ setLogged }) {
 
   if (logged) {
     return (
-      <IconContext.Provider value={{ color: "var(--bs-green)", size: "2rem" }}>
+      <IconContext.Provider value={{ color: "var(--bs-green)", size: "32px" }}>
         <li className="nav-item">
           <Link className="nav-link" to="/newblog">
             <FaPlusCircle />
@@ -18,7 +18,7 @@ export default function AuthUserNav({ setLogged }) {
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/profile">
-            <Avatar dimensions="2rem" />
+            <Avatar dimensions="32px" />
           </Link>
         </li>
         <li className="nav-item">

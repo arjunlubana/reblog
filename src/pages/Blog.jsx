@@ -10,6 +10,7 @@ export default function Blog({ render, blogs, setBlogs }) {
   const [editorState, setEditorState] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Get the Blog data
   useEffect(() => {
     (async () => {
       const blog = await getBlogData(params.blogId);
@@ -17,18 +18,23 @@ export default function Blog({ render, blogs, setBlogs }) {
       setEditorState(() => EditorState.createWithContent(blogData));
       setIsLoading(false);
     })();
-  }, []);
+  }, [params.blogId]);
 
+
+  // Update a blog in the UI and Backend
   const updateBlog = () => {
     updateBlogData(
       params.blogId,
       convertToRaw(editorState.getCurrentContent())
     );
+
   };
 
+
+  // Delete a blog from the UI and Backend
   const deleteBlog = () => {
     deleteBlogData(params.blogId);
-    const newBlogs = blogs.filter((blog) => blog.id === params.blogId)
+    const newBlogs = blogs.filter((blog) => blog.id !== parseInt(params.blogId))
     setBlogs(newBlogs)
     navigate("/", { replace: true });
   };
