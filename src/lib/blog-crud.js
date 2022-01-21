@@ -50,14 +50,13 @@ export async function updateBlogData(id, blog_data) {
   return result;
 }
 
-export function deleteBlogData(id) {
+export async function deleteBlogData(id) {
   let requestOptions = {
     method: "DELETE",
     redirect: "follow",
   };
 
-  fetch(`http://localhost:5000/api/blogs/${id}/delete`, requestOptions)
-    .then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.log("error", error));
+  const response = await fetch(`http://localhost:5000/api/blogs/${id}/delete`, requestOptions)
+  console.log(response.text())
+
 }

@@ -1,10 +1,12 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
 import { deleteBlogData, getBlogData, updateBlogData } from "../lib/blog-crud";
+import Spinner from "../components/Spinner";
 
-export default function Blog({ render }) {
+export default function Blog({ render, blogs, setBlogs }) {
   const params = useParams();
+  const navigate = useNavigate();
   const [editorState, setEditorState] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -26,10 +28,16 @@ export default function Blog({ render }) {
 
   const deleteBlog = () => {
     deleteBlogData(params.blogId);
+    const newBlogs = blogs.filter((blog) => blog.id === params.blogId)
+    setBlogs(newBlogs)
+    navigate("/", { replace: true });
   };
 
   return isLoading ? (
-    <div>Loading</div>
+    <div className="vh-100">
+      <Spinner />
+    </div> 
+    
   ) : (
     render({
       blogId: params.blogId,

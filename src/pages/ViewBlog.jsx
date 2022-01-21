@@ -9,10 +9,10 @@ export default function ViewBlog({ blogId, editorState, setEditorState, deleteBl
         {" "}
         Edit{" "}
       </Link>{" "}
-      <Link className="btn btn-info" onClick={deleteBlog} to="/">
+      <button className="btn btn-info" onClick={deleteBlog}>
         {" "}
         Delete{" "}
-      </Link>{" "}
+      </button>{" "}
       <div className="w-75 mx-auto p-4">
         <Editor
           editorState={editorState}

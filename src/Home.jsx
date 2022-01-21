@@ -1,34 +1,50 @@
 import { Route, Routes } from "react-router-dom";
-import { LoggedContext } from "../lib/login-context";
-import { useState } from "react";
-import Navbar from "../components/Navbar";
-import Blog from "./Blog";
-import NewBlog from "./NewBlog";
-import ViewBlog from "./ViewBlog";
-import EditBlog from "./EditBlog";
-import Blogs from "./Blogs";
-import Login from "./Login";
-import PageNotFound from "./PageNotFound";
-import Profile from "./Profile";
-import SignUp from "./SignUp";
+import { getBlogsData } from "./lib/blog-crud";
+import { useState, useEffect } from "react";
+import Navbar from "./components/Navbar";
+import {
+  Blog,
+  NewBlog,
+  ViewBlog,
+  EditBlog,
+  Blogs,
+  Login,
+  PageNotFound,
+  Profile,
+  SignUp,
+} from "./pages";
 
 export default function Home() {
   // State to monitor user login status
+  const [blogs, setBlogs] = useState([]);
   const [logged, setLogged] = useState(true);
+
+  useEffect(() => {
+    getBlogsData().then((data) => {
+      setBlogs(data);
+    });
+  }, []);
 
   if (logged) {
     return (
-      <LoggedContext.Provider value={logged}>
+      <>
         <Navbar setLogged={setLogged} />
         <Routes>
           <Route path="/">
-            <Route index element={<Blogs />} />
+            <Route index element={<Blogs blogs={blogs} />} />
             <Route path="blog">
               <Route
                 path=":blogId"
                 element={
                   <Blog
-                    render={({blogId, editorState, setEditorState, deleteBlog}) => (
+                    blogs={blogs}
+                    setBlogs={setBlogs}
+                    render={({
+                      blogId,
+                      editorState,
+                      setEditorState,
+                      deleteBlog,
+                    }) => (
                       <ViewBlog
                         blogId={blogId}
                         editorState={editorState}
@@ -43,7 +59,9 @@ export default function Home() {
                 path=":blogId/edit"
                 element={
                   <Blog
-                    render={({editorState, setEditorState,updateBlog}) => (
+                    blogs={blogs}
+                    setBlogs={setBlogs}
+                    render={({ editorState, setEditorState, updateBlog }) => (
                       <EditBlog
                         editorState={editorState}
                         setEditorState={setEditorState}
@@ -62,11 +80,11 @@ export default function Home() {
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-      </LoggedContext.Provider>
+      </>
     );
   } else {
     return (
-      <LoggedContext.Provider value={logged}>
+      <>
         <Navbar setLogged={setLogged} />
         <Routes>
           <Route path="/">
@@ -80,7 +98,7 @@ export default function Home() {
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-      </LoggedContext.Provider>
+      </>
     );
   }
 }
