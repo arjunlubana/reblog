@@ -1,4 +1,4 @@
-import { RichUtils } from "draft-js";
+import { RichUtils, Editor } from "draft-js";
 import {
   FaList,
   FaListOl,
@@ -6,8 +6,9 @@ import {
   FaFileCode,
   FaQuoteLeft,
 } from "react-icons/fa";
+import { useEffect } from "react";
 
-export default function Toolbar({ editorState, setEditorState }) {
+export default function Toolbar({ editorState, setEditorState, focusEditor }) {
 
   const _onH1Click = () => {
     setEditorState(RichUtils.toggleBlockType(editorState, "header-one"));
@@ -56,6 +57,12 @@ export default function Toolbar({ editorState, setEditorState }) {
   const _onOListClick = () => {
     setEditorState(RichUtils.toggleBlockType(editorState, "ordered-list-item"));
   };
+
+  useEffect(() => {
+    focusEditor()
+    console.log("Change")
+  }, [editorState]);
+  
   return (
     <div id="toolbar" className="bg-light">
       <div className="btn-group w-100">

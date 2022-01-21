@@ -1,6 +1,7 @@
 import { Editor, RichUtils } from "draft-js";
 import Toolbar from "./Toolbar";
 import "draft-js/dist/Draft.css";
+import { useRef } from "react";
 
 export default function BlogEditor({
   editorState,
@@ -15,9 +16,16 @@ export default function BlogEditor({
     }
     return "not handled";
   };
+
+  const editorRef = useRef(null)
+
+  const focusEditor = () => {
+    editorRef.current.focus()
+  }
+
   return (
     <div>
-      <Toolbar editorState={editorState} setEditorState={setEditorState} />
+      <Toolbar editorState={editorState} setEditorState={setEditorState} focusEditor={focusEditor}/>
       <button className="btn btn-info m-1" onClick={saveContent}>
         Save
       </button>
@@ -27,6 +35,7 @@ export default function BlogEditor({
           onChange={setEditorState}
           handleKeyCommand={handleKeyCommand}
           placeholder="Whats on your mind ..."
+          ref={editorRef}
         />
       </div>
     </div>

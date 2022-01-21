@@ -1,6 +1,17 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { EditorState, convertFromRaw } from "draft-js";
 
 export default function Blogs({blogs}) {
+
+  // useEffect(() => {
+  //   const blogData = convertFromRaw(blogs[0].data);
+  //   const editorState = EditorState.createWithContent(blogData);
+  //   const contentState = editorState.getCurrentContent()
+  //   const heading = contentState.getFirstBlock()
+  //   console.log(heading.getText())
+  // }, [blogs]);
+  
   return (
     <div className="container-fluid w-75 mx-auto" id="blogs">
       <h1 className="text-center">Blogs</h1>
