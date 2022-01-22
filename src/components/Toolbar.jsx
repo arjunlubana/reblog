@@ -9,7 +9,6 @@ import {
 import { useEffect } from "react";
 
 export default function Toolbar({ editorState, setEditorState, focusEditor }) {
-
   const _onH1Click = () => {
     setEditorState(RichUtils.toggleBlockType(editorState, "header-one"));
   };
@@ -59,10 +58,9 @@ export default function Toolbar({ editorState, setEditorState, focusEditor }) {
   };
 
   useEffect(() => {
-    focusEditor()
-    console.log("Change")
+    focusEditor();
   }, [editorState]);
-  
+
   return (
     <div id="toolbar" className="bg-light">
       <div className="btn-group w-100">
