@@ -4,5 +4,6 @@ import BlogEditor from "./BlogEditor";
 import Navbar from "./Navbar";
 import Spinner from "./Spinner";
 import Toolbar from "./Toolbar";
+import CoverImage from "./CoverImage"
 
-export { AuthUserNav, Avatar, BlogEditor, Navbar, Spinner, Toolbar };
+export { AuthUserNav, Avatar, BlogEditor, Navbar, Spinner, Toolbar, CoverImage };
