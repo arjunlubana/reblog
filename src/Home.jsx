@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { getBlogsData } from "./lib/blog-crud";
+import { getBlogs } from "./lib/blog-crud";
 import { useState, useEffect } from "react";
-import Navbar from "./components/Navbar";
+import { Navbar, Spinner } from "./components";
 import {
   Blog,
   NewBlog,
@@ -13,17 +13,16 @@ import {
   Profile,
   SignUp,
 } from "./pages";
-import Spinner from "./components/Spinner";
 
 export default function Home() {
   // State to monitor user login status
-  const [blogs, setBlogs] = useState([]);
+  const [blogs, setBlogs] = useState(null);
   const [logged, setLogged] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
-      const blogsData = await getBlogsData();
+      const blogsData = await getBlogs();
       setBlogs(blogsData);
       setIsLoading(false);
     })();
@@ -39,52 +38,52 @@ export default function Home() {
       <Routes>
         <Route path="/">
           <Route index element={<Blogs blogs={blogs} />} />
-          <Route path="blog">
-            <Route
-              path=":blogId"
-              element={
-                <Blog
-                  blogs={blogs}
-                  setBlogs={setBlogs}
-                  render={({
-                    blogId,
-                    editorState,
-                    setEditorState,
-                    deleteBlog,
-                  }) => (
-                    <ViewBlog
-                      blogId={blogId}
-                      editorState={editorState}
-                      setEditorState={setEditorState}
-                      deleteBlog={deleteBlog}
-                    />
-                  )}
-                />
-              }
-            />
-            <Route
-              path=":blogId/edit"
-              element={
-                <Blog
-                  blogs={blogs}
-                  setBlogs={setBlogs}
-                  render={({ editorState, setEditorState, updateBlog }) => (
-                    <EditBlog
-                      editorState={editorState}
-                      setEditorState={setEditorState}
-                      updateBlog={updateBlog}
-                    />
-                  )}
-                />
-              }
-            />
-          </Route>
+          <Route
+            path=":blogId"
+            element={
+              <Blog
+                blogs={blogs}
+                setBlogs={setBlogs}
+                render={({
+                  blogEditorState,
+                  setBlogEditorState,
+                  deleteBlog,
+                }) => (
+                  <ViewBlog
+                    blogEditorState={blogEditorState}
+                    setBlogEditorState={setBlogEditorState}
+                    deleteBlog={deleteBlog}
+                  />
+                )}
+              />
+            }
+          />
+          <Route
+            path=":blogId/edit"
+            element={
+              <Blog
+                blogs={blogs}
+                setBlogs={setBlogs}
+                render={({
+                  blogEditorState,
+                  setBlogEditorState,
+                  updateBlog,
+                }) => (
+                  <EditBlog
+                    blogEditorState={blogEditorState}
+                    setBlogEditorState={setBlogEditorState}
+                    updateBlog={updateBlog}
+                  />
+                )}
+              />
+            }
+          />
+          <Route
+            path="new"
+            element={<NewBlog blogs={blogs} setBlogs={setBlogs} />}
+          />
         </Route>
         <Route path="profile" element={<Profile />} />
-        <Route
-          path="newblog"
-          element={<NewBlog blogs={blogs} setBlogs={setBlogs} />}
-        />
         <Route path="login" element={<Login setLogged={setLogged} />} />
         <Route path="signup" element={<SignUp />} />
 

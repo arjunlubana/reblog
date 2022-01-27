@@ -1,60 +1,54 @@
-export async function getBlogsData() {
-  const result = await fetch("http://localhost:5000/api/blogs");
+import api_url from "./api-url";
+
+export async function getBlogs() {
+  const result = await fetch(`${api_url}/api/blogs`);
   const blogs = await result.json();
   return blogs;
 }
 
-export async function getBlogData(id) {
-  const result = await fetch(`http://localhost:5000/api/blogs/${id}`);
+export async function getBlog(id) {
+  const result = await fetch(`${api_url}/api/blogs/${id}`);
   const blog = await result.json();
-  return blog[0];
+  return blog;
 }
 
-export async function addBlogData(blog_data) {
-  let myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-
-  let raw = JSON.stringify({
-    data: blog_data,
-  });
-
-  let requestOptions = {
+export async function createBlog(blog_data) {
+  const requestOptions = {
     method: "POST",
-    headers: myHeaders,
-    body: raw,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(blog_data),
     redirect: "follow",
   };
 
-  const response = await fetch("http://localhost:5000/api/blogs/new", requestOptions);
+  const response = await fetch(`${api_url}/api/blogs/new`, requestOptions);
   const result = await response.json();
   return result;
 }
 
-export async function updateBlogData(id, blog_data) {
-  let myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-
-  let raw = JSON.stringify({
-    data: blog_data,
-  });
-
-  let requestOptions = {
+export async function updateBlog(id, blog_data) {
+  const requestOptions = {
     method: "PUT",
-    headers: myHeaders,
-    body: raw,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(blog_data),
     redirect: "follow",
   };
 
-  await fetch(`http://localhost:5000/api/blogs/${id}/update`, requestOptions);
+  await fetch(`${api_url}/api/blogs/${id}/update`, requestOptions);
 }
 
-export async function deleteBlogData(id) {
+export async function deleteBlog(id) {
   let requestOptions = {
     method: "DELETE",
     redirect: "follow",
   };
 
-  const response = await fetch(`http://localhost:5000/api/blogs/${id}/delete`, requestOptions)
-  console.log(response.text())
-
+  const response = await fetch(
+    `${api_url}/api/blogs/${id}/delete`,
+    requestOptions
+  );
+  console.log(response.text());
 }

@@ -1,11 +1,18 @@
-import { Link } from "react-router-dom";
-import { Editor } from "draft-js";
+import { Link, useParams } from "react-router-dom";
+import { BlogEditor } from "../components";
 
-export default function ViewBlog({ blogId, editorState, setEditorState, deleteBlog }) {
+export default function ViewBlog({
+  titleEditorState,
+  setTitleEditorState,
+  blogEditorState,
+  setBlogEditorState,
+  deleteBlog,
+}) {
+  const params = useParams();
 
   return (
     <div className="container w-75 mx-auto">
-      <Link className="btn btn-info" to={`/blog/${blogId}/edit`}>
+      <Link className="btn btn-info" to={`/blog/${params.blogId}/edit`}>
         {" "}
         Edit{" "}
       </Link>{" "}
@@ -14,11 +21,13 @@ export default function ViewBlog({ blogId, editorState, setEditorState, deleteBl
         Delete{" "}
       </button>{" "}
       <div className="w-75 mx-auto p-4">
-        <Editor
-          editorState={editorState}
-          onChange={setEditorState}
+        <BlogEditor
+          titleEditorState={titleEditorState}
+          setTitleEditorState={setTitleEditorState}
+          blogEditorState={blogEditorState}
+          setBlogEditorState={setBlogEditorState}
           readOnly={true}
-        />{" "}
+        />
       </div>{" "}
       <div>
         <h4> Comments </h4> <h4> Related Content </h4>{" "}

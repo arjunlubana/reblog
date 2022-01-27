@@ -1,15 +1,11 @@
-import BlogEditor from "../components/BlogEditor";
+import {BlogEditor} from "../components";
 
-export default function EditBlog({editorState, setEditorState, updateBlog}) {
+export default function EditBlog({blogEditorState, setBlogEditorState, updateBlog}) {
   return (
-    <div className="container w-75 mx-auto">
-      <div className="card w-75 mx-auto p-4">
         <BlogEditor
-          editorState={editorState}
-          setEditorState={setEditorState}
+          blogEditorState={blogEditorState}
+          setBlogEditorState={setBlogEditorState}
           saveContent={updateBlog}
-        />{" "}
-      </div>
-    </div>
+        />
   );
 }
