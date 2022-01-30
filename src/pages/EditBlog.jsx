@@ -1,11 +1,11 @@
 import {BlogEditor} from "../components";
 
-export default function EditBlog({blogEditorState, setBlogEditorState, updateBlog}) {
+export default function EditBlog({blog, updateBlog}) {
   return (
         <BlogEditor
-          blogEditorState={blogEditorState}
-          setBlogEditorState={setBlogEditorState}
-          saveContent={updateBlog}
+          blog={blog}
+          readOnly={false}
+          saveBlog={updateBlog}
         />
   );
 }

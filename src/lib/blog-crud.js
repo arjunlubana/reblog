@@ -50,5 +50,4 @@ export async function deleteBlog(id) {
     `${api_url}/api/blogs/${id}/delete`,
     requestOptions
   );
-  console.log(response.text());
 }

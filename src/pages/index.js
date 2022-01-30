@@ -1,3 +1,4 @@
+import Home from "./Home";
 import Blog from "./Blog";
 import NewBlog from "./NewBlog";
 import ViewBlog from "./ViewBlog";
@@ -9,6 +10,7 @@ import Profile from "./Profile";
 import SignUp from "./SignUp";
 
 export {
+  Home,
   Blog,
   NewBlog,
   ViewBlog,

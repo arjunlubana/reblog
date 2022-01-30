@@ -2,10 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { BlogEditor } from "../components";
 
 export default function ViewBlog({
-  titleEditorState,
-  setTitleEditorState,
-  blogEditorState,
-  setBlogEditorState,
+  blog,
   deleteBlog,
 }) {
   const params = useParams();
@@ -22,10 +19,7 @@ export default function ViewBlog({
       </button>{" "}
       <div className="w-75 mx-auto p-4">
         <BlogEditor
-          titleEditorState={titleEditorState}
-          setTitleEditorState={setTitleEditorState}
-          blogEditorState={blogEditorState}
-          setBlogEditorState={setBlogEditorState}
+          blog={blog}
           readOnly={true}
         />
       </div>{" "}

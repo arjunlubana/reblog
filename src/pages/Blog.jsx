@@ -7,26 +7,23 @@ import { Spinner } from "../components";
 export default function Blog({ render, blogs, setBlogs }) {
   const params = useParams();
   const navigate = useNavigate();
-  const [blogEditorState, setBlogEditorState] = useState(null);
-  const [titleEditorState, setTitleEditorState] = useState(null);
+  const [blogBody, setBlogBody] = useState(null);
+  const [blogTitle, setBlogTitle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   // Get the Blog data
   useEffect(() => {
-    (async () => {
-      const blog = await getBlog(params.blogId);
-      const blogData = await convertFromRaw(blog.data);
-      setBlogEditorState(() => EditorState.createWithContent(blogData));
+    getBlog(params.blogId).then((blog) => {
+      // Convert Blog body and title raw state and set the appropriate states
+      setBlogTitle(EditorState.createWithContent(convertFromRaw(blog.title)));
+      setBlogBody(EditorState.createWithContent(convertFromRaw(blog.body)));
       setIsLoading(false);
-    })();
+    });
   }, [params.blogId]);
 
   // Update a blog in the UI and Backend
   const update_blog = () => {
-    updateBlog(
-      params.blogId,
-      convertToRaw(blogEditorState.getCurrentContent())
-    );
+    updateBlog(params.blogId, convertToRaw(blogBody.getCurrentContent()));
   };
 
   // Delete a blog from the UI and Backend
@@ -38,18 +35,20 @@ export default function Blog({ render, blogs, setBlogs }) {
     setBlogs(newBlogs);
     navigate("/", { replace: true });
   };
-
+  // The render prop renders either an edit blog or a view blog.
+  // Title and Blog states, delete and update blog functions are passed to the rendered components
   return isLoading ? (
     <div className="vh-100">
       <Spinner />
     </div>
   ) : (
     render({
-      titleEditorState,
-      titleEditorState,
-      setTitleEditorState: setTitleEditorState,
-      blogEditorState: blogEditorState,
-      setBlogEditorState: setBlogEditorState,
+      blog: {
+        blogTitle: blogTitle,
+        setBlogTitle: setBlogTitle,
+        blogBody: blogBody,
+        setBlogBody: setBlogBody,
+      },
       deleteBlog: delete_blog,
       updateBlog: update_blog,
     })
