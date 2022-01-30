@@ -1,0 +1,31 @@
+.cover-image-upload {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+.cover-image-upload label, input{
+  grid-row: 1;
+}
+.cover-image-upload label {
+  grid-column: 1 / -1;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.cover-image-upload input{
+  grid-column: 2 / 2;
+  position: relative;
+  z-index: 0;
+  opacity: 0;
+}
+
+.image-preview{
+
+}

@@ -1,0 +1,9 @@
+#blog_title{
+	border: none;
+	font-size: 2rem;
+	margin: 1rem auto;
+}
+
+#blog_title:focus{
+	outline: none;
+}
