@@ -1,8 +1,14 @@
-import { Editor, RichUtils } from "draft-js";
+import { Editor, RichUtils, convertToRaw } from "draft-js";
 import { Toolbar } from "..";
 import { useRef } from "react";
 
-export default function BlogBody({ blogBody, setBlogBody, readOnly }) {
+export default function BlogBody({
+	blogBody,
+	setBlogBody,
+	blogUpdate,
+	setBlogUpdate,
+	readOnly,
+}) {
 	const handleKeyCommand = (command, blogBody) => {
 		const newState = RichUtils.handleKeyCommand(blogBody, command);
 		if (newState) {
@@ -10,6 +16,19 @@ export default function BlogBody({ blogBody, setBlogBody, readOnly }) {
 			return "handled";
 		}
 		return "not handled";
+	};
+	const handleChange = (editorState) => {
+		setBlogBody(editorState);
+		// Registers title updates to be sent to the server
+		let rawEditorState = JSON.stringify(
+			convertToRaw(editorState.getCurrentContent())
+		);
+		if (blogUpdate.has("blogBody")) {
+			blogUpdate.set("blogBody", rawEditorState);
+		} else {
+			blogUpdate.append("blogBody", rawEditorState);
+		}
+		setBlogUpdate(blogUpdate);
 	};
 	const editorRef = useRef(null);
 
@@ -30,7 +49,7 @@ export default function BlogBody({ blogBody, setBlogBody, readOnly }) {
 
 			<Editor
 				editorState={blogBody}
-				onChange={setBlogBody}
+				onChange={handleChange}
 				handleKeyCommand={handleKeyCommand}
 				placeholder="Whats on your mind ..."
 				ref={editorRef}

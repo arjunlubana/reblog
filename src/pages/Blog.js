@@ -7,6 +7,7 @@ import { Spinner } from "../components";
 export default function Blog({ render, blogs, setBlogs }) {
   const params = useParams();
   const navigate = useNavigate();
+  const [blogUpdate, setBlogUpdate] = useState(new FormData())
   const [coverImage, setCoverImage] = useState(null);
   const [blogTitle, setBlogTitle] = useState(null);
   const [blogBody, setBlogBody] = useState(null);
@@ -21,27 +22,9 @@ export default function Blog({ render, blogs, setBlogs }) {
       setIsLoading(false);
     });
   }, [params.blogId]);
-
-  // Update a blog in the UI and Backend
-  const getBlogSnapshot = () => {
-    let blog_data = new FormData();
-    blog_data.append("coverImage", coverImage);
-    blog_data.append(
-      "blogTitle",
-      JSON.stringify(convertToRaw(blogTitle.getCurrentContent()))
-    );
-    blog_data.append(
-      "blogBody",
-      JSON.stringify(convertToRaw(blogBody.getCurrentContent()))
-    );
-    blog_data.append("likes", 0);
-    blog_data.append("comments", []);
-    return blog_data;
-  };
   // Update blog
   const update_blog = () => {
-    const blog_data = getBlogSnapshot();
-    updateBlog(params.blogId, blog_data);
+    updateBlog(params.blogId, {});
   };
 
   // Delete a blog from the UI and Backend

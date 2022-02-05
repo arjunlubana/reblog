@@ -47,7 +47,7 @@ export default function NewBlog({ blogs, setBlogs }) {
           blogBody: blogBody,
           setBlogBody: setBlogBody,
           blogUpdate: blogUpdate,
-          setBlogUpdate: setBlogUpdate
+          setBlogUpdate: setBlogUpdate,
         }}
         readOnly={false}
         updateBlog={update_blog}

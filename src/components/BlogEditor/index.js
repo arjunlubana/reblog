@@ -11,7 +11,7 @@ export default function BlogEditor({ blog, readOnly, updateBlog }) {
       <BlogTitle
         blogTitle={blog.blogTitle}
         setBlogTitle={blog.setBlogTitle}
-        blogUpdate= {blog.blogUpdate}
+        blogUpdate={blog.blogUpdate}
         setBlogUpdate={blog.setBlogUpdate}
         readOnly={readOnly}
       />
@@ -25,6 +25,8 @@ export default function BlogEditor({ blog, readOnly, updateBlog }) {
       <BlogBody
         blogBody={blog.blogBody}
         setBlogBody={blog.setBlogBody}
+        blogUpdate={blog.blogUpdate}
+        setBlogUpdate={blog.setBlogUpdate}
         readOnly={readOnly}
       />
     </div>
