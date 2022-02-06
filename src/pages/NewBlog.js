@@ -5,12 +5,19 @@ import { createBlog, updateBlog } from "../lib/blog-crud";
 
 export default function NewBlog({ blogs, setBlogs }) {
   // Initialize blog states
+  const [blogUpdate, setBlogUpdate] = useState(new FormData());
   const [coverImage, setCoverImage] = useState(null);
   const [blogTitle, setBlogTitle] = useState(EditorState.createEmpty());
   const [blogBody, setBlogBody] = useState(EditorState.createEmpty());
   const [newBlog, setNewBlog] = useState(null);
+  // Update blog
+  const update_blog = () => {
+    updateBlog(newBlog.id, blogUpdate).then((data) => {
+      setNewBlog(data);
+    });
+  };
 
-  const getBlogSnapshot = () => {
+  useEffect(() => {
     let blog_data = new FormData();
     blog_data.append("coverImage", coverImage);
     blog_data.append(
@@ -23,18 +30,6 @@ export default function NewBlog({ blogs, setBlogs }) {
     );
     blog_data.append("likes", 0);
     blog_data.append("comments", []);
-    return blog_data;
-  };
-  // Update blog
-  const update_blog = () => {
-    const blog_data = getBlogSnapshot();
-    updateBlog(newBlog.id, blog_data).then((data) => {
-      setNewBlog(data);
-    });
-  };
-
-  useEffect(() => {
-    const blog_data = getBlogSnapshot();
     createBlog(blog_data).then((data) => {
       setNewBlog(data);
       setBlogs([...blogs, data]);
@@ -51,6 +46,8 @@ export default function NewBlog({ blogs, setBlogs }) {
           setBlogTitle: setBlogTitle,
           blogBody: blogBody,
           setBlogBody: setBlogBody,
+          blogUpdate: blogUpdate,
+          setBlogUpdate: setBlogUpdate
         }}
         readOnly={false}
         updateBlog={update_blog}

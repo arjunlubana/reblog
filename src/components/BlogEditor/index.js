@@ -11,6 +11,8 @@ export default function BlogEditor({ blog, readOnly, updateBlog }) {
       <BlogTitle
         blogTitle={blog.blogTitle}
         setBlogTitle={blog.setBlogTitle}
+        blogUpdate= {blog.blogUpdate}
+        setBlogUpdate={blog.setBlogUpdate}
         readOnly={readOnly}
       />
       {readOnly ? (

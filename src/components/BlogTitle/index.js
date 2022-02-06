@@ -1,10 +1,29 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Editor, RichUtils } from "draft-js";
+import { Editor, RichUtils, convertToRaw } from "draft-js";
 import "./styles.css";
 
-export default function BlogTitle({ blogTitle, setBlogTitle, readOnly }) {
+export default function BlogTitle({
+	blogTitle,
+	setBlogTitle,
+	blogUpdate,
+	setBlogUpdate,
+	readOnly,
+}) {
 	const location = useLocation();
+	const handleChange = (editorState) => {
+		setBlogTitle(editorState);
+		// Registers title updates to be sent to the server
+		let rawEditorState = JSON.stringify(
+			convertToRaw(editorState.getCurrentContent())
+		);
+		if (blogUpdate.has("blogTitle")) {
+			blogUpdate.set("blogTitle", rawEditorState);
+		} else {
+			blogUpdate.append("blogTitle", rawEditorState);
+		}
+		setBlogUpdate(blogUpdate);
+	};
 
 	useEffect(() => {
 		// Only toggle Title header style when a new blog is created.
@@ -15,7 +34,7 @@ export default function BlogTitle({ blogTitle, setBlogTitle, readOnly }) {
 	return (
 		<Editor
 			editorState={blogTitle}
-			onChange={setBlogTitle}
+			onChange={handleChange}
 			placeholder={<h1>Blog Title</h1>}
 			readOnly={readOnly}
 		/>
