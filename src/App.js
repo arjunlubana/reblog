@@ -1,12 +1,23 @@
 // eslint-disable-next-line
-import * as bootstrap from "bootstrap"
+import * as bootstrap from "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Home, Blogs, Blog, ViewBlog, EditBlog, NewBlog, Login, PageNotFound, Profile, SignUp } from "./pages";
+import {
+  Home,
+  Blogs,
+  Blog,
+  ViewBlog,
+  EditBlog,
+  NewBlog,
+  Login,
+  PageNotFound,
+  Profile,
+  SignUp,
+} from "./pages";
 import { LoggedContext } from "./lib/login-context";
-import {getBlogs} from "./lib/blog-crud"
+import { getBlogs } from "./lib/blog-crud";
 
 export default function App() {
   const [logged, setLogged] = useState(true);
@@ -29,21 +40,18 @@ export default function App() {
             path="/"
             element={<Home logged={logged} setLogged={setLogged} />}
           >
-            <Route index element={<Blogs blogs={blogs} isLoading={isLoading} />} />
+            <Route
+              index
+              element={<Blogs blogs={blogs} isLoading={isLoading} />}
+            />
             <Route
               path="blog/:blogId"
               element={
                 <Blog
                   blogs={blogs}
                   setBlogs={setBlogs}
-                  render={({
-                    blog,
-                    deleteBlog,
-                  }) => (
-                    <ViewBlog
-                      blog={blog}
-                      deleteBlog={deleteBlog}
-                    />
+                  render={({ blog, deleteBlog }) => (
+                    <ViewBlog blog={blog} deleteBlog={deleteBlog} />
                   )}
                 />
               }
@@ -54,14 +62,8 @@ export default function App() {
                 <Blog
                   blogs={blogs}
                   setBlogs={setBlogs}
-                  render={({
-                    blog,
-                    updateBlog,
-                  }) => (
-                    <EditBlog
-                      blog={blog}
-                      saveBlog={updateBlog}
-                    />
+                  render={({ blog, updateBlog }) => (
+                    <EditBlog blog={blog} saveBlog={updateBlog} />
                   )}
                 />
               }
