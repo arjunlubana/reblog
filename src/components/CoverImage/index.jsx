@@ -7,8 +7,8 @@ export default function CoverImage() {
   const [coverImage, setCoverImage] = useState("");
 
   const handleChange = (event) => {
-    const cover_image_url = URL.createObjectURL(event.target.files[0]);
-    setCoverImage(cover_image_url);
+    // const cover_image_url = URL.createObjectURL(event.target.files[0]);
+    // setCoverImage(cover_image_url);
     setShowPreview(true);
   };
 
