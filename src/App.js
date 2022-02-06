@@ -63,7 +63,7 @@ export default function App() {
                   blogs={blogs}
                   setBlogs={setBlogs}
                   render={({ blog, updateBlog }) => (
-                    <EditBlog blog={blog} saveBlog={updateBlog} />
+                    <EditBlog blog={blog} updateBlog={updateBlog} />
                   )}
                 />
               }

@@ -5,7 +5,7 @@ export default function EditBlog({blog, updateBlog}) {
         <BlogEditor
           blog={blog}
           readOnly={false}
-          saveBlog={updateBlog}
+          updateBlog={updateBlog}
         />
   );
 }

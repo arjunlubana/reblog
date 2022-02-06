@@ -26,10 +26,15 @@ export async function createBlog(blog_data) {
 export async function updateBlog(id, blog_data) {
   const requestOptions = {
     method: "PUT",
-    body: blog_data
+    body: blog_data,
   };
 
-  await fetch(`${api_url}/api/blogs/${id}/update`, requestOptions);
+  const response = await fetch(
+    `${api_url}/api/blogs/${id}/update`,
+    requestOptions
+  );
+  const result = await response.json();
+  return result;
 }
 
 export async function deleteBlog(id) {

@@ -23,8 +23,25 @@ export default function Blog({ render, blogs, setBlogs }) {
   }, [params.blogId]);
 
   // Update a blog in the UI and Backend
+  const getBlogSnapshot = () => {
+    let blog_data = new FormData();
+    blog_data.append("coverImage", coverImage);
+    blog_data.append(
+      "blogTitle",
+      JSON.stringify(convertToRaw(blogTitle.getCurrentContent()))
+    );
+    blog_data.append(
+      "blogBody",
+      JSON.stringify(convertToRaw(blogBody.getCurrentContent()))
+    );
+    blog_data.append("likes", 0);
+    blog_data.append("comments", []);
+    return blog_data;
+  };
+  // Update blog
   const update_blog = () => {
-    updateBlog(params.blogId, convertToRaw(blogBody.getCurrentContent()));
+    const blog_data = getBlogSnapshot();
+    updateBlog(params.blogId, blog_data);
   };
 
   // Delete a blog from the UI and Backend

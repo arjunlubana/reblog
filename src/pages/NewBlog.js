@@ -13,8 +13,14 @@ export default function NewBlog({ blogs, setBlogs }) {
   const getBlogSnapshot = () => {
     let blog_data = new FormData();
     blog_data.append("coverImage", coverImage);
-    blog_data.append("blogTitle", JSON.stringify(convertToRaw(blogTitle.getCurrentContent())));
-    blog_data.append("blogBody", JSON.stringify(convertToRaw(blogBody.getCurrentContent())));
+    blog_data.append(
+      "blogTitle",
+      JSON.stringify(convertToRaw(blogTitle.getCurrentContent()))
+    );
+    blog_data.append(
+      "blogBody",
+      JSON.stringify(convertToRaw(blogBody.getCurrentContent()))
+    );
     blog_data.append("likes", 0);
     blog_data.append("comments", []);
     return blog_data;
@@ -22,19 +28,17 @@ export default function NewBlog({ blogs, setBlogs }) {
   // Update blog
   const update_blog = () => {
     const blog_data = getBlogSnapshot();
-    // updateBlog(newBlog.id, blog_data);
-    createBlog(blog_data).then((data) => {
+    updateBlog(newBlog.id, blog_data).then((data) => {
       setNewBlog(data);
-      setBlogs([...blogs, data]);
     });
   };
 
   useEffect(() => {
     const blog_data = getBlogSnapshot();
-    // createBlog(blog_data).then((data) => {
-    //   setNewBlog(data);
-    //   setBlogs([...blogs, data]);
-    // });
+    createBlog(blog_data).then((data) => {
+      setNewBlog(data);
+      setBlogs([...blogs, data]);
+    });
   }, []);
 
   return (
@@ -49,7 +53,7 @@ export default function NewBlog({ blogs, setBlogs }) {
           setBlogBody: setBlogBody,
         }}
         readOnly={false}
-        saveBlog={update_blog}
+        updateBlog={update_blog}
       />
     </div>
   );

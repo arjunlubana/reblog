@@ -3,7 +3,7 @@ import { Toolbar, CoverImage, BlogTitle } from "..";
 import "draft-js/dist/Draft.css";
 import { useRef } from "react";
 
-export default function BlogEditor({ blog, readOnly, saveBlog }) {
+export default function BlogEditor({ blog, readOnly, updateBlog }) {
   const {
     coverImage,
     setCoverImage,
@@ -45,7 +45,7 @@ export default function BlogEditor({ blog, readOnly, saveBlog }) {
             setBlogBody={setBlogBody}
             focusEditor={focusEditor}
           />
-          <button className="btn btn-info m-1" onClick={saveBlog}>
+          <button className="btn btn-info m-1" onClick={updateBlog}>
             Save
           </button>
         </>
