@@ -7,8 +7,9 @@ import { Spinner } from "../components";
 export default function Blog({ render, blogs, setBlogs }) {
   const params = useParams();
   const navigate = useNavigate();
-  const [blogBody, setBlogBody] = useState(null);
+  const [coverImage, setCoverImage] = useState(null);
   const [blogTitle, setBlogTitle] = useState(null);
+  const [blogBody, setBlogBody] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   // Get the Blog data
@@ -44,6 +45,8 @@ export default function Blog({ render, blogs, setBlogs }) {
   ) : (
     render({
       blog: {
+        coverImage: coverImage,
+        setCoverImage: setCoverImage,
         blogTitle: blogTitle,
         setBlogTitle: setBlogTitle,
         blogBody: blogBody,

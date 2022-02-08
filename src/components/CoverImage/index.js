@@ -2,13 +2,12 @@ import { useState } from "react";
 import { FaImage, FaEdit } from "react-icons/fa";
 import "./styles.css";
 
-export default function CoverImage() {
+export default function CoverImage({ coverImage, setCoverImage }) {
   const [showPreview, setShowPreview] = useState(false);
-  const [coverImage, setCoverImage] = useState("");
 
   const handleChange = (event) => {
-    // const cover_image_url = URL.createObjectURL(event.target.files[0]);
-    // setCoverImage(cover_image_url);
+    const cover_image = event.target.files[0];
+    setCoverImage(cover_image);
     setShowPreview(true);
   };
 
@@ -17,7 +16,7 @@ export default function CoverImage() {
       <label htmlFor="cover_image">
         {showPreview ? (
           <div className="cover-image-preview">
-          <FaEdit className="image-edit"/>
+            <FaEdit className="image-edit" />
             <img
               src={coverImage}
               alt="Blog Cover"

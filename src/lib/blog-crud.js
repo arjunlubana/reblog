@@ -15,11 +15,7 @@ export async function getBlog(id) {
 export async function createBlog(blog_data) {
   const requestOptions = {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(blog_data),
-    redirect: "follow",
+    body: blog_data,
   };
 
   const response = await fetch(`${api_url}/api/blogs/new`, requestOptions);
@@ -30,11 +26,7 @@ export async function createBlog(blog_data) {
 export async function updateBlog(id, blog_data) {
   const requestOptions = {
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(blog_data),
-    redirect: "follow",
+    body: blog_data
   };
 
   await fetch(`${api_url}/api/blogs/${id}/update`, requestOptions);

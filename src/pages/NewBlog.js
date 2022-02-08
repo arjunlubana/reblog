@@ -4,39 +4,45 @@ import { BlogEditor } from "../components";
 import { createBlog, updateBlog } from "../lib/blog-crud";
 
 export default function NewBlog({ blogs, setBlogs }) {
-  // States
-  const [blogBody, setBlogBody] = useState(EditorState.createEmpty());
-
+  // Initialize blog states
+  const [coverImage, setCoverImage] = useState(null);
   const [blogTitle, setBlogTitle] = useState(EditorState.createEmpty());
-
+  const [blogBody, setBlogBody] = useState(EditorState.createEmpty());
   const [newBlog, setNewBlog] = useState(null);
 
+  const getBlogSnapshot = () => {
+    let blog_data = new FormData();
+    blog_data.append("coverImage", coverImage);
+    blog_data.append("blogTitle", convertToRaw(blogTitle.getCurrentContent()));
+    blog_data.append("blogBody", convertToRaw(blogBody.getCurrentContent()));
+    blog_data.append("likes", 0);
+    blog_data.append("comments", []);
+    return blog_data;
+  };
   // Update blog
   const update_blog = () => {
-    const blog_data = {
-      blogTitle: convertToRaw(blogTitle.getCurrentContent()),
-      blogBody: convertToRaw(blogBody.getCurrentContent()),
-    };
-    updateBlog(newBlog.id, blog_data);
-  };
-
-  useEffect(() => {
-    const blog_data = {
-      blogTitle: convertToRaw(blogTitle.getCurrentContent()),
-      blogBody: convertToRaw(blogBody.getCurrentContent()),
-      likes: 0,
-      comments: [],
-    };
+    const blog_data = getBlogSnapshot();
+    // updateBlog(newBlog.id, blog_data);
     createBlog(blog_data).then((data) => {
       setNewBlog(data);
       setBlogs([...blogs, data]);
     });
+  };
+
+  useEffect(() => {
+    const blog_data = getBlogSnapshot();
+    // createBlog(blog_data).then((data) => {
+    //   setNewBlog(data);
+    //   setBlogs([...blogs, data]);
+    // });
   }, []);
 
   return (
     <div className="card w-75 mx-auto my-4">
       <BlogEditor
         blog={{
+          coverImage: coverImage,
+          setCoverImage: setCoverImage,
           blogTitle: blogTitle,
           setBlogTitle: setBlogTitle,
           blogBody: blogBody,

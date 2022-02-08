@@ -4,7 +4,14 @@ import "draft-js/dist/Draft.css";
 import { useRef } from "react";
 
 export default function BlogEditor({ blog, readOnly, saveBlog }) {
-  const { blogTitle, setBlogTitle, blogBody, setBlogBody } = blog;
+  const {
+    coverImage,
+    setCoverImage,
+    blogTitle,
+    setBlogTitle,
+    blogBody,
+    setBlogBody,
+  } = blog;
 
   const handleKeyCommand = (command, blogBody) => {
     const newState = RichUtils.handleKeyCommand(blogBody, command);
@@ -23,8 +30,12 @@ export default function BlogEditor({ blog, readOnly, saveBlog }) {
 
   return (
     <div className="container-fluid w-75 mt-5">
-      <CoverImage />
-      <BlogTitle blogTitle={blogTitle} setBlogTitle={setBlogTitle} readOnly={readOnly} />
+      <CoverImage coverImage={coverImage} setCoverImage={setCoverImage} />
+      <BlogTitle
+        blogTitle={blogTitle}
+        setBlogTitle={setBlogTitle}
+        readOnly={readOnly}
+      />
       {readOnly ? (
         ""
       ) : (
