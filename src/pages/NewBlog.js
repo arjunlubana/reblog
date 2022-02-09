@@ -13,8 +13,8 @@ export default function NewBlog({ blogs, setBlogs }) {
   const getBlogSnapshot = () => {
     let blog_data = new FormData();
     blog_data.append("coverImage", coverImage);
-    blog_data.append("blogTitle", convertToRaw(blogTitle.getCurrentContent()));
-    blog_data.append("blogBody", convertToRaw(blogBody.getCurrentContent()));
+    blog_data.append("blogTitle", JSON.stringify(convertToRaw(blogTitle.getCurrentContent())));
+    blog_data.append("blogBody", JSON.stringify(convertToRaw(blogBody.getCurrentContent())));
     blog_data.append("likes", 0);
     blog_data.append("comments", []);
     return blog_data;
