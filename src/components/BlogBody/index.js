@@ -23,10 +23,10 @@ export default function BlogBody({
 		let rawEditorState = JSON.stringify(
 			convertToRaw(editorState.getCurrentContent())
 		);
-		if (blogUpdate.has("blogBody")) {
-			blogUpdate.set("blogBody", rawEditorState);
+		if (blogUpdate.has("body")) {
+			blogUpdate.set("body", rawEditorState);
 		} else {
-			blogUpdate.append("blogBody", rawEditorState);
+			blogUpdate.append("body", rawEditorState);
 		}
 		setBlogUpdate(blogUpdate);
 	};

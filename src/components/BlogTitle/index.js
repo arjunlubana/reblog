@@ -17,10 +17,10 @@ export default function BlogTitle({
 		let rawEditorState = JSON.stringify(
 			convertToRaw(editorState.getCurrentContent())
 		);
-		if (blogUpdate.has("blogTitle")) {
-			blogUpdate.set("blogTitle", rawEditorState);
+		if (blogUpdate.has("title")) {
+			blogUpdate.set("title", rawEditorState);
 		} else {
-			blogUpdate.append("blogTitle", rawEditorState);
+			blogUpdate.append("title", rawEditorState);
 		}
 		setBlogUpdate(blogUpdate);
 	};

@@ -19,13 +19,13 @@ export default function NewBlog({ blogs, setBlogs }) {
 
   useEffect(() => {
     let blog_data = new FormData();
-    blog_data.append("coverImage", coverImage);
+    blog_data.append("cover", coverImage);
     blog_data.append(
-      "blogTitle",
+      "title",
       JSON.stringify(convertToRaw(blogTitle.getCurrentContent()))
     );
     blog_data.append(
-      "blogBody",
+      "body",
       JSON.stringify(convertToRaw(blogBody.getCurrentContent()))
     );
     blog_data.append("likes", 0);
