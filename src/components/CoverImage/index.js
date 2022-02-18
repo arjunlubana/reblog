@@ -2,23 +2,27 @@ import { useState } from "react";
 import { FaImage, FaEdit } from "react-icons/fa";
 import "./styles.css";
 
+
 export default function CoverImage({ coverImage, setCoverImage }) {
-  const [showPreview, setShowPreview] = useState(false);
+  const [preview, setPreview] = useState(null);
+  const reader = new FileReader();
 
   const handleChange = (event) => {
-    const cover_image = event.target.files[0];
-    setCoverImage(cover_image);
-    setShowPreview(true);
+    setCoverImage(event.target.files[0]);
+    reader.onload = (event) => {
+      setPreview(event.target.result);
+    };
+    reader.readAsDataURL(coverImage);
   };
 
   return (
     <div className="cover-image-upload">
       <label htmlFor="cover_image">
-        {showPreview ? (
+        {preview ? (
           <div className="cover-image-preview">
             <FaEdit className="image-edit" />
             <img
-              src={coverImage}
+              src={preview}
               alt="Blog Cover"
               className="image-fluid w-75 mx-auto"
             />
