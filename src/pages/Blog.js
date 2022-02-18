@@ -24,7 +24,7 @@ export default function Blog({ render, blogs, setBlogs }) {
   }, [params.blogId]);
   // Update blog
   const update_blog = () => {
-    updateBlog(params.blogId, {});
+    updateBlog(params.blogId, blogUpdate); 
   };
 
   // Delete a blog from the UI and Backend
@@ -51,6 +51,8 @@ export default function Blog({ render, blogs, setBlogs }) {
         setBlogTitle: setBlogTitle,
         blogBody: blogBody,
         setBlogBody: setBlogBody,
+        blogUpdate: blogUpdate, 
+        setBlogUpdate: setBlogUpdate
       },
       deleteBlog: delete_blog,
       updateBlog: update_blog,
