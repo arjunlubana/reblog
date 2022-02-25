@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaImage, FaEdit } from "react-icons/fa";
+import { IoImageOutline, IoCreateOutline } from "react-icons/io5";
 import "./styles.css";
 
 
@@ -9,6 +9,7 @@ export default function CoverImage({ coverImage, setCoverImage }) {
 
   const handleChange = (event) => {
     setCoverImage(event.target.files[0]);
+    console.log(coverImage)
     reader.onload = (event) => {
       setPreview(event.target.result);
     };
@@ -20,7 +21,7 @@ export default function CoverImage({ coverImage, setCoverImage }) {
       <label htmlFor="cover_image">
         {preview ? (
           <div className="cover-image-preview">
-            <FaEdit className="image-edit" />
+          <IoCreateOutline />
             <img
               src={preview}
               alt="Blog Cover"
@@ -28,7 +29,7 @@ export default function CoverImage({ coverImage, setCoverImage }) {
             />
           </div>
         ) : (
-          <FaImage size={(100, 100)} />
+          <IoImageOutline size={(300, 300)} />
         )}
       </label>
       <input
