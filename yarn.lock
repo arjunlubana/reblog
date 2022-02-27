@@ -5135,6 +5135,11 @@ filepond-plugin-image-crop@^2.0.6:
   resolved "https://registry.yarnpkg.com/filepond-plugin-image-crop/-/filepond-plugin-image-crop-2.0.6.tgz#56521fa08bc56b7bc5c0b422f16d0141b4978aad"
   integrity sha512-bSy/KND4EP/QtW8MxIj23qgSEPUVRrT8XdktJ+OU9y8xRjFjTG+qcuw1LsycARQYRtzi8cZrD3P4POOITfkywQ==
 
+filepond-plugin-image-exif-orientation@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-exif-orientation/-/filepond-plugin-image-exif-orientation-1.0.11.tgz#c46b522e8873e2ad5b9c7e2bbbe71176c9df58b2"
+  integrity sha512-hLBc12Fk6Zkj3L8mSAn+elugHOqT5rLUbgVXQQIQjMe0FsGjtpoxqeVR6jt4IWHGat2L9sFAgU2TGmd1mqosCg==
+
 filepond-plugin-image-preview@^4.6.10:
   version "4.6.10"
   resolved "https://registry.yarnpkg.com/filepond-plugin-image-preview/-/filepond-plugin-image-preview-4.6.10.tgz#6e7ecc0997b1b6295e06d3824c37de3111a40c1f"
@@ -5144,6 +5149,11 @@ filepond-plugin-image-resize@^2.0.10:
   version "2.0.10"
   resolved "https://registry.yarnpkg.com/filepond-plugin-image-resize/-/filepond-plugin-image-resize-2.0.10.tgz#23c1ac8956191d7dd6750565db9cf47a7dc9cfd0"
   integrity sha512-irX+J275u8Ph1KcciCeSQmxeFjbu0+co5XVCkiwdSNnz6KiqrCKN7RXTvEbdgSdDzyi5omr2oP1rKWps5L1RsQ==
+
+filepond-plugin-image-transform@^3.8.7:
+  version "3.8.7"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-transform/-/filepond-plugin-image-transform-3.8.7.tgz#6d32fff899366359a77b158f9ac75ae5971e768a"
+  integrity sha512-vgKwyIDG2y5twanf7YpqZvxkaLudTjwd9vRcoq5sQDB8egUlX5/NA0bQ0823pocrm0fjbFeetICu44mkqeDkIA==
 
 filepond@^4.30.3:
   version "4.30.3"
