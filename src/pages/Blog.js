@@ -7,7 +7,7 @@ import { Spinner } from "../components";
 export default function Blog({ render, blogs, setBlogs }) {
   const params = useParams();
   const navigate = useNavigate();
-  const [blogUpdate, setBlogUpdate] = useState(new FormData())
+  const [blogUpdate, setBlogUpdate] = useState(new FormData());
   const [coverImage, setCoverImage] = useState(null);
   const [blogTitle, setBlogTitle] = useState(null);
   const [blogBody, setBlogBody] = useState(null);
@@ -16,7 +16,7 @@ export default function Blog({ render, blogs, setBlogs }) {
   // Get the Blog data
   useEffect(() => {
     getBlog(params.blogId).then((blog) => {
-      // Convert Blog body and title raw state and set the appropriate states
+      setCoverImage(blog.cover);
       setBlogTitle(EditorState.createWithContent(convertFromRaw(blog.title)));
       setBlogBody(EditorState.createWithContent(convertFromRaw(blog.body)));
       setIsLoading(false);
@@ -24,7 +24,7 @@ export default function Blog({ render, blogs, setBlogs }) {
   }, [params.blogId]);
   // Update blog
   const update_blog = () => {
-    updateBlog(params.blogId, blogUpdate); 
+    updateBlog(params.blogId, blogUpdate);
   };
 
   // Delete a blog from the UI and Backend
@@ -51,8 +51,8 @@ export default function Blog({ render, blogs, setBlogs }) {
         setBlogTitle: setBlogTitle,
         blogBody: blogBody,
         setBlogBody: setBlogBody,
-        blogUpdate: blogUpdate, 
-        setBlogUpdate: setBlogUpdate
+        blogUpdate: blogUpdate,
+        setBlogUpdate: setBlogUpdate,
       },
       deleteBlog: delete_blog,
       updateBlog: update_blog,

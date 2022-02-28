@@ -1,10 +1,11 @@
 import { useState } from "react";
+import api_url from "../../lib/api-url";
 import { FilePond, registerPlugin } from "react-filepond";
 import "filepond/dist/filepond.min.css";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import FilePondPluginImageResize from "filepond-plugin-image-resize";
 import FilePondPluginImageCrop from "filepond-plugin-image-crop";
-import FilePondPluginFilePoster from "filepond-plugin-file-poster";
+import FilePondPluginImageTransform from "filepond-plugin-image-transform";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import "./styles.css";
 
@@ -12,12 +13,27 @@ registerPlugin(
   FilePondPluginImagePreview,
   FilePondPluginImageResize,
   FilePondPluginImageCrop,
-  FilePondPluginFilePoster
+  FilePondPluginImageTransform
 );
 
-export default function CoverImage({ coverImage, setCoverImage }) {
-
-  return (
+export default function CoverImage({
+  coverImage,
+  setCoverImage,
+  blogUpdate,
+  setBlogUpdate,
+  readOnly,
+}) {
+  return readOnly ? (
+    coverImage ? (
+      <img
+        src={`${api_url}/${coverImage.filename}`}
+        alt="cover image"
+        className="img-fluid"
+      />
+    ) : (
+      ""
+    )
+  ) : (
     <FilePond
       allowMultiple={false}
       labelIdle='
@@ -30,11 +46,18 @@ export default function CoverImage({ coverImage, setCoverImage }) {
         c-4.3,0-8.2-1.6-11-4.1c-1-0.9-2.8-2.6-4.3-4.1L224,215.3c-4-4.6-10-7.5-16.7-7.5c-6.7,0-12.9,3.3-16.8,7.8L64,368.2V107.7
         c1-6.8,6.3-11.7,13.1-11.7h357.7c6.9,0,12.5,5.1,12.9,12l0.3,260.4L348.9,261.7z"/>
         </g>
-       </svg>
-'
+       </svg>'
       stylePanelLayout="compact"
       stylePanelAspectRatio="16:9"
       imageCropAspectRatio="16:9"
+      onpreparefile={(file, output) => {
+        if (blogUpdate.has("cover")) {
+          blogUpdate.set("cover", output);
+        } else {
+          blogUpdate.append("cover", output);
+        }
+        setBlogUpdate(blogUpdate);
+      }}
       credits={false}
     />
   );

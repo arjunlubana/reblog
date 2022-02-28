@@ -7,6 +7,9 @@ export default function BlogEditor({ blog, readOnly, updateBlog }) {
       <CoverImage
         coverImage={blog.coverImage}
         setCoverImage={blog.setCoverImage}
+        blogUpdate={blog.blogUpdate}
+        setBlogUpdate={blog.setBlogUpdate}
+        readOnly={readOnly}
       />
       <BlogTitle
         blogTitle={blog.blogTitle}
