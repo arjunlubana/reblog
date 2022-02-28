@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Spinner } from "../components";
+import api_url from "../lib/api-url"
 
 export default function Blogs({blogs, isLoading}) {
 
@@ -12,7 +13,7 @@ export default function Blogs({blogs, isLoading}) {
       <h1 className="text-center">Blogs</h1>
       {blogs.map((blog) => (
         <div className="card d-flex flex-row" key={blog.id}>
-          <img src="./assets/image1.jpg" className="card-image" alt="..." />
+          <img src={`${api_url}/${blog.cover.filename}`} className="card-image" alt="..." />
           <div className="card-body">
             <h5 className="card-title">Card title</h5>
             <p className="card-text">
