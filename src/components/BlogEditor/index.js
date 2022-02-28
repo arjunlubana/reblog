@@ -3,7 +3,7 @@ import "draft-js/dist/Draft.css";
 
 export default function BlogEditor({ blog, readOnly, updateBlog }) {
   return (
-    <div className="container w-100 mt-5">
+    <div className="w-75 mt-5 mx-auto">
       <CoverImage
         coverImage={blog.coverImage}
         setCoverImage={blog.setCoverImage}

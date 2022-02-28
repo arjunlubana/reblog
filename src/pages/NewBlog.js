@@ -37,7 +37,6 @@ export default function NewBlog({ blogs, setBlogs }) {
   }, []);
 
   return (
-    <div className="container card w-100 mx-auto my-4">
       <BlogEditor
         blog={{
           coverImage: coverImage,
@@ -52,6 +51,5 @@ export default function NewBlog({ blogs, setBlogs }) {
         readOnly={false}
         updateBlog={update_blog}
       />
-    </div>
   );
 }
