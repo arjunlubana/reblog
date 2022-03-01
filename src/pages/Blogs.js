@@ -13,7 +13,7 @@ export default function Blogs({blogs, isLoading}) {
       <h1 className="text-center">Blogs</h1>
       {blogs.map((blog) => (
         <div className="card d-flex flex-row" key={blog.id}>
-          <img src={`${api_url}/${blog.cover.filename}`} className="card-image" alt="..." />
+          <img src={blog.cover ? `${api_url}/${blog.cover.filename}` : ""} className="card-image" alt="..." />
           <div className="card-body">
             <h5 className="card-title">Card title</h5>
             <p className="card-text">

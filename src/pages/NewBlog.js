@@ -13,7 +13,7 @@ export default function NewBlog({ blogs, setBlogs }) {
   // Update blog
   const update_blog = () => {
     updateBlog(newBlog.id, blogUpdate).then((data) => {
-      setNewBlog(data);
+      setBlogs(blogs.map((blog) => blog.id === newBlog.id ? blog = data : blog))
     });
   };
 
