@@ -5,6 +5,7 @@ import "filepond/dist/filepond.min.css";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import FilePondPluginImageResize from "filepond-plugin-image-resize";
 import FilePondPluginImageCrop from "filepond-plugin-image-crop";
+import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type"
 import FilePondPluginImageTransform from "filepond-plugin-image-transform";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import "./styles.css";
@@ -13,6 +14,7 @@ registerPlugin(
   FilePondPluginImagePreview,
   FilePondPluginImageResize,
   FilePondPluginImageCrop,
+  FilePondPluginFileValidateType,
   FilePondPluginImageTransform
 );
 
@@ -36,6 +38,7 @@ export default function CoverImage({
   ) : (
     <FilePond
       allowMultiple={false}
+      acceptedFileTypes={["image/*"]}
       labelIdle='
       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         width="64px" height="64px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
