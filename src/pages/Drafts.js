@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { BlogsList } from "../components";
-import { getBlogs } from "../lib/blog-crud";
+import { getDrafts } from "../lib/blog-crud";
 
-export default function Blogs({ blogs, setBlogs }) {
+export default function Drafts({ blogs, setBlogs }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
-      const blogsData = await getBlogs();
+      const blogsData = await getDrafts();
       setBlogs(blogsData);
       setIsLoading(false);
     })();

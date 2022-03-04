@@ -6,6 +6,12 @@ export async function getBlogs() {
   return blogs;
 }
 
+export async function getDrafts() {
+  const result = await fetch(`${api_url}/api/blogs/drafts`);
+  const blogs = await result.json();
+  return blogs;
+}
+
 export async function getBlog(id) {
   const result = await fetch(`${api_url}/api/blogs/${id}`);
   const blog = await result.json();
@@ -30,7 +36,7 @@ export async function updateBlog(id, blog_data) {
   };
 
   const response = await fetch(
-    `${api_url}/api/blogs/${id}/update`,
+    `${api_url}/api/blogs/${id}`,
     requestOptions
   );
   const result = await response.json();
@@ -43,7 +49,7 @@ export async function deleteBlog(id) {
     redirect: "follow",
   };
   await fetch(
-    `${api_url}/api/blogs/${id}/delete`,
+    `${api_url}/api/blogs/${id}`,
     requestOptions
   );
 }

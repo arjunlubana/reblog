@@ -7,6 +7,7 @@ import { useState } from "react";
 import {
   Home,
   Blogs,
+  Drafts,
   Blog,
   ViewBlog,
   EditBlog,
@@ -33,6 +34,10 @@ export default function App() {
             <Route
               index
               element={<Blogs blogs={blogs} setBlogs={setBlogs} />}
+            />
+            <Route
+              path="drafts"
+              element={<Drafts blogs={blogs} setBlogs={setBlogs} />}
             />
             <Route
               path="blog/:blogId"

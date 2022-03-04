@@ -16,6 +16,11 @@ export default function AuthUserNav({ setLogged }) {
             <FaPlusCircle />
           </Link>
         </li>
+                <li className="nav-item">
+          <Link className="nav-link" to="drafts">
+            Drafts
+          </Link>
+        </li>
         <li className="nav-item">
           <Link className="nav-link" to="/profile">
             <Avatar dimensions="32px" />
