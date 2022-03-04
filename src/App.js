@@ -17,21 +17,11 @@ import {
   SignUp,
 } from "./pages";
 import { LoggedContext } from "./lib/login-context";
-import { getBlogs } from "./lib/blog-crud";
 
 export default function App() {
   const [logged, setLogged] = useState(true);
   const [blogs, setBlogs] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    (async () => {
-      const blogsData = await getBlogs();
-      setBlogs(blogsData);
-      setIsLoading(false);
-    })();
-  }, []);
-
+  
   return (
     <BrowserRouter>
       <LoggedContext.Provider value={true}>
@@ -42,7 +32,7 @@ export default function App() {
           >
             <Route
               index
-              element={<Blogs blogs={blogs} isLoading={isLoading} />}
+              element={<Blogs blogs={blogs} setBlogs={setBlogs} />}
             />
             <Route
               path="blog/:blogId"

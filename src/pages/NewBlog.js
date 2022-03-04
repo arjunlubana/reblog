@@ -39,6 +39,7 @@ export default function NewBlog({ blogs, setBlogs }) {
   return (
       <BlogEditor
         blog={{
+          id: newBlog.id,
           coverImage: coverImage,
           setCoverImage: setCoverImage,
           blogTitle: blogTitle,
