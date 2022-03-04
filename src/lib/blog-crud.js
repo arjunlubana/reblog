@@ -42,8 +42,7 @@ export async function deleteBlog(id) {
     method: "DELETE",
     redirect: "follow",
   };
-
-  const response = await fetch(
+  await fetch(
     `${api_url}/api/blogs/${id}/delete`,
     requestOptions
   );

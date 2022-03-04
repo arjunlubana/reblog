@@ -17,12 +17,6 @@ export default function Toolbar({
   useEffect(() => {
     focusEditor();
   }, [blogBody.getCurrentContent()]);
-
-  const _onH1Click = () => {
-    setBlogBody(
-      RichUtils.toggleBlockType(blogBody, "header-one")
-    );
-  };
   const _onH2Click = () => {
     setBlogBody(
       RichUtils.toggleBlockType(blogBody, "header-two")

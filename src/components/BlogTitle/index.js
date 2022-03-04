@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { Editor, RichUtils, convertToRaw } from "draft-js";
 import "./styles.css";
 
@@ -10,7 +9,6 @@ export default function BlogTitle({
 	setBlogUpdate,
 	readOnly,
 }) {
-	const location = useLocation();
 	const handleChange = (editorState) => {
 		setBlogTitle(editorState);
 		// Registers title updates to be sent to the server

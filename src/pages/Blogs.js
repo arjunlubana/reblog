@@ -31,7 +31,7 @@ export default function Blogs({ blogs, setBlogs }) {
           <img
             src={blog.cover ? `${api_url}/${blog.cover.filename}` : ""}
             className=" w-100"
-            alt="Cover image"
+            alt="Blog Cover"
           />
           <div className="card-body">
             <h5 className="card-title">

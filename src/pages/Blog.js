@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
+import { EditorState, convertFromRaw } from "draft-js";
 import { deleteBlog, getBlog, updateBlog } from "../lib/blog-crud";
 import { Spinner } from "../components";
 
