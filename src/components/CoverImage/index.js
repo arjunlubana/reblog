@@ -19,7 +19,6 @@ registerPlugin(
 );
 
 export default function CoverImage({
-  blogId,
   coverImage,
   setCoverImage,
   blogUpdate,
@@ -73,7 +72,6 @@ export default function CoverImage({
         url: `${api_url}`,
         process: null,
         load: "/",
-        patch: `/${blogId}`,
       }}
       credits={false}
     />

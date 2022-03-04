@@ -45,7 +45,6 @@ export default function Blog({ render, blogs, setBlogs }) {
   ) : (
     render({
       blog: {
-        id: params.blogId,
         coverImage: coverImage,
         setCoverImage: setCoverImage,
         blogTitle: blogTitle,

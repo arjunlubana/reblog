@@ -5,7 +5,6 @@ export default function BlogEditor({ blog, readOnly, updateBlog }) {
   return (
     <div className="w-75 mt-5 mx-auto">
       <CoverImage
-        blogId={blog.id}
         coverImage={blog.coverImage}
         setCoverImage={blog.setCoverImage}
         blogUpdate={blog.blogUpdate}
