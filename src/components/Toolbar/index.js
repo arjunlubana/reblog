@@ -43,11 +43,6 @@ export default function Toolbar({
       RichUtils.toggleBlockType(blogBody, "header-five")
     );
   };
-  const _onH6Click = () => {
-    setBlogBody(
-      RichUtils.toggleBlockType(blogBody, "header-six")
-    );
-  };
 
   const _onBlockQouteClick = () => {
     setBlogBody(RichUtils.toggleBlockType(blogBody, "atomic"));
@@ -85,23 +80,17 @@ export default function Toolbar({
   return (
     <div id="toolbar" className="bg-light">
       <div className="btn-group w-100">
-        <button onClick={_onH1Click} className="btn btn-outline-info fs-1">
-          H1
-        </button>
-        <button onClick={_onH2Click} className="btn btn-outline-info fs-2">
+        <button onClick={_onH2Click} className="btn btn-outline-info">
           H2
         </button>
-        <button onClick={_onH3Click} className="btn btn-outline-info fs-3">
+        <button onClick={_onH3Click} className="btn btn-outline-info">
           H3
         </button>
-        <button onClick={_onH4Click} className="btn btn-outline-info fs-4">
+        <button onClick={_onH4Click} className="btn btn-outline-info">
           H4
         </button>
-        <button onClick={_onH5Click} className="btn btn-outline-info fs-5">
+        <button onClick={_onH5Click} className="btn btn-outline-info">
           H5
-        </button>
-        <button onClick={_onH6Click} className="btn btn-outline-info fs-6">
-          H6
         </button>
       </div>
       <div className="btn-group w-100">
