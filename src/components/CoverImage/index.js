@@ -61,17 +61,17 @@ export default function CoverImage({
       stylePanelAspectRatio="16:9"
       imageCropAspectRatio="16:9"
       onpreparefile={(file, output) => {
-        if (blogUpdate.has("cover")) {
-          blogUpdate.set("cover", output);
-        } else {
-          blogUpdate.append("cover", output);
+        if (!file.serverId) {
+          blogUpdate.has("cover")
+            ? blogUpdate.set("cover", output)
+            : blogUpdate.append("cover", output);
+          setBlogUpdate(blogUpdate);
         }
-        setBlogUpdate(blogUpdate);
       }}
       server={{
         url: `${api_url}`,
         process: null,
-        load: "/",
+        load: "/"
       }}
       credits={false}
     />
