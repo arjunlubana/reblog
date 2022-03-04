@@ -26,8 +26,8 @@ export default function BlogTitle({
 	};
 
 	useEffect(() => {
-		// Only toggle Title header style when a new blog is created.
-		if (location.pathname === "/blog/new") {
+		// Only toggle Title header style if the block is unxtyled
+		if (blogTitle.getCurrentContent().getFirstBlock().getType() === "unstyled") {
 			setBlogTitle(RichUtils.toggleBlockType(blogTitle, "header-one"));
 		}
 	}, []);
@@ -36,6 +36,7 @@ export default function BlogTitle({
 			editorState={blogTitle}
 			onChange={handleChange}
 			placeholder={<h1>Blog Title</h1>}
+			handleReturn={() => "handled"}
 			readOnly={readOnly}
 		/>
 	);
