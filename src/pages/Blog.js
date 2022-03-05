@@ -20,13 +20,16 @@ export default function Blog({ render, blogs, setBlogs }) {
       setCoverImage(blog.cover);
       setBlogTitle(EditorState.createWithContent(convertFromRaw(blog.title)));
       setBlogBody(EditorState.createWithContent(convertFromRaw(blog.body)));
-      setPublish(blog.publish)
+      setPublish(blog.publish);
       setIsLoading(false);
     });
   }, [params.blogId]);
   // Update blog
   const update_blog = () => {
     updateBlog(params.blogId, blogUpdate);
+    for (let key of blogUpdate.keys()){
+      blogUpdate.delete(key);
+    }
   };
 
   const publish_blog = () => {
