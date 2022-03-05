@@ -1,4 +1,4 @@
-import { CoverImage, BlogTitle, BlogBody } from "..";
+import { CoverImage, BlogTitle, BlogBody } from "components";
 import "draft-js/dist/Draft.css";
 
 export default function BlogEditor({ blog, readOnly }) {

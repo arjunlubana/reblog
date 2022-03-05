@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 import * as bootstrap from "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles.css";
+import "styles.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import {
@@ -16,8 +16,8 @@ import {
   PageNotFound,
   Profile,
   SignUp,
-} from "./pages";
-import { LoggedContext } from "./lib/login-context";
+} from "pages";
+import { LoggedContext } from "lib/login-context";
 
 export default function App() {
   const [logged, setLogged] = useState(true);

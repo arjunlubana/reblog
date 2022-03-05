@@ -1,12 +1,12 @@
 import { useState } from "react";
-import api_url from "../../lib/api-url";
+import api_url from "lib/api-url";
 import { FilePond, registerPlugin } from "react-filepond";
-import "filepond/dist/filepond.min.css";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import FilePondPluginImageResize from "filepond-plugin-image-resize";
 import FilePondPluginImageCrop from "filepond-plugin-image-crop";
 import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
 import FilePondPluginImageTransform from "filepond-plugin-image-transform";
+import "filepond/dist/filepond.min.css";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import "./styles.css";
 
@@ -20,7 +20,6 @@ registerPlugin(
 
 export default function CoverImage({
   coverImage,
-  setCoverImage,
   blogUpdate,
   setBlogUpdate,
   readOnly,

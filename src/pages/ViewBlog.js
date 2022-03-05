@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { IoCreateOutline } from "react-icons/io5";
-import { BlogEditor } from "../components";
+import { BlogEditor } from "components";
 
 export default function ViewBlog({ blog }) {
   const params = useParams();

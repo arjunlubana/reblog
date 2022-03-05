@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { BlogsList, Spinner } from "../components";
-import { getBlogs } from "../lib/blog-crud";
+import { BlogsList, Spinner } from "components";
+import { getBlogs } from "lib/blog-crud";
 
 export default function Blogs({ blogs, setBlogs }) {
   const [isLoading, setIsLoading] = useState(true);

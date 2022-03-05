@@ -1,14 +1,14 @@
-import Home from "./Home";
-import Blog from "./Blog";
-import NewBlog from "./NewBlog";
-import ViewBlog from "./ViewBlog";
-import EditBlog from "./EditBlog";
-import Blogs from "./Blogs";
-import Drafts from "./Drafts";
-import Login from "./Login";
-import PageNotFound from "./PageNotFound";
-import Profile from "./Profile";
-import SignUp from "./SignUp";
+import Home from "pages/Home";
+import Blog from "pages/Blog";
+import NewBlog from "pages/NewBlog";
+import ViewBlog from "pages/ViewBlog";
+import EditBlog from "pages/EditBlog";
+import Blogs from "pages/Blogs";
+import Drafts from "pages/Drafts";
+import Login from "pages/Login";
+import PageNotFound from "pages/PageNotFound";
+import Profile from "pages/Profile";
+import SignUp from "pages/SignUp";
 
 export {
   Home,

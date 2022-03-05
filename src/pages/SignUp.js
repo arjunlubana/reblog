@@ -24,7 +24,9 @@ export default function SignUp() {
           className="w-50 mx-auto btn btn-info"
         />
       </form>
-      <small>Already have an account? <Link to="/login">Login</Link></small>
+      <small>
+        Already have an account? <Link to="/login">Login</Link>
+      </small>
     </div>
   );
 }

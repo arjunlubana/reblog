@@ -1,4 +1,4 @@
-import api_url from "./api-url";
+import api_url from "lib/api-url";
 
 export async function getBlogs() {
   const result = await fetch(`${api_url}/api/blogs`);

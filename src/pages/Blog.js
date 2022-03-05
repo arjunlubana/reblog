@@ -1,8 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { EditorState, convertFromRaw } from "draft-js";
-import { deleteBlog, getBlog, updateBlog } from "../lib/blog-crud";
-import { Spinner } from "../components";
+import { deleteBlog, getBlog, updateBlog } from "lib/blog-crud";
+import { Spinner } from "components";
 
 export default function Blog({ render, blogs, setBlogs }) {
   const params = useParams();
@@ -27,7 +27,7 @@ export default function Blog({ render, blogs, setBlogs }) {
   // Update blog
   const update_blog = () => {
     updateBlog(params.blogId, blogUpdate);
-    for (let key of blogUpdate.keys()){
+    for (let key of blogUpdate.keys()) {
       blogUpdate.delete(key);
     }
   };

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { IoTrashOutline, IoCloudUploadOutline } from "react-icons/io5";
-import { BlogEditor } from "../components";
+import { BlogEditor } from "components";
 
 export default function EditBlog({
   blog,

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { convertFromRaw } from "draft-js";
-import { Spinner, EmptyBlogs } from "../";
-import api_url from "../../lib/api-url";
+import { EmptyBlogs } from "components";
+import api_url from "lib/api-url";
 import "./styles.css";
 
 export default function BlogsList({ blogs }) {

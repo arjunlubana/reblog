@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { EditorState, convertToRaw } from "draft-js";
-import { BlogEditor } from "../components";
-import { createBlog, updateBlog, deleteBlog } from "../lib/blog-crud";
-import { EditBlog } from "./";
+import { createBlog, updateBlog, deleteBlog } from "lib/blog-crud";
+import { EditBlog } from "pages";
 
 export default function NewBlog({ blogs, setBlogs }) {
   // Initialize blog states
@@ -11,9 +10,8 @@ export default function NewBlog({ blogs, setBlogs }) {
   const [coverImage, setCoverImage] = useState(null);
   const [blogTitle, setBlogTitle] = useState(EditorState.createEmpty());
   const [blogBody, setBlogBody] = useState(EditorState.createEmpty());
-  const [publish, setPublish] = useState(false);
   const [newBlog, setNewBlog] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // Update blog
   const update_blog = () => {
     updateBlog(newBlog.id, blogUpdate).then((data) => {

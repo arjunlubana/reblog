@@ -1,31 +1,30 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import LoginUser from "../lib/login-user";
+import LoginUser from "lib/login-user";
 
-export default function Login({setLogged}) {
+export default function Login({ setLogged }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
 
-    if (name === "username"){
-      setUsername(value)
-    }else if (name === "password"){
-      setPassword(value)
+    if (name === "username") {
+      setUsername(value);
+    } else if (name === "password") {
+      setPassword(value);
     }
   };
   const handleSubmit = (event) => {
     event.preventDefault();
     LoginUser(username, password).then((data) => {
-      console.log(data)
-      if(data){
-        navigate("/")
+      console.log(data);
+      if (data) {
+        navigate("/");
       }
-    })
-    
+    });
   };
   return (
     <div className="card w-50 my-5 mx-auto p-4">
@@ -60,5 +59,5 @@ export default function Login({setLogged}) {
         <Link to="/">Forgot Password ?</Link>
       </small>
     </div>
-  )
+  );
 }

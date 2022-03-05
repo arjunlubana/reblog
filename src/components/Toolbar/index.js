@@ -8,34 +8,21 @@ import {
   FaQuoteLeft,
 } from "react-icons/fa";
 
-export default function Toolbar({
-  blogBody,
-  setBlogBody,
-  focusEditor,
-}) {
-
+export default function Toolbar({ blogBody, setBlogBody, focusEditor }) {
   useEffect(() => {
     focusEditor();
   }, [blogBody.getCurrentContent()]);
   const _onH2Click = () => {
-    setBlogBody(
-      RichUtils.toggleBlockType(blogBody, "header-two")
-    );
+    setBlogBody(RichUtils.toggleBlockType(blogBody, "header-two"));
   };
   const _onH3Click = () => {
-    setBlogBody(
-      RichUtils.toggleBlockType(blogBody, "header-three")
-    );
+    setBlogBody(RichUtils.toggleBlockType(blogBody, "header-three"));
   };
   const _onH4Click = () => {
-    setBlogBody(
-      RichUtils.toggleBlockType(blogBody, "header-four")
-    );
+    setBlogBody(RichUtils.toggleBlockType(blogBody, "header-four"));
   };
   const _onH5Click = () => {
-    setBlogBody(
-      RichUtils.toggleBlockType(blogBody, "header-five")
-    );
+    setBlogBody(RichUtils.toggleBlockType(blogBody, "header-five"));
   };
 
   const _onBlockQouteClick = () => {
@@ -50,9 +37,7 @@ export default function Toolbar({
     setBlogBody(RichUtils.toggleInlineStyle(blogBody, "ITALIC"));
   };
   const _onUnderlineClick = () => {
-    setBlogBody(
-      RichUtils.toggleInlineStyle(blogBody, "UNDERLINE")
-    );
+    setBlogBody(RichUtils.toggleInlineStyle(blogBody, "UNDERLINE"));
   };
   const _onCodeClick = () => {
     setBlogBody(RichUtils.toggleInlineStyle(blogBody, "CODE"));
@@ -61,14 +46,10 @@ export default function Toolbar({
     setBlogBody(RichUtils.toggleCode(blogBody));
   };
   const _onUListClick = () => {
-    setBlogBody(
-      RichUtils.toggleBlockType(blogBody, "unordered-list-item")
-    );
+    setBlogBody(RichUtils.toggleBlockType(blogBody, "unordered-list-item"));
   };
   const _onOListClick = () => {
-    setBlogBody(
-      RichUtils.toggleBlockType(blogBody, "ordered-list-item")
-    );
+    setBlogBody(RichUtils.toggleBlockType(blogBody, "ordered-list-item"));
   };
 
   return (
