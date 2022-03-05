@@ -22,7 +22,7 @@ import { LoggedContext } from "./lib/login-context";
 export default function App() {
   const [logged, setLogged] = useState(true);
   const [blogs, setBlogs] = useState(null);
-  
+
   return (
     <BrowserRouter>
       <LoggedContext.Provider value={true}>
@@ -46,7 +46,11 @@ export default function App() {
                   blogs={blogs}
                   setBlogs={setBlogs}
                   render={({ blog, deleteBlog, publishBlog }) => (
-                    <ViewBlog blog={blog} deleteBlog={deleteBlog} publishBlog={publishBlog} />
+                    <ViewBlog
+                      blog={blog}
+                      deleteBlog={deleteBlog}
+                      publishBlog={publishBlog}
+                    />
                   )}
                 />
               }
@@ -57,8 +61,13 @@ export default function App() {
                 <Blog
                   blogs={blogs}
                   setBlogs={setBlogs}
-                  render={({ blog, updateBlog }) => (
-                    <EditBlog blog={blog} updateBlog={updateBlog} />
+                  render={({ blog, updateBlog, deleteBlog, publishBlog }) => (
+                    <EditBlog
+                      blog={blog}
+                      updateBlog={updateBlog}
+                      deleteBlog={deleteBlog}
+                      publishBlog={publishBlog}
+                    />
                   )}
                 />
               }

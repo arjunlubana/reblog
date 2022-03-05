@@ -11,6 +11,7 @@ export default function Blog({ render, blogs, setBlogs }) {
   const [coverImage, setCoverImage] = useState(null);
   const [blogTitle, setBlogTitle] = useState(null);
   const [blogBody, setBlogBody] = useState(null);
+  const [publish, setPublish] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   // Get the Blog data
@@ -19,6 +20,7 @@ export default function Blog({ render, blogs, setBlogs }) {
       setCoverImage(blog.cover);
       setBlogTitle(EditorState.createWithContent(convertFromRaw(blog.title)));
       setBlogBody(EditorState.createWithContent(convertFromRaw(blog.body)));
+      setPublish(blog.publish)
       setIsLoading(false);
     });
   }, [params.blogId]);
@@ -53,6 +55,7 @@ export default function Blog({ render, blogs, setBlogs }) {
   ) : (
     render({
       blog: {
+        publish: publish,
         coverImage: coverImage,
         setCoverImage: setCoverImage,
         blogTitle: blogTitle,
