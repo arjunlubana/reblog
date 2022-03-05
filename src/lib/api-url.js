@@ -1,9 +1,9 @@
-let api_url;
+let BASE_URL;
 
 if (process.env.NODE_ENV === "production") {
-  api_url = process.env.REACT_APP_API_URL;
+  BASE_URL = process.env.REACT_APP_API_URL;
 } else {
-  api_url = "http://localhost:5000";
+  BASE_URL = "http://localhost:5000";
 }
 
-export default api_url;
+export default BASE_URL;

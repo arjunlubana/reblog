@@ -1,5 +1,5 @@
 import { useState } from "react";
-import api_url from "lib/api-url";
+import BASE_URL from "lib/api-url";
 import { FilePond, registerPlugin } from "react-filepond";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import FilePondPluginImageResize from "filepond-plugin-image-resize";
@@ -33,7 +33,7 @@ export default function CoverImage({
   return readOnly ? (
     coverImage ? (
       <img
-        src={`${api_url}/${coverImage.filename}`}
+        src={`${BASE_URL}/${coverImage.filename}`}
         alt="cover"
         className="w-100 h-auto"
       />
@@ -68,7 +68,7 @@ export default function CoverImage({
         }
       }}
       server={{
-        url: `${api_url}`,
+        url: `${BASE_URL}`,
         process: null,
         load: "/"
       }}

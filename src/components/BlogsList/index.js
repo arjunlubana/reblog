@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { convertFromRaw } from "draft-js";
 import { EmptyBlogs } from "components";
-import api_url from "lib/api-url";
+import BASE_URL from "lib/api-url";
 import "./styles.css";
 
 export default function BlogsList({ blogs }) {
@@ -12,7 +12,7 @@ export default function BlogsList({ blogs }) {
       {blogs.map((blog) => (
         <div className="card" key={blog.id}>
           <img
-            src={blog.cover ? `${api_url}/${blog.cover.filename}` : ""}
+            src={blog.cover ? `${BASE_URL}/${blog.cover.filename}` : ""}
             className="card-img-top"
             alt="Blog Cover"
           />
