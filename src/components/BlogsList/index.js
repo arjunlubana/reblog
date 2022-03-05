@@ -10,7 +10,7 @@ export default function BlogsList({blogs, isLoading}) {
 			<Spinner />
 		</div>
 	) : (
-		<div className="container-fluid" id="blogs">
+		<div className="container-fluid mt-5" id="blogs">
 			{blogs.map((blog) => (
 				<div
 					className="card d-flex flex-column w-50 h-50 mx-auto"
