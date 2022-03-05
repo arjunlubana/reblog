@@ -36,7 +36,7 @@ export default function CoverImage({
       <img
         src={`${api_url}/${coverImage.filename}`}
         alt="cover"
-        className="img-fluid"
+        className="w-100 h-auto"
       />
     ) : (
       ""
