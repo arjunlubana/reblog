@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BlogsList } from "../components";
+import { BlogsList, Spinner } from "../components";
 import { getBlogs } from "../lib/blog-crud";
 
 export default function Blogs({ blogs, setBlogs }) {
@@ -13,7 +13,5 @@ export default function Blogs({ blogs, setBlogs }) {
     })();
   }, []);
 
-  return(
-  <BlogsList blogs={blogs} isLoading={isLoading} />
-  )
+  return isLoading ? <Spinner /> : <BlogsList blogs={blogs} />;
 }

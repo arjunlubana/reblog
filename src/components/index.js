@@ -8,6 +8,7 @@ import BlogsList from "./BlogsList"
 import CoverImage from "./CoverImage";
 import BlogTitle from "./BlogTitle";
 import BlogBody from "./BlogBody";
+import EmptyBlogs from "./EmptyBlogs"
 
 export {
 	AuthUserNav,
@@ -20,4 +21,5 @@ export {
 	CoverImage,
 	BlogTitle,
 	BlogBody,
+	EmptyBlogs
 };

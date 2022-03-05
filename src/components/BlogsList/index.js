@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import { convertFromRaw } from "draft-js";
-import { Spinner } from "../";
+import { Spinner, EmptyBlogs } from "../";
 import api_url from "../../lib/api-url";
 import "./styles.css"
 
-export default function BlogsList({blogs, isLoading}) {
+export default function BlogsList({blogs}) {
 
-	return isLoading ? (
-		<div className="vh-100">
-			<Spinner />
-		</div>
+	return blogs.length === 0 ? (
+		<EmptyBlogs />
 	) : (
 		<div className="mt-5" id="blogs">
 			{blogs.map((blog) => (
