@@ -26,7 +26,7 @@ export default function BlogsList({blogs, isLoading}) {
 						alt="Blog Cover"
 					/>
 					<div className="card-body">
-						<h5 className="card-title">
+						<h5 className="card-title text-center">
 							{convertFromRaw(blog.title)
 								.getFirstBlock()
 								.getText()}
