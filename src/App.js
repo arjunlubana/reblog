@@ -39,43 +39,40 @@ export default function App() {
               path="drafts"
               element={<Drafts blogs={blogs} setBlogs={setBlogs} />}
             />
-            <Route
-              path="blog/:blogId"
-              element={
-                <Blog
-                  blogs={blogs}
-                  setBlogs={setBlogs}
-                  render={({ blog, deleteBlog, publishBlog }) => (
-                    <ViewBlog
-                      blog={blog}
-                      deleteBlog={deleteBlog}
-                      publishBlog={publishBlog}
-                    />
-                  )}
-                />
-              }
-            />
-            <Route
-              path="blog/:blogId/edit"
-              element={
-                <Blog
-                  blogs={blogs}
-                  setBlogs={setBlogs}
-                  render={({ blog, updateBlog, deleteBlog, publishBlog }) => (
-                    <EditBlog
-                      blog={blog}
-                      updateBlog={updateBlog}
-                      deleteBlog={deleteBlog}
-                      publishBlog={publishBlog}
-                    />
-                  )}
-                />
-              }
-            />
-            <Route
-              path="blog/new"
-              element={<NewBlog blogs={blogs} setBlogs={setBlogs} />}
-            />
+            <Route path="blog">
+              <Route
+                path=":blogId"
+                element={
+                  <Blog
+                    blogs={blogs}
+                    setBlogs={setBlogs}
+                    render={({ blog }) => <ViewBlog blog={blog} />}
+                  />
+                }
+              />
+              <Route
+                path=":blogId/edit"
+                element={
+                  <Blog
+                    blogs={blogs}
+                    setBlogs={setBlogs}
+                    render={({ blog, updateBlog, deleteBlog, publishBlog }) => (
+                      <EditBlog
+                        blog={blog}
+                        updateBlog={updateBlog}
+                        deleteBlog={deleteBlog}
+                        publishBlog={publishBlog}
+                      />
+                    )}
+                  />
+                }
+              />
+              <Route
+                path="new"
+                element={<NewBlog blogs={blogs} setBlogs={setBlogs} />}
+              />
+            </Route>
+
             <Route path="profile" element={<Profile />} />
             <Route path="login" element={<Login setLogged={setLogged} />} />
             <Route path="signup" element={<SignUp />} />
