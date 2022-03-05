@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { BlogsList, Spinner } from "components";
-import { getDrafts } from "lib/blog-crud";
+import { getDrafts } from "utils/blog-crud";
 
 export default function Drafts({ blogs, setBlogs }) {
   const [isLoading, setIsLoading] = useState(true);

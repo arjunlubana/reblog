@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { convertFromRaw } from "draft-js";
 import { EmptyBlogs } from "components";
-import BASE_URL from "lib/api-url";
+import BASE_URL from "utils/api-url";
 import "./styles.css";
 
 export default function BlogsList({ blogs }) {

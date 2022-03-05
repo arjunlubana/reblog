@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { EditorState, convertToRaw } from "draft-js";
-import { createBlog, updateBlog, deleteBlog } from "lib/blog-crud";
+import { createBlog, updateBlog, deleteBlog } from "utils/blog-crud";
 import { EditBlog } from "pages";
 
 export default function NewBlog({ blogs, setBlogs }) {

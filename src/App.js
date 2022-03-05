@@ -17,7 +17,7 @@ import {
   Profile,
   SignUp,
 } from "pages";
-import { LoggedContext } from "lib/login-context";
+import { LoggedContext } from "utils/login-context";
 
 export default function App() {
   const [logged, setLogged] = useState(true);
