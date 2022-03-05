@@ -45,8 +45,8 @@ export default function App() {
                 <Blog
                   blogs={blogs}
                   setBlogs={setBlogs}
-                  render={({ blog, deleteBlog }) => (
-                    <ViewBlog blog={blog} deleteBlog={deleteBlog} />
+                  render={({ blog, deleteBlog, publishBlog }) => (
+                    <ViewBlog blog={blog} deleteBlog={deleteBlog} publishBlog={publishBlog} />
                   )}
                 />
               }

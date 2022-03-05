@@ -27,6 +27,14 @@ export default function Blog({ render, blogs, setBlogs }) {
     updateBlog(params.blogId, blogUpdate);
   };
 
+  const publish_blog = () => {
+    blogUpdate.has("publish")
+      ? blogUpdate.set("publish", true)
+      : blogUpdate.append("publish", true);
+    setBlogUpdate(blogUpdate);
+    updateBlog(params.blogId, blogUpdate);
+  };
+
   // Delete a blog from the UI and Backend
   const delete_blog = () => {
     deleteBlog(params.blogId);
@@ -56,6 +64,7 @@ export default function Blog({ render, blogs, setBlogs }) {
       },
       deleteBlog: delete_blog,
       updateBlog: update_blog,
+      publishBlog: publish_blog,
     })
   );
 }
