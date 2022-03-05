@@ -1,7 +1,7 @@
 import { CoverImage, BlogTitle, BlogBody } from "..";
 import "draft-js/dist/Draft.css";
 
-export default function BlogEditor({ blog, readOnly, updateBlog }) {
+export default function BlogEditor({ blog, readOnly }) {
   return (
     <div className="w-75 mt-5 mx-auto">
       <CoverImage
@@ -18,13 +18,6 @@ export default function BlogEditor({ blog, readOnly, updateBlog }) {
         setBlogUpdate={blog.setBlogUpdate}
         readOnly={readOnly}
       />
-      {readOnly ? (
-        ""
-      ) : (
-        <button className="btn btn-info m-1" onClick={updateBlog}>
-          Save
-        </button>
-      )}
       <BlogBody
         blogBody={blog.blogBody}
         setBlogBody={blog.setBlogBody}

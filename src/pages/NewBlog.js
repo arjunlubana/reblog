@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import {useNavigate} from "react-router-dom"
 import { EditorState, convertToRaw } from "draft-js";
 import { BlogEditor } from "../components";
-import { createBlog, updateBlog } from "../lib/blog-crud";
+import { createBlog, updateBlog, deleteBlog } from "../lib/blog-crud";
+import { EditBlog } from "./";
 
 export default function NewBlog({ blogs, setBlogs }) {
   // Initialize blog states
@@ -9,7 +11,9 @@ export default function NewBlog({ blogs, setBlogs }) {
   const [coverImage, setCoverImage] = useState(null);
   const [blogTitle, setBlogTitle] = useState(EditorState.createEmpty());
   const [blogBody, setBlogBody] = useState(EditorState.createEmpty());
+  const [publish, setPublish] = useState(false);
   const [newBlog, setNewBlog] = useState(null);
+  const navigate = useNavigate()
   // Update blog
   const update_blog = () => {
     updateBlog(newBlog.id, blogUpdate).then((data) => {
@@ -19,6 +23,20 @@ export default function NewBlog({ blogs, setBlogs }) {
     });
   };
 
+  const publish_blog = () => {
+    blogUpdate.has("publish")
+      ? blogUpdate.set("publish", true)
+      : blogUpdate.append("publish", true);
+    setBlogUpdate(blogUpdate);
+    updateBlog(newBlog.id, blogUpdate);
+  };
+
+  // Delete a blog from the UI and Backend
+  const delete_blog = () => {
+    deleteBlog(newBlog.id);
+    setBlogs(blogs.filter((blog) => blog.id !== parseInt(newBlog.id)));
+    navigate("/", { replace: true });
+  };
   const create_new_blog = () => {
     let blog_data = new FormData();
     blog_data.append("cover", coverImage);
@@ -38,11 +56,11 @@ export default function NewBlog({ blogs, setBlogs }) {
     });
   };
   useEffect(() => {
-    create_new_blog()
+    create_new_blog();
   }, []);
 
   return (
-    <BlogEditor
+    <EditBlog
       blog={{
         coverImage: coverImage,
         setCoverImage: setCoverImage,
@@ -53,8 +71,9 @@ export default function NewBlog({ blogs, setBlogs }) {
         blogUpdate: blogUpdate,
         setBlogUpdate: setBlogUpdate,
       }}
-      readOnly={false}
       updateBlog={update_blog}
+      publishBlog={publish_blog}
+      deleteBlog={delete_blog}
     />
   );
 }
