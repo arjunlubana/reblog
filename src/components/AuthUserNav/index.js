@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { LoggedContext } from "../../lib/login-context";
 import { Link } from "react-router-dom";
 import {Avatar} from "..";
-import { FaPlusCircle, FaSignOutAlt } from "react-icons/fa";
+import { IoAddOutline, IoLogOutOutline, IoDocumentTextOutline } from "react-icons/io5";
 import { IconContext } from "react-icons";
 
 export default function AuthUserNav({ setLogged }) {
@@ -13,12 +13,12 @@ export default function AuthUserNav({ setLogged }) {
       <IconContext.Provider value={{ color: "var(--bs-green)", size: "32px" }}>
         <li className="nav-item">
           <Link className="nav-link" to="blog/new">
-            <FaPlusCircle />
+            <IoAddOutline />
           </Link>
         </li>
                 <li className="nav-item">
           <Link className="nav-link" to="drafts">
-            Drafts
+            <IoDocumentTextOutline/>
           </Link>
         </li>
         <li className="nav-item">
@@ -28,7 +28,7 @@ export default function AuthUserNav({ setLogged }) {
         </li>
         <li className="nav-item">
           <Link onClick={() => setLogged(false)} role="button" to="/login">
-            <FaSignOutAlt />
+            <IoLogOutOutline />
           </Link>
         </li>
       </IconContext.Provider>

@@ -8,7 +8,7 @@ export default function ViewBlog({ blog, deleteBlog }) {
 
   return (
     <div className="container-fluid">
-      <IconContext.Provider value={{ size: "2rem" }}>
+      <IconContext.Provider value={{ size: "1.5rem" }}>
         <div className="d-flex justify-content-center">
           <Link
             className="btn btn-outline-info m-1 fs-5 d-flex align-items-center"
