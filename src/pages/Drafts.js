@@ -1,17 +1,9 @@
-import { useState, useEffect } from "react";
+import { useQuery } from "react-query";
 import { BlogsList, Spinner } from "components";
 import { getDrafts } from "utils/BlogsCRUD";
 
-export default function Drafts({ blogs, setBlogs }) {
-  const [isLoading, setIsLoading] = useState(true);
+export default function Drafts() {
+  const { isLoading, data } = useQuery("drafts", getDrafts);
 
-  useEffect(() => {
-    (async () => {
-      const blogsData = await getDrafts();
-      setBlogs(blogsData);
-      setIsLoading(false);
-    })();
-  }, []);
-
-  return isLoading ? <Spinner /> : <BlogsList blogs={blogs} />;
+  return isLoading ? <Spinner /> : <BlogsList blogs={data} />;
 }
