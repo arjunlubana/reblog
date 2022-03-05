@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { convertFromRaw } from "draft-js";
 import { Spinner } from "../";
 import api_url from "../../lib/api-url";
+import "./styles.css"
 
 export default function BlogsList({blogs, isLoading}) {
 
@@ -10,10 +11,10 @@ export default function BlogsList({blogs, isLoading}) {
 			<Spinner />
 		</div>
 	) : (
-		<div className="container-fluid mt-5" id="blogs">
+		<div className="mt-5" id="blogs">
 			{blogs.map((blog) => (
 				<div
-					className="card d-flex flex-column w-50 h-50 mx-auto"
+					className="card"
 					key={blog.id}
 				>
 					<img
@@ -22,7 +23,7 @@ export default function BlogsList({blogs, isLoading}) {
 								? `${api_url}/${blog.cover.filename}`
 								: ""
 						}
-						className=" w-100"
+						className="card-img-top"
 						alt="Blog Cover"
 					/>
 					<div className="card-body">
