@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { LoggedContext } from "utils/login-context";
+import { LoggedContext } from "contexts/login-context";
 import { Link } from "react-router-dom";
 import { Avatar } from "components";
 import {
