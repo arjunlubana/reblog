@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BASE_URL from "utils/api-url";
+import BASE_URL from "utils/Api";
 import { FilePond, registerPlugin } from "react-filepond";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import FilePondPluginImageResize from "filepond-plugin-image-resize";
