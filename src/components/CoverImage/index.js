@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {BASE_URL} from "utils/Api";
+import { BASE_URL, FILES_URI } from "utils/Api";
 import { FilePond, registerPlugin } from "react-filepond";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import FilePondPluginImageResize from "filepond-plugin-image-resize";
@@ -25,14 +25,14 @@ export default function CoverImage({
 }) {
   const [files, setFiles] = useState(
     blog.cover
-      ? [{ source: `${blog.cover.filename}`, options: { type: "local" } }]
+      ? [{ source: blog.cover, options: { type: "local" } }]
       : []
   );
 
   return readOnly ? (
     blog.cover ? (
       <img
-        src={`${BASE_URL}/${blog.cover.filename}`}
+        src={BASE_URL + FILES_URI + blog.cover}
         alt="cover"
         className="w-100 h-auto"
       />
@@ -46,6 +46,11 @@ export default function CoverImage({
       acceptedFileTypes={["image/*"]}
       files={files}
       onupdatefiles={setFiles}
+      onprocessfile={(error, file) => {
+        if (!error) {
+          setBlog({ ...blog, cover: file.serverId })
+        }
+      }}
       labelIdle={`<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         width="64px" height="64px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
         <g>
@@ -60,10 +65,10 @@ export default function CoverImage({
       stylePanelAspectRatio="16:9"
       imageCropAspectRatio="16:9"
       server={{
-        url: `${BASE_URL}`,
-        process: "/api/files",
-        load: "/api/files",
-        revert: "/api/files"
+        url: BASE_URL,
+        process: FILES_URI,
+        load: FILES_URI,
+        revert: FILES_URI
       }}
       credits={false}
     />
