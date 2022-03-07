@@ -39,25 +39,18 @@ export default function Blog({ render, blogs, setBlogs }) {
   }, []);
 
   // Update blog
-  const update_blog = () => {
-    updateBlog(blog.id, blogUpdate);
-    for (let key of blogUpdate.keys()) {
-      blogUpdate.delete(key);
-    }
+  const update_blog = (id) => {
+    updateBlog(id, blog);
   };
 
-  const publish_blog = () => {
-    blogUpdate.has("publish")
-      ? blogUpdate.set("publish", true)
-      : blogUpdate.append("publish", true);
-    setBlogUpdate(blogUpdate);
-    updateBlog(blog.id, blogUpdate);
+  const publish_blog = (id) => {
+    updateBlog(id, {...blog, publish: true});
   };
 
   // Delete a blog from the UI and Backend
-  const delete_blog = () => {
-    deleteBlog(blog.id);
-    setBlogs(blogs.filter((blog) => blog.id !== parseInt(params.blogId)));
+  const delete_blog = (id) => {
+    deleteBlog(id);
+    setBlogs(blogs.filter((blog) => blog.id !== id));
     navigate("/", { replace: true });
   };
   // The render prop renders either an edit blog or a view blog.
