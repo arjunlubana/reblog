@@ -16,8 +16,8 @@ export default function Blog({ render, blogs, setBlogs }) {
       getBlog(params.blogId).then((data) => {
         setBlog({
           ...data,
-          title: EditorState.createWithContent(convertFromRaw(data.title)),
-          body: EditorState.createWithContent(convertFromRaw(data.body)),
+          title: getEditorState(data.title),
+          body: getEditorState(data.body),
         });
         setIsLoading(false);
       });
@@ -29,13 +29,17 @@ export default function Blog({ render, blogs, setBlogs }) {
       createBlog(blog_data).then((data) => {
         setBlog({
           ...data,
-          title: EditorState.createWithContent(convertFromRaw(data.title)),
-          body: EditorState.createWithContent(convertFromRaw(data.body)),
+          title: getEditorState(data.title),
+          body: getEditorState(data.body),
         });
         setIsLoading(false);
       });
     }
   }, []);
+
+  const getEditorState = (data) => {
+    return EditorState.createWithContent(convertFromRaw(data));
+  };
   // Update blog
   const update_blog = (id) => {
     updateBlog(id, {
@@ -56,18 +60,11 @@ export default function Blog({ render, blogs, setBlogs }) {
     navigate("/", { replace: true });
   };
 
-
   return isLoading ? (
     <div className="vh-100">
       <Spinner />
     </div>
   ) : (
-    render(
-      blog,
-      setBlog,
-      delete_blog,
-      update_blog,
-      publish_blog
-    )
+    render(blog, setBlog, delete_blog, update_blog, publish_blog)
   );
 }
