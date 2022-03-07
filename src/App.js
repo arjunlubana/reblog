@@ -12,7 +12,6 @@ import {
   Blog,
   ViewBlog,
   EditBlog,
-  NewBlog,
   Login,
   PageNotFound,
   Profile,

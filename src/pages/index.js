@@ -1,6 +1,5 @@
 import Home from "pages/Home";
 import Blog from "pages/Blog";
-import NewBlog from "pages/NewBlog";
 import ViewBlog from "pages/ViewBlog";
 import EditBlog from "pages/EditBlog";
 import Blogs from "pages/Blogs";
@@ -13,7 +12,6 @@ import SignUp from "pages/SignUp";
 export {
   Home,
   Blog,
-  NewBlog,
   ViewBlog,
   EditBlog,
   Blogs,
