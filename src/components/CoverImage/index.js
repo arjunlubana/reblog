@@ -70,8 +70,8 @@ export default function CoverImage({
       }}
       server={{
         url: `${BASE_URL}`,
-        process: null,
-        load: "/"
+        process: "/api/files",
+        load: "/api/files"
       }}
       credits={false}
     />
