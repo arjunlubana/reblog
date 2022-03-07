@@ -5,8 +5,6 @@ import { BlogEditor } from "components";
 export default function EditBlog({
   blog,
   setBlog,
-  blogUpdate,
-  setBlogUpdate,
   deleteBlog,
   updateBlog,
   publishBlog,
@@ -42,8 +40,6 @@ export default function EditBlog({
         blog={blog}
         setBlog={setBlog}
         readOnly={false}
-        blogUpdate={blogUpdate}
-        setBlogUpdate={setBlogUpdate}
       />
     </>
   );

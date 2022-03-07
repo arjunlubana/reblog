@@ -5,8 +5,6 @@ import { useRef } from "react";
 export default function BlogBody({
   blog,
   setBlog,
-  blogUpdate,
-  setBlogUpdate,
   readOnly,
 }) {
   // const [body, setBody] = useState(null);
@@ -20,16 +18,6 @@ export default function BlogBody({
   };
   const handleChange = (editorState) => {
     setBlog({...blog, body: editorState});
-    // Registers title updates to be sent to the server
-    let rawEditorState = JSON.stringify(
-      convertToRaw(editorState.getCurrentContent())
-    );
-    if (blogUpdate.has("body")) {
-      blogUpdate.set("body", rawEditorState);
-    } else {
-      blogUpdate.append("body", rawEditorState);
-    }
-    setBlogUpdate(blogUpdate);
   };
   const editorRef = useRef(null);
 

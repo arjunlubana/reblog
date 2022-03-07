@@ -5,22 +5,10 @@ import "./styles.css";
 export default function BlogTitle({
   blog,
   setBlog,
-  blogUpdate,
-  setBlogUpdate,
   readOnly
 }) {
   const handleChange = (editorState) => {
     setBlog({ ...blog, title: editorState });
-    // Registers title updates to be sent to the server
-    let rawEditorState = JSON.stringify(
-      convertToRaw(editorState.getCurrentContent())
-    );
-    if (blogUpdate.has("title")) {
-      blogUpdate.set("title", rawEditorState);
-    } else {
-      blogUpdate.append("title", rawEditorState);
-    }
-    setBlogUpdate(blogUpdate);
   };
 
   useEffect(() => {

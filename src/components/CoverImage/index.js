@@ -21,8 +21,6 @@ registerPlugin(
 export default function CoverImage({
   blog,
   setBlog,
-  blogUpdate,
-  setBlogUpdate,
   readOnly,
 }) {
   const [files, setFiles] = useState(

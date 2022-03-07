@@ -65,8 +65,6 @@ export default function Blog({ render, blogs, setBlogs }) {
     render(
       blog,
       setBlog,
-      blogUpdate,
-      setBlogUpdate,
       delete_blog,
       update_blog,
       publish_blog

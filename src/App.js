@@ -57,8 +57,6 @@ export default function App() {
                       render={(
                         blog,
                         setBlog,
-                        blogUpdate,
-                        setBlogUpdate,
                         deleteBlog,
                         updateBlog,
                         publishBlog
@@ -66,8 +64,6 @@ export default function App() {
                         <EditBlog
                           blog={blog}
                           setBlog={setBlog}
-                          blogUpdate={blogUpdate}
-                          setBlogUpdate={setBlogUpdate}
                           updateBlog={updateBlog}
                           deleteBlog={deleteBlog}
                           publishBlog={publishBlog}
@@ -85,8 +81,6 @@ export default function App() {
                       render={(
                         blog,
                         setBlog,
-                        blogUpdate,
-                        setBlogUpdate,
                         deleteBlog,
                         updateBlog,
                         publishBlog
@@ -94,8 +88,6 @@ export default function App() {
                         <EditBlog
                           blog={blog}
                           setBlog={setBlog}
-                          blogUpdate={blogUpdate}
-                          setBlogUpdate={setBlogUpdate}
                           updateBlog={updateBlog}
                           deleteBlog={deleteBlog}
                           publishBlog={publishBlog}
