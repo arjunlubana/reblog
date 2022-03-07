@@ -1,28 +1,35 @@
 import { CoverImage, BlogTitle, BlogBody } from "components";
 import "draft-js/dist/Draft.css";
 
-export default function BlogEditor({ blog, readOnly }) {
+export default function BlogEditor({
+  blog,
+  setBlog,
+  readOnly,
+  updateBlog,
+  blogUpdate,
+  setBlogUpdate,
+}) {
   return (
     <div className="w-75 mt-5 mx-auto">
       <CoverImage
-        coverImage={blog.coverImage}
-        setCoverImage={blog.setCoverImage}
-        blogUpdate={blog.blogUpdate}
-        setBlogUpdate={blog.setBlogUpdate}
+        blog={blog}
+        setBlog={setBlog}
+        blogUpdate={blogUpdate}
+        setBlogUpdate={setBlogUpdate}
         readOnly={readOnly}
       />
       <BlogTitle
-        blogTitle={blog.blogTitle}
-        setBlogTitle={blog.setBlogTitle}
-        blogUpdate={blog.blogUpdate}
-        setBlogUpdate={blog.setBlogUpdate}
+        blog={blog}
+        setBlog={setBlog}
+        blogUpdate={blogUpdate}
+        setBlogUpdate={setBlogUpdate}
         readOnly={readOnly}
       />
       <BlogBody
-        blogBody={blog.blogBody}
-        setBlogBody={blog.setBlogBody}
-        blogUpdate={blog.blogUpdate}
-        setBlogUpdate={blog.setBlogUpdate}
+        blog={blog}
+        setBlog={setBlog}
+        blogUpdate={blogUpdate}
+        setBlogUpdate={setBlogUpdate}
         readOnly={readOnly}
       />
     </div>

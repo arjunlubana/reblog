@@ -3,14 +3,14 @@ import { Editor, RichUtils, convertToRaw } from "draft-js";
 import "./styles.css";
 
 export default function BlogTitle({
-  blogTitle,
-  setBlogTitle,
+  blog,
+  setBlog,
   blogUpdate,
   setBlogUpdate,
-  readOnly,
+  readOnly
 }) {
   const handleChange = (editorState) => {
-    setBlogTitle(editorState);
+    setBlog({ ...blog, title: editorState });
     // Registers title updates to be sent to the server
     let rawEditorState = JSON.stringify(
       convertToRaw(editorState.getCurrentContent())
@@ -26,18 +26,21 @@ export default function BlogTitle({
   useEffect(() => {
     // Only toggle Title header style if the block is unxtyled
     if (
-      blogTitle.getCurrentContent().getFirstBlock().getType() === "unstyled"
+      blog.title.getCurrentContent().getFirstBlock().getType() === "unstyled"
     ) {
-      setBlogTitle(RichUtils.toggleBlockType(blogTitle, "header-one"));
+      setBlog({
+        ...blog,
+        title: RichUtils.toggleBlockType(blog.title, "header-one")
+      });
     }
   }, []);
   return (
     <Editor
-      editorState={blogTitle}
+      editorState={blog.title}
       onChange={handleChange}
       placeholder={<h1>Blog Title</h1>}
       handleReturn={() => "handled"}
-	  textAlignment="center"
+      textAlignment="center"
       readOnly={readOnly}
     />
   );

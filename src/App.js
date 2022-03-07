@@ -22,7 +22,7 @@ import { LoggedContext } from "contexts/LoginContext";
 
 export default function App() {
   const [logged, setLogged] = useState(true);
-  const [blogs, setBlogs] = useState(null);
+  const [blogs, setBlogs] = useState([]);
   const queryClient = new QueryClient();
 
   return (
@@ -43,7 +43,9 @@ export default function App() {
                     <Blog
                       blogs={blogs}
                       setBlogs={setBlogs}
-                      render={({ blog }) => <ViewBlog blog={blog} />}
+                      render={(blog, setBlog) => (
+                        <ViewBlog blog={blog} setBlog={setBlog} />
+                      )}
                     />
                   }
                 />
@@ -53,14 +55,20 @@ export default function App() {
                     <Blog
                       blogs={blogs}
                       setBlogs={setBlogs}
-                      render={({
+                      render={(
                         blog,
-                        updateBlog,
+                        setBlog,
+                        blogUpdate,
+                        setBlogUpdate,
                         deleteBlog,
-                        publishBlog,
-                      }) => (
+                        updateBlog,
+                        publishBlog
+                      ) => (
                         <EditBlog
                           blog={blog}
+                          setBlog={setBlog}
+                          blogUpdate={blogUpdate}
+                          setBlogUpdate={setBlogUpdate}
                           updateBlog={updateBlog}
                           deleteBlog={deleteBlog}
                           publishBlog={publishBlog}

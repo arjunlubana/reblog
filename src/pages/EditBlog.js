@@ -1,16 +1,16 @@
-import { useParams } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { IoTrashOutline, IoCloudUploadOutline } from "react-icons/io5";
 import { BlogEditor } from "components";
 
 export default function EditBlog({
   blog,
-  updateBlog,
+  setBlog,
+  blogUpdate,
+  setBlogUpdate,
   deleteBlog,
+  updateBlog,
   publishBlog,
 }) {
-  const params = useParams();
-
   return (
     <>
       <IconContext.Provider value={{ size: "1.5rem" }}>
@@ -38,7 +38,13 @@ export default function EditBlog({
           </button>
         </div>
       </IconContext.Provider>
-      <BlogEditor blog={blog} readOnly={false} updateBlog={updateBlog} />
+      <BlogEditor
+        blog={blog}
+        setBlog={setBlog}
+        readOnly={false}
+        blogUpdate={blogUpdate}
+        setBlogUpdate={setBlogUpdate}
+      />
     </>
   );
 }

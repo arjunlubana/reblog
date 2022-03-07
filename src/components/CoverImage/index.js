@@ -19,21 +19,22 @@ registerPlugin(
 );
 
 export default function CoverImage({
-  coverImage,
+  blog,
+  setBlog,
   blogUpdate,
   setBlogUpdate,
   readOnly,
 }) {
   const [files, setFiles] = useState(
-    coverImage
-      ? [{ source: `${coverImage.filename}`, options: { type: "local" } }]
+    blog.cover
+      ? [{ source: `${blog.cover.filename}`, options: { type: "local" } }]
       : []
   );
 
   return readOnly ? (
-    coverImage ? (
+    blog.cover ? (
       <img
-        src={`${BASE_URL}/${coverImage.filename}`}
+        src={`${BASE_URL}/${blog.cover.filename}`}
         alt="cover"
         className="w-100 h-auto"
       />

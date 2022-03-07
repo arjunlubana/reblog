@@ -3,7 +3,7 @@ import { IconContext } from "react-icons";
 import { IoCreateOutline } from "react-icons/io5";
 import { BlogEditor } from "components";
 
-export default function ViewBlog({ blog }) {
+export default function ViewBlog({ blog, setBlog }) {
   const params = useParams();
 
   return (
@@ -19,7 +19,7 @@ export default function ViewBlog({ blog }) {
           </Link>
         </div>
       </IconContext.Provider>
-      <BlogEditor blog={blog} readOnly={true} />
+      <BlogEditor blog={blog} setBlog={setBlog} readOnly={true} />
     </div>
   );
 }

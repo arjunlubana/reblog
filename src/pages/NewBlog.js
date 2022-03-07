@@ -7,9 +7,11 @@ import { EditBlog } from "pages";
 export default function NewBlog({ blogs, setBlogs }) {
   // Initialize blog states
   const [blogUpdate, setBlogUpdate] = useState(new FormData());
-  const [coverImage, setCoverImage] = useState(null);
-  const [blogTitle, setBlogTitle] = useState(EditorState.createEmpty());
-  const [blogBody, setBlogBody] = useState(EditorState.createEmpty());
+  const [blog, setBlog] = useState({
+    cover: null,
+    title: EditorState.createEmpty(),
+    body: EditorState.createEmpty(),
+  });
   const [newBlog, setNewBlog] = useState(null);
   const navigate = useNavigate();
   // Update blog
@@ -37,14 +39,14 @@ export default function NewBlog({ blogs, setBlogs }) {
   };
   const create_new_blog = () => {
     let blog_data = new FormData();
-    blog_data.append("cover", coverImage);
+    blog_data.append("cover", blog.cover);
     blog_data.append(
       "title",
-      JSON.stringify(convertToRaw(blogTitle.getCurrentContent()))
+      JSON.stringify(convertToRaw(blog.title.getCurrentContent()))
     );
     blog_data.append(
       "body",
-      JSON.stringify(convertToRaw(blogBody.getCurrentContent()))
+      JSON.stringify(convertToRaw(blog.body.getCurrentContent()))
     );
     blog_data.append("likes", 0);
     blog_data.append("comments", []);
@@ -59,19 +61,13 @@ export default function NewBlog({ blogs, setBlogs }) {
 
   return (
     <EditBlog
-      blog={{
-        coverImage: coverImage,
-        setCoverImage: setCoverImage,
-        blogTitle: blogTitle,
-        setBlogTitle: setBlogTitle,
-        blogBody: blogBody,
-        setBlogBody: setBlogBody,
-        blogUpdate: blogUpdate,
-        setBlogUpdate: setBlogUpdate,
-      }}
+      blog={blog}
+      setBlog={setBlog}
+      blogUpdate={blogUpdate}
+      setBlogUpdate={setBlogUpdate}
       updateBlog={update_blog}
-      publishBlog={publish_blog}
       deleteBlog={delete_blog}
+      publishBlog={publish_blog}
     />
   );
 }

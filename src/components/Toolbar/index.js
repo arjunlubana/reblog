@@ -8,48 +8,72 @@ import {
   FaQuoteLeft,
 } from "react-icons/fa";
 
-export default function Toolbar({ blogBody, setBlogBody, focusEditor }) {
+export default function Toolbar({ blog, setBlog, focusEditor }) {
   useEffect(() => {
     focusEditor();
-  }, [blogBody.getCurrentContent()]);
+  }, [blog.body.getCurrentContent()]);
   const _onH2Click = () => {
-    setBlogBody(RichUtils.toggleBlockType(blogBody, "header-two"));
+    setBlog({
+      ...blog,
+      body: RichUtils.toggleBlockType(blog.body, "header-two"),
+    });
   };
   const _onH3Click = () => {
-    setBlogBody(RichUtils.toggleBlockType(blogBody, "header-three"));
+    setBlog({
+      ...blog,
+      body: RichUtils.toggleBlockType(blog.body, "header-three"),
+    });
   };
   const _onH4Click = () => {
-    setBlogBody(RichUtils.toggleBlockType(blogBody, "header-four"));
+    setBlog({
+      ...blog,
+      body: RichUtils.toggleBlockType(blog.body, "header-four"),
+    });
   };
   const _onH5Click = () => {
-    setBlogBody(RichUtils.toggleBlockType(blogBody, "header-five"));
+    setBlog({
+      ...blog,
+      body: RichUtils.toggleBlockType(blog.body, "header-five"),
+    });
   };
 
   const _onBlockQouteClick = () => {
-    setBlogBody(RichUtils.toggleBlockType(blogBody, "atomic"));
+    setBlog({ ...blog, body: RichUtils.toggleBlockType(blog.body, "atomic") });
   };
 
   const _onBoldClick = () => {
-    setBlogBody(RichUtils.toggleInlineStyle(blogBody, "BOLD"));
+    setBlog({ ...blog, body: RichUtils.toggleInlineStyle(blog.body, "BOLD") });
   };
 
   const _onItalicClick = () => {
-    setBlogBody(RichUtils.toggleInlineStyle(blogBody, "ITALIC"));
+    setBlog({
+      ...blog,
+      body: RichUtils.toggleInlineStyle(blog.body, "ITALIC"),
+    });
   };
   const _onUnderlineClick = () => {
-    setBlogBody(RichUtils.toggleInlineStyle(blogBody, "UNDERLINE"));
+    setBlog({
+      ...blog,
+      body: RichUtils.toggleInlineStyle(blog.body, "UNDERLINE"),
+    });
   };
   const _onCodeClick = () => {
-    setBlogBody(RichUtils.toggleInlineStyle(blogBody, "CODE"));
+    setBlog({ ...blog, body: RichUtils.toggleInlineStyle(blog.body, "CODE") });
   };
   const _onCodeBlockClick = () => {
-    setBlogBody(RichUtils.toggleCode(blogBody));
+    setBlog({ ...blog, body: RichUtils.toggleCode(blog.body) });
   };
   const _onUListClick = () => {
-    setBlogBody(RichUtils.toggleBlockType(blogBody, "unordered-list-item"));
+    setBlog({
+      ...blog,
+      body: RichUtils.toggleBlockType(blog.body, "unordered-list-item"),
+    });
   };
   const _onOListClick = () => {
-    setBlogBody(RichUtils.toggleBlockType(blogBody, "ordered-list-item"));
+    setBlog({
+      ...blog,
+      body: RichUtils.toggleBlockType(blog.body, "ordered-list-item"),
+    });
   };
 
   return (

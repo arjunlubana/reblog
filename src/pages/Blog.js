@@ -8,19 +8,17 @@ export default function Blog({ render, blogs, setBlogs }) {
   const params = useParams();
   const navigate = useNavigate();
   const [blogUpdate, setBlogUpdate] = useState(new FormData());
-  const [coverImage, setCoverImage] = useState(null);
-  const [blogTitle, setBlogTitle] = useState(null);
-  const [blogBody, setBlogBody] = useState(null);
-  const [publish, setPublish] = useState(false);
+  const [blog, setBlog] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   // Get the Blog data
   useEffect(() => {
-    getBlog(params.blogId).then((blog) => {
-      setCoverImage(blog.cover);
-      setBlogTitle(EditorState.createWithContent(convertFromRaw(blog.title)));
-      setBlogBody(EditorState.createWithContent(convertFromRaw(blog.body)));
-      setPublish(blog.publish);
+    getBlog(params.blogId).then((data) => {
+      setBlog({
+        ...data,
+        title: EditorState.createWithContent(convertFromRaw(data.title)),
+        body: EditorState.createWithContent(convertFromRaw(data.body)),
+      });
       setIsLoading(false);
     });
   }, [params.blogId]);
@@ -56,21 +54,14 @@ export default function Blog({ render, blogs, setBlogs }) {
       <Spinner />
     </div>
   ) : (
-    render({
-      blog: {
-        publish: publish,
-        coverImage: coverImage,
-        setCoverImage: setCoverImage,
-        blogTitle: blogTitle,
-        setBlogTitle: setBlogTitle,
-        blogBody: blogBody,
-        setBlogBody: setBlogBody,
-        blogUpdate: blogUpdate,
-        setBlogUpdate: setBlogUpdate,
-      },
-      deleteBlog: delete_blog,
-      updateBlog: update_blog,
-      publishBlog: publish_blog,
-    })
+    render(
+      blog,
+      setBlog,
+      blogUpdate,
+      setBlogUpdate,
+      delete_blog,
+      update_blog,
+      publish_blog,
+    )
   );
 }
