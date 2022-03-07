@@ -12,7 +12,7 @@ export default function BlogTitle({
   };
 
   useEffect(() => {
-    // Only toggle Title header style if the block is unxtyled
+    // Only toggle Title header style if the block is unstyled
     if (
       blog.title.getCurrentContent().getFirstBlock().getType() === "unstyled"
     ) {
@@ -21,7 +21,8 @@ export default function BlogTitle({
         title: RichUtils.toggleBlockType(blog.title, "header-one")
       });
     }
-  }, []);
+  }, [blog.title]);
+
   return (
     <Editor
       editorState={blog.title}
