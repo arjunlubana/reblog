@@ -10,7 +10,18 @@ export default function Blog({ render, blogs, setBlogs }) {
   const [blog, setBlog] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  // Get the Blog data
+  /**
+   * Effects to run:
+   * 
+   * 1. - Check if there are ID params in the URL.
+   *    - Get the blog associated with the ID.
+   *    - Set the blog state with the response.
+   * 
+   * 2. - If there are no params i.e New Blog is being created.
+   *    - Create a new blog on the server with empty editor states
+   *      the body & title.
+   *    - Set the blog state with the response.
+   */
   useEffect(() => {
     if (params.blogId) {
       getBlog(params.blogId).then((data) => {
@@ -33,15 +44,33 @@ export default function Blog({ render, blogs, setBlogs }) {
     }
   }, []);
 
-  const getRawState = (data) => {
-    data = data ? data : EditorState.createEmpty();
-    return convertToRaw(data.getCurrentContent());
+  /**
+   * Converts DraftJS EditorState to RawDraftContentState.
+   * The RawDraftContentState can be sent to the server for storage.
+   * @param {EditorState} editorState 
+   * @returns {RawDraftContentState} DraftJS RawDraftContentState
+   */
+  const getRawState = (editorState) => {
+    editorState = editorState ? editorState : EditorState.createEmpty();
+    return convertToRaw(editorState.getCurrentContent());
   };
 
-  const getEditorState = (data) => {
-    return EditorState.createWithContent(convertFromRaw(data));
+  /**
+   * Converts DraftJS RawDraftContentState to EditorState.
+   * The EditorState is used by the client to render DraftJS Editor content.
+   * @param {RawDraftContentState} rawState 
+   * @returns {EditorState} DraftJS EditorState
+   */
+  const getEditorState = (rawState) => {
+    return EditorState.createWithContent(convertFromRaw(rawState));
   };
-  // Update blog
+
+  /**
+   * 
+   * Updates the blog instance on the server
+   * in regards to the ID passed.
+   * @param {number} id 
+   */
   const update_blog = (id) => {
     updateBlog(id, {
       ...blog,
@@ -50,11 +79,18 @@ export default function Blog({ render, blogs, setBlogs }) {
     });
   };
 
+  /**
+   * Updates the blog publish value to true
+   * @param {number} id 
+   */
   const publish_blog = (id) => {
     updateBlog(id, { ...blog, publish: true });
   };
 
-  // Delete a blog from the UI and Backend
+  /**
+   * Delete a blog with the ID from the UI and Backend
+   * @param {number} id 
+   */
   const delete_blog = (id) => {
     deleteBlog(id);
     setBlogs(blogs.filter((blog) => blog.id !== id));
