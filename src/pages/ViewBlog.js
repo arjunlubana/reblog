@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { IoCreateOutline } from "react-icons/io5";
-import { BlogEditor } from "components";
+import { EditCover, BlogTitle, BlogBody } from "components";
 
 export default function ViewBlog({ blog, setBlog }) {
   const params = useParams();
@@ -19,7 +19,11 @@ export default function ViewBlog({ blog, setBlog }) {
           </Link>
         </div>
       </IconContext.Provider>
-      <BlogEditor blog={blog} setBlog={setBlog} readOnly={true} />
+      <div className="w-75 mt-5 mx-auto">
+        <EditCover blog={blog} setBlog={setBlog} />
+        <BlogTitle blog={blog} setBlog={setBlog} readOnly={true} />
+        <BlogBody blog={blog} setBlog={setBlog} readOnly={true} />
+      </div>
     </div>
   );
 }
