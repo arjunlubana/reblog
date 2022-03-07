@@ -13,8 +13,8 @@ export async function getDrafts() {
 }
 
 export async function getBlog(id) {
-  const result = await fetch(`${BASE_URL}/api/blogs/${id}`);
-  const blog = await result.json();
+  const response = await fetch(`${BASE_URL}/api/blogs/${id}`);
+  const blog = await response.json();
   return blog;
 }
 
@@ -23,10 +23,9 @@ export async function createBlog(blog_data) {
     method: "POST",
     body: blog_data,
   };
-
   const response = await fetch(`${BASE_URL}/api/blogs/new`, requestOptions);
-  const result = await response.json();
-  return result;
+  const newBlog = await response.json();
+  return newBlog;
 }
 
 export async function updateBlog(id, blog_data) {

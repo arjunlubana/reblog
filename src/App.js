@@ -79,7 +79,31 @@ export default function App() {
                 />
                 <Route
                   path="new"
-                  element={<NewBlog blogs={blogs} setBlogs={setBlogs} />}
+                  element={
+                    <Blog
+                      blogs={blogs}
+                      setBlogs={setBlogs}
+                      render={(
+                        blog,
+                        setBlog,
+                        blogUpdate,
+                        setBlogUpdate,
+                        deleteBlog,
+                        updateBlog,
+                        publishBlog
+                      ) => (
+                        <EditBlog
+                          blog={blog}
+                          setBlog={setBlog}
+                          blogUpdate={blogUpdate}
+                          setBlogUpdate={setBlogUpdate}
+                          updateBlog={updateBlog}
+                          deleteBlog={deleteBlog}
+                          publishBlog={publishBlog}
+                        />
+                      )}
+                    />
+                  }
                 />
               </Route>
 
