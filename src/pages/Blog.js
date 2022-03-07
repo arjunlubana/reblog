@@ -22,11 +22,7 @@ export default function Blog({ render, blogs, setBlogs }) {
         setIsLoading(false);
       });
     } else {
-      let blog_data = {
-        title: convertToRaw(EditorState.createEmpty().getCurrentContent()),
-        body: convertToRaw(EditorState.createEmpty().getCurrentContent()),
-      };
-      createBlog(blog_data).then((data) => {
+      createBlog({ title: getRawState(), body: getRawState() }).then((data) => {
         setBlog({
           ...data,
           title: getEditorState(data.title),
@@ -37,6 +33,11 @@ export default function Blog({ render, blogs, setBlogs }) {
     }
   }, []);
 
+  const getRawState = (data) => {
+    data = data ? data : EditorState.createEmpty();
+    return convertToRaw(data.getCurrentContent());
+  };
+
   const getEditorState = (data) => {
     return EditorState.createWithContent(convertFromRaw(data));
   };
@@ -44,8 +45,8 @@ export default function Blog({ render, blogs, setBlogs }) {
   const update_blog = (id) => {
     updateBlog(id, {
       ...blog,
-      title: convertToRaw(blog.title.getCurrentContent()),
-      body: convertToRaw(blog.body.getCurrentContent()),
+      title: getRawState(blog.title),
+      body: getRawState(blog.body),
     });
   };
 
