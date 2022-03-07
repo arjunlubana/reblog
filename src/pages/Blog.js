@@ -23,25 +23,15 @@ export default function Blog({ render, blogs, setBlogs }) {
         setIsLoading(false);
       });
     } else {
-      let blog_data = new FormData();
-      let empty_editor_state = EditorState.createEmpty();
-      console.log(convertToRaw(empty_editor_state.getCurrentContent()))
-      blog_data.append("cover", null);
-      blog_data.append(
-        "title",
-        JSON.stringify(convertToRaw(empty_editor_state.getCurrentContent()))
-      );
-      blog_data.append(
-        "body",
-        JSON.stringify(convertToRaw(empty_editor_state.getCurrentContent()))
-      );
-      blog_data.append("likes", 0);
-      blog_data.append("comments", []);
-      createBlog(blog_data).then((data) => {
+      let blog_data = {
+        title: convertToRaw(EditorState.createEmpty().getCurrentContent()),
+        body: convertToRaw(EditorState.createEmpty().getCurrentContent()),
+      };
+      createBlog(blog_data).then((response) => {
         setBlog({
-          ...data,
-          title: EditorState.createWithContent(convertFromRaw(data.title)),
-          body: EditorState.createWithContent(convertFromRaw(data.body)),
+          ...response,
+          title: EditorState.createWithContent(convertFromRaw(response.title)),
+          body: EditorState.createWithContent(convertFromRaw(response.body)),
         });
         setIsLoading(false);
       });
@@ -66,9 +56,9 @@ export default function Blog({ render, blogs, setBlogs }) {
 
   // Delete a blog from the UI and Backend
   const delete_blog = () => {
-      deleteBlog(blog.id);
-      setBlogs(blogs.filter((blog) => blog.id !== parseInt(params.blogId)));
-      navigate("/", { replace: true });
+    deleteBlog(blog.id);
+    setBlogs(blogs.filter((blog) => blog.id !== parseInt(params.blogId)));
+    navigate("/", { replace: true });
   };
   // The render prop renders either an edit blog or a view blog.
   // Title and Blog states, delete and update blog functions are passed to the rendered components
