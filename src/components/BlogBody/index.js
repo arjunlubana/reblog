@@ -1,4 +1,5 @@
 import { Editor, RichUtils } from "draft-js";
+import "draft-js/dist/Draft.css";
 import { Toolbar } from "components";
 import { useRef } from "react";
 
