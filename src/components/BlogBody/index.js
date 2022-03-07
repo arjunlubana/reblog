@@ -1,4 +1,4 @@
-import { Editor, RichUtils, convertToRaw } from "draft-js";
+import { Editor, RichUtils } from "draft-js";
 import { Toolbar } from "components";
 import { useRef } from "react";
 

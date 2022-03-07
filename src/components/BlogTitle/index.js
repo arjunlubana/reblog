@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Editor, RichUtils, convertToRaw } from "draft-js";
+import { Editor, RichUtils } from "draft-js";
 import "./styles.css";
 
 export default function BlogTitle({
