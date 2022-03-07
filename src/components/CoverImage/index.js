@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BASE_URL from "utils/Api";
+import {BASE_URL} from "utils/Api";
 import { FilePond, registerPlugin } from "react-filepond";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import FilePondPluginImageResize from "filepond-plugin-image-resize";
@@ -43,6 +43,7 @@ export default function CoverImage({
     )
   ) : (
     <FilePond
+      name="cover"
       allowMultiple={false}
       acceptedFileTypes={["image/*"]}
       files={files}
@@ -60,18 +61,11 @@ export default function CoverImage({
       stylePanelLayout="compact"
       stylePanelAspectRatio="16:9"
       imageCropAspectRatio="16:9"
-      onpreparefile={(file, output) => {
-        if (!file.serverId) {
-          blogUpdate.has("cover")
-            ? blogUpdate.set("cover", output)
-            : blogUpdate.append("cover", output);
-          setBlogUpdate(blogUpdate);
-        }
-      }}
       server={{
         url: `${BASE_URL}`,
         process: "/api/files",
-        load: "/api/files"
+        load: "/api/files",
+        revert: "/api/files"
       }}
       credits={false}
     />
