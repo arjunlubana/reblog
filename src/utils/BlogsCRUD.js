@@ -1,4 +1,4 @@
-import BASE_URL from "utils/Api";
+import {BASE_URL} from "utils/Api";
 
 export async function getBlogs() {
   const response = await fetch(`${BASE_URL}/api/blogs`);
