@@ -1,18 +1,10 @@
-import { Editor, RichUtils } from "draft-js";
+import { Editor } from "draft-js";
 import { Toolbar } from "components";
 import { useRef } from "react";
 import "draft-js/dist/Draft.css";
 
 export default function BlogBody({ blog, setBlog, readOnly }) {
-  // const [body, setBody] = useState(null);
-  const handleKeyCommand = (command, blog) => {
-    const newState = RichUtils.handleKeyCommand(blog.body, command);
-    if (newState) {
-      setBlog({ ...blog, body: newState });
-      return "handled";
-    }
-    return "not handled";
-  };
+
   const handleChange = (editorState) => {
     setBlog({ ...blog, body: editorState });
   };
@@ -33,7 +25,6 @@ export default function BlogBody({ blog, setBlog, readOnly }) {
         <Editor
           editorState={blog.body}
           onChange={handleChange}
-          handleKeyCommand={handleKeyCommand}
           placeholder="Whats on your mind ..."
           ref={editorRef}
           readOnly={readOnly}
