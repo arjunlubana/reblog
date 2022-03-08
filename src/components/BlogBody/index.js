@@ -21,7 +21,7 @@ export default function BlogBody({ blog, setBlog, readOnly }) {
         focusEditor={focusEditor}
         readOnly={readOnly}
       />
-      <div id="body-editor" className="w-75 mx-auto p-4">
+      <div className="w-75 mx-auto p-4 body-editor">
         <Editor
           editorState={blog.body}
           onChange={handleChange}

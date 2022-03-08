@@ -43,8 +43,8 @@ header {
   color: white;
 }
 
-#body-editor{
-  min-height: 300px;
+.body-editor{
+  min-height: 200px;
 }
 
 .filepond--drop-label {
