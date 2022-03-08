@@ -80,7 +80,7 @@ export default function Toolbar({ blog, setBlog, focusEditor, readOnly }) {
   return readOnly ? (
     ""
   ) : (
-    <div id="toolbar" className="mx-auto btn-group w-75 rounded">
+    <div id="toolbar" className="mx-auto btn-group rounded">
       <button onClick={_onH2Click} className="btn">
         H2
       </button>
