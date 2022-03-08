@@ -11,19 +11,40 @@ export default function Navbar({ setLogged }) {
           </Link>
           <button
             className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
             aria-label="Toggle navigation"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#sidebar"
+            aria-controls="sidebar"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse flex-grow-0" id="navbarNav">
-            <ul className="navbar-nav justify-content-center align-items-center">
-              <AuthUserNav setLogged={setLogged} />
-            </ul>
+
+          <div
+            className="
+              offcanvas offcanvas-start
+              bg-dark
+              text-white
+              align-items-lg-end
+            "
+            tabindex="-1"
+            id="sidebar"
+            aria-labelledby="sidebarLabel"
+            data-bs-scroll="true"
+          >
+            <div className="offcanvas-header">
+              <h5 className="offcanvas-title">Reblog</h5>
+              <button
+                type="button"
+                className="btn-close btn-close-white text-reset fill-white"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="offcanvas-body" data-bs-dismiss="offcanvas">
+              <ul className="navbar-nav justify-content-center align-items-center">
+                <AuthUserNav setLogged={setLogged} />
+              </ul>
+            </div>
           </div>
         </div>
       </nav>
