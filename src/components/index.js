@@ -3,12 +3,12 @@ import Avatar from "components/Avatar";
 import Navbar from "components/Navbar";
 import Spinner from "components/Spinner";
 import Toolbar from "components/Toolbar";
-import BlogsList from "components/BlogsList";
+import EmptyBlogs from "components/EmptyBlogs";
+import BlogCard from "./BlogCard";
 import ViewCover from "components/ViewCover";
 import EditCover from "components/EditCover";
 import BlogTitle from "components/BlogTitle";
 import BlogBody from "components/BlogBody";
-import EmptyBlogs from "components/EmptyBlogs";
 
 export {
 	AuthUserNav,
@@ -20,6 +20,6 @@ export {
 	EditCover,
 	BlogTitle,
 	BlogBody,
-	BlogsList,
+	BlogCard,
 	EmptyBlogs,
 };
