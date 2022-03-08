@@ -5,7 +5,7 @@ import { IconContext } from "react-icons";
 export default function EmptyBlogs() {
   return (
     <Link
-      to="blog/new"
+      to="/blog/new"
       className="d-flex flex-column justify-content-center align-items-center vh-100 text-muted text-decoration-none text-center"
     >
       <div>
