@@ -8,10 +8,11 @@ import {
   FaQuoteLeft,
 } from "react-icons/fa";
 
-export default function Toolbar({ blog, setBlog, focusEditor }) {
+export default function Toolbar({ blog, setBlog, focusEditor, readOnly }) {
   useEffect(() => {
     focusEditor();
   }, [blog.body.getCurrentContent()]);
+
   const _onH2Click = () => {
     setBlog({
       ...blog,
@@ -76,60 +77,49 @@ export default function Toolbar({ blog, setBlog, focusEditor }) {
     });
   };
 
-  return (
-    <div id="toolbar" className="bg-light">
-      <div className="btn-group w-100">
-        <button onClick={_onH2Click} className="btn btn-outline-info">
-          H2
-        </button>
-        <button onClick={_onH3Click} className="btn btn-outline-info">
-          H3
-        </button>
-        <button onClick={_onH4Click} className="btn btn-outline-info">
-          H4
-        </button>
-        <button onClick={_onH5Click} className="btn btn-outline-info">
-          H5
-        </button>
-      </div>
-      <div className="btn-group w-100">
-        <button onClick={_onBoldClick} className="btn btn-outline-info fw-bold">
-          B
-        </button>
-        <button
-          onClick={_onItalicClick}
-          className="btn btn-outline-info fst-italic"
-        >
-          I
-        </button>
-        <button
-          onClick={_onUnderlineClick}
-          className="btn btn-outline-info text-decoration-underline"
-        >
-          U
-        </button>
-        <button onClick={_onBlockQouteClick} className="btn btn-outline-info">
-          <FaQuoteLeft />
-        </button>
-        <button
-          onClick={_onCodeClick}
-          className="btn btn-outline-info font-monospace"
-        >
-          <FaCode />
-        </button>
-        <button
-          onClick={_onCodeBlockClick}
-          className="btn btn-outline-info font-monospace"
-        >
-          <FaFileCode />
-        </button>
-        <button onClick={_onUListClick} className="btn btn-outline-info">
-          <FaList />
-        </button>
-        <button onClick={_onOListClick} className="btn btn-outline-info">
-          <FaListOl />
-        </button>
-      </div>
+  return readOnly ? (
+    ""
+  ) : (
+    <div id="toolbar" className="mx-auto btn-group w-75 rounded">
+      <button onClick={_onH2Click} className="btn">
+        H2
+      </button>
+      <button onClick={_onH3Click} className="btn">
+        H3
+      </button>
+      <button onClick={_onH4Click} className="btn">
+        H4
+      </button>
+      <button onClick={_onH5Click} className="btn">
+        H5
+      </button>
+      <button onClick={_onBoldClick} className="btn fw-bold">
+        B
+      </button>
+      <button onClick={_onItalicClick} className="btn fst-italic">
+        I
+      </button>
+      <button
+        onClick={_onUnderlineClick}
+        className="btn text-decoration-underline"
+      >
+        U
+      </button>
+      <button onClick={_onBlockQouteClick} className="btn">
+        <FaQuoteLeft />
+      </button>
+      <button onClick={_onCodeClick} className="btn font-monospace">
+        <FaCode />
+      </button>
+      <button onClick={_onCodeBlockClick} className="btn font-monospace">
+        <FaFileCode />
+      </button>
+      <button onClick={_onUListClick} className="btn">
+        <FaList />
+      </button>
+      <button onClick={_onOListClick} className="btn">
+        <FaListOl />
+      </button>
     </div>
   );
 }

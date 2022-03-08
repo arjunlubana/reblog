@@ -3,22 +3,18 @@ import { Toolbar } from "components";
 import { useRef } from "react";
 import "draft-js/dist/Draft.css";
 
-export default function BlogBody({
-  blog,
-  setBlog,
-  readOnly,
-}) {
+export default function BlogBody({ blog, setBlog, readOnly }) {
   // const [body, setBody] = useState(null);
   const handleKeyCommand = (command, blog) => {
     const newState = RichUtils.handleKeyCommand(blog.body, command);
     if (newState) {
-      setBlog({...blog, body: newState});
+      setBlog({ ...blog, body: newState });
       return "handled";
     }
     return "not handled";
   };
   const handleChange = (editorState) => {
-    setBlog({...blog, body: editorState});
+    setBlog({ ...blog, body: editorState });
   };
   const editorRef = useRef(null);
 
@@ -26,25 +22,23 @@ export default function BlogBody({
     editorRef.current.focus();
   };
   return (
-    <div className="p-4">
-      {readOnly ? (
-        ""
-      ) : (
-        <Toolbar
-          blog={blog}
-          setBlog={setBlog}
-          focusEditor={focusEditor}
-        />
-      )}
-
-      <Editor
-        editorState={blog.body}
-        onChange={handleChange}
-        handleKeyCommand={handleKeyCommand}
-        placeholder="Whats on your mind ..."
-        ref={editorRef}
+    <div className="d-flex flex-column">
+      <Toolbar
+        blog={blog}
+        setBlog={setBlog}
+        focusEditor={focusEditor}
         readOnly={readOnly}
       />
+      <div id="body-editor" className="w-75 mx-auto p-4">
+        <Editor
+          editorState={blog.body}
+          onChange={handleChange}
+          handleKeyCommand={handleKeyCommand}
+          placeholder="Whats on your mind ..."
+          ref={editorRef}
+          readOnly={readOnly}
+        />
+      </div>
     </div>
   );
 }
