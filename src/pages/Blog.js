@@ -84,7 +84,11 @@ export default function Blog({ render, blogs, setBlogs }) {
    * @param {number} id 
    */
   const publish_blog = (id) => {
-    updateBlog(id, { ...blog, publish: true });
+    updateBlog(id, {
+      ...blog, publish: true,
+      title: getRawState(blog.title),
+      body: getRawState(blog.body)
+    });
   };
 
   /**

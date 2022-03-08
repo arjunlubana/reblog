@@ -3,7 +3,7 @@ import { BlogCard, EmptyBlogs, Spinner } from "components";
 import { getBlogs } from "utils/BlogsCRUD";
 
 export default function Blogs() {
-  const { isLoading, data } = useQuery("drafts", getBlogs);
+  const { isLoading, data } = useQuery("blogs", getBlogs);
 
   const BlogList = ((data) => {
     return data.map((blog) => (
