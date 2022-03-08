@@ -1,6 +1,6 @@
 import idleImage from "assets/image.svg";
 import { useState } from "react";
-import { BASE_URL, FILES_URI } from "utils/Api";
+import { BASE_URL, FILES_URI } from "utils/api";
 import { FilePond, registerPlugin } from "react-filepond";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import FilePondPluginImageResize from "filepond-plugin-image-resize";

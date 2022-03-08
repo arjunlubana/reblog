@@ -1,5 +1,5 @@
 import ImageIcon from "assets/image.svg";
-import { BASE_URL, FILES_URI } from "utils/Api";
+import { BASE_URL, FILES_URI } from "utils/api";
 
 export default function ViewCover({ image }) {
 	return (
