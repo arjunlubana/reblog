@@ -35,7 +35,11 @@ export default function EditCover({ blog, setBlog }) {
           setBlog({ ...blog, cover: file.serverId });
         }
       }}
-      labelIdle={`<img src=${idleImage} alt="idle cover">`}
+      labelIdle={
+        `<div><img src=${idleImage} alt="idle cover">` +
+        "<p>Upload a cover image.  " +
+        '<span class="filepond--label-action" >Browse files</span></p></div>'
+      }
       stylePanelLayout="compact"
       stylePanelAspectRatio="16:9"
       imageCropAspectRatio="16:9"
