@@ -9,7 +9,6 @@ import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
 import FilePondPluginImageTransform from "filepond-plugin-image-transform";
 import "filepond/dist/filepond.min.css";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
-import "./styles.css";
 
 registerPlugin(
   FilePondPluginImagePreview,

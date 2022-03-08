@@ -1,7 +1,7 @@
 import { Editor, RichUtils } from "draft-js";
-import "draft-js/dist/Draft.css";
 import { Toolbar } from "components";
 import { useRef } from "react";
+import "draft-js/dist/Draft.css";
 
 export default function BlogBody({
   blog,
