@@ -5,6 +5,6 @@ BASE_URL =
     ? process.env.REACT_APP_API_URL
     : (BASE_URL = "http://localhost:5000");
 
-export const FILES_URI = "/api/files/"
-export const BLOGS_URI = "/api/blogs/"
-export const USER_URI = "/api/users"
+export const FILES_URI = "/files/"
+export const BLOGS_URI = "/blogs/"
+export const USER_URI = "/users"
