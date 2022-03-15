@@ -26,7 +26,7 @@ export default function Navbar({ setLogged }) {
               text-white
               align-items-lg-end
             "
-            tabindex="-1"
+            tabIndex="-1"
             id="sidebar"
             aria-labelledby="sidebarLabel"
             data-bs-scroll="true"

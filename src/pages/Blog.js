@@ -42,7 +42,7 @@ export default function Blog({ render, blogs, setBlogs }) {
         setIsLoading(false);
       });
     }
-  }, []);
+  }, [params.blogId]);
 
   /**
    * Converts DraftJS EditorState to RawDraftContentState.

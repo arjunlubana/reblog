@@ -11,7 +11,7 @@ export default function EditBlog({
 }) {
   return (
     <>
-      <IconContext.Provider value={{ size: "1.5rem" }}>
+      <IconContext.Provider value={{ size: "24px" }}>
         <div className="d-flex justify-content-center">
           <button
             className="btn btn-info m-1"

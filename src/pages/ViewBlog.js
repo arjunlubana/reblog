@@ -6,7 +6,7 @@ import { ViewCover, BlogTitle, BlogBody } from "components";
 export default function ViewBlog({ blog, setBlog }) {
   return (
     <div className="container-fluid">
-      <IconContext.Provider value={{ size: "1.5rem" }}>
+      <IconContext.Provider value={{ size: "24px" }}>
         <div className="d-flex justify-content-center">
           <Link
             className="btn btn-outline-info m-1 fs-6 d-flex align-items-center"
