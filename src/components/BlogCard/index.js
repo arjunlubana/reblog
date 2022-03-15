@@ -5,7 +5,6 @@ import { ViewCover } from "components";
 export default function BlogCard({ blog }) {
 
     const previewText = (editorState) => {
-        console.log(editorState)
         return convertFromRaw(editorState).getFirstBlock().getText()
     }
     return <div className="card m-2 mx-auto">
