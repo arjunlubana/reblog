@@ -12,7 +12,7 @@ export default function EmptyBlogs() {
         Oops...No blogs found!
         <br /> Click to Add
       </div>
-      <IconContext.Provider value={{ color: "var(--bs-green)", size: "5rem" }}>
+      <IconContext.Provider value={{ color: "var(--bs-green)", size: "80px" }}>
         <IoAddOutline />
       </IconContext.Provider>
     </Link>
