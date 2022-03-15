@@ -8,11 +8,13 @@ export default function BlogBody({ blog, setBlog, readOnly }) {
   const handleChange = (editorState) => {
     setBlog({ ...blog, body: editorState });
   };
+
   const editorRef = useRef(null);
 
   const focusEditor = () => {
-    editorRef.current.focus();
-  };
+    editorRef.current.focus()
+  }
+
   return (
     <div className="d-flex flex-column">
       <Toolbar
