@@ -1,19 +1,19 @@
-import {BASE_URL, BLOGS_URI} from "utils/api"
+import {BASE_URL} from "utils/api"
 
 async function getBlogs() {
-  const response = await fetch(`${BASE_URL}${BLOGS_URI}`);
+  const response = await fetch(`${BASE_URL}blogs`);
   const result = await response.json();
   return result;
 }
 
 async function getDrafts() {
-  const response = await fetch(`${BASE_URL}${BLOGS_URI}/drafts`);
+  const response = await fetch(`${BASE_URL}blogs/drafts`);
   const result = await response.json();
   return result;
 }
 
 async function getBlog(id) {
-  const response = await fetch(`${BASE_URL}${BLOGS_URI}/${id}`);
+  const response = await fetch(`${BASE_URL}blogs/${id}`);
   const result = await response.json();
   return result;
 }
@@ -26,7 +26,7 @@ async function createBlog(data) {
     },
     body: JSON.stringify(data),
   };
-  const response = await fetch(`${BASE_URL}${BLOGS_URI}/new`, requestOptions);
+  const response = await fetch(`${BASE_URL}blogs/new`, requestOptions);
   const result = await response.json();
   return result;
 }
@@ -40,7 +40,7 @@ async function updateBlog(id, data) {
     body: JSON.stringify(data),
   };
 
-  const response = await fetch(`${BASE_URL}${BLOGS_URI}/${id}`, requestOptions);
+  const response = await fetch(`${BASE_URL}blogs/${id}`, requestOptions);
   const result = await response.json();
   return result;
 }
@@ -50,7 +50,7 @@ async function deleteBlog(id) {
     method: "DELETE",
     redirect: "follow",
   };
-  await fetch(`${BASE_URL}${BLOGS_URI}/${id}`, requestOptions);
+  await fetch(`${BASE_URL}blogs/${id}`, requestOptions);
 }
 
 export { getBlogs, getDrafts, getBlog, createBlog, updateBlog, deleteBlog };

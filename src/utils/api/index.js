@@ -1,4 +1,4 @@
-import { BASE_URL, FILES_URI, BLOGS_URI, USER_URI } from "./ApiUrl";
+import { BASE_URL } from "./ApiUrl";
 import {
     getBlogs,
     getDrafts,
@@ -10,9 +10,6 @@ import {
 
 export {
     BASE_URL,
-    FILES_URI,
-    BLOGS_URI,
-    USER_URI,
     getBlogs,
     getDrafts,
     getBlog,
