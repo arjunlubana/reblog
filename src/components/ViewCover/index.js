@@ -1,5 +1,4 @@
 import ImageIcon from "assets/image.svg";
-import { BASE_URL, FILES_URI } from "utils/api";
 
 export default function ViewCover({ image }) {
 	return (
@@ -8,7 +7,7 @@ export default function ViewCover({ image }) {
 			style={{ minHeight: "250px", backgroundColor: "#f1f0ef" }}
 		>
 			<img
-				src={image ? BASE_URL + FILES_URI + image : ImageIcon}
+				src={image ? image : ImageIcon}
 				alt="cover"
 				className="img-fluid"
 			/>
