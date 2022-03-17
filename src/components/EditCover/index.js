@@ -1,6 +1,6 @@
 import idleImage from "assets/image.svg";
 import { useState } from "react";
-import { BASE_URL, FILES_URI } from "utils/api";
+import { BASE_URL } from "utils/api";
 import { FilePond, registerPlugin } from "react-filepond";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import FilePondPluginImageResize from "filepond-plugin-image-resize";
@@ -45,9 +45,22 @@ export default function EditCover({ blog, setBlog }) {
       imageCropAspectRatio="16:9"
       server={{
         url: BASE_URL,
-        process: FILES_URI,
-        load: FILES_URI,
-        revert: FILES_URI,
+        process: {
+          url: `./blogs/${blog.id}`,
+          method: "PUT",
+          withCredentials: false,
+          headers: {},
+          timeout: 7000,
+          onload: null,
+          onerror: null,
+          ondata: null,
+        },
+        load: async function (source, load, error, progress, abort, headers) {
+          let response = await fetch(source);
+          let file = await response.blob();
+          progress(true, 0, 1024);
+          load(file);
+        },
       }}
       credits={false}
     />
