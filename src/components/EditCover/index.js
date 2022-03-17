@@ -49,7 +49,6 @@ export default function EditCover({ blog, setBlog }) {
           url: `./blogs/${blog.id}`,
           method: "PUT",
           withCredentials: false,
-          headers: {},
           timeout: 7000,
           onload: null,
           onerror: null,
