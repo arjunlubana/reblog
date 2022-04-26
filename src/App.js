@@ -1,7 +1,3 @@
-// eslint-disable-next-line
-import * as bootstrap from "bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "styles.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
