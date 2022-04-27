@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import LoginUser from "utils/LoginUser";
 
 export default function Login({ setLogged }) {
   const [username, setUsername] = useState("");
@@ -19,12 +18,6 @@ export default function Login({ setLogged }) {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    LoginUser(username, password).then((data) => {
-      console.log(data);
-      if (data) {
-        navigate("/");
-      }
-    });
   };
   return (
     <div className="card w-50 my-5 mx-auto p-4">

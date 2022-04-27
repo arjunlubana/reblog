@@ -1,53 +1,35 @@
 import { Link } from "react-router-dom";
-import { AuthUserNav } from "components";
+import { AppBar, Box, Toolbar, Typography } from "@mui/material";
+import SearchBar from "components/SearchBar/SearchBar";
+import NavMenu from "components/NavMenu/NavMenu";
 
-export default function Navbar({ setLogged }) {
+export default function Navbar() {
   return (
-    <header>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid">
-          <Link className="navbar-brand active" aria-current="page" to="/">
-            Reblog
-          </Link>
-          <button
-            className="navbar-toggler"
-            aria-label="Toggle navigation"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#sidebar"
-            aria-controls="sidebar"
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography
+            component={Link}
+            to="/"
+            variant="h6"
+            noWrap
+            sx={{
+              display: {
+                xs: "none",
+                sm: "block",
+                textDecoration: "none",
+                color: "white",
+              },
+            }}
           >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
-          <div
-            className="
-              offcanvas offcanvas-start
-              bg-dark
-              text-white
-              align-items-lg-end
-            "
-            tabIndex="-1"
-            id="sidebar"
-            aria-labelledby="sidebarLabel"
-            data-bs-scroll="true"
-          >
-            <div className="offcanvas-header">
-              <h5 className="offcanvas-title">Reblog</h5>
-              <button
-                type="button"
-                className="btn-close btn-close-white text-reset fill-white"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="offcanvas-body" data-bs-dismiss="offcanvas">
-              <ul className="navbar-nav justify-content-center align-items-center">
-                <AuthUserNav setLogged={setLogged} />
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
+            REBLOG
+          </Typography>
+          <Box sx={{ flexGrow: 1 }} />
+          <SearchBar></SearchBar>
+          <Box sx={{ flexGrow: 1 }} />
+          <NavMenu />
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 }

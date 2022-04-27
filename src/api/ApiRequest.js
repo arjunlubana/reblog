@@ -1,19 +1,17 @@
-import {BASE_URL} from "utils/api"
-
 async function getBlogs() {
-  const response = await fetch(`${BASE_URL}blogs`);
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/blogs/all`);
   const result = await response.json();
   return result;
 }
 
 async function getDrafts() {
-  const response = await fetch(`${BASE_URL}blogs/drafts`);
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/blogs/drafts`);
   const result = await response.json();
   return result;
 }
 
 async function getBlog(id) {
-  const response = await fetch(`${BASE_URL}blogs/${id}`);
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/blogs/${id}`);
   const result = await response.json();
   return result;
 }
@@ -26,7 +24,10 @@ async function createBlog(data) {
     },
     body: JSON.stringify(data),
   };
-  const response = await fetch(`${BASE_URL}blogs/new`, requestOptions);
+  const response = await fetch(
+    `${process.env.REACT_APP_API_URL}/blogs/new`,
+    requestOptions
+  );
   const result = await response.json();
   return result;
 }
@@ -40,7 +41,10 @@ async function updateBlog(id, data) {
     body: JSON.stringify(data),
   };
 
-  const response = await fetch(`${BASE_URL}blogs/${id}`, requestOptions);
+  const response = await fetch(
+    `${process.env.REACT_APP_API_URL}/blogs/${id}`,
+    requestOptions
+  );
   const result = await response.json();
   return result;
 }
@@ -50,7 +54,7 @@ async function deleteBlog(id) {
     method: "DELETE",
     redirect: "follow",
   };
-  await fetch(`${BASE_URL}blogs/${id}`, requestOptions);
+  await fetch(`${process.env.REACT_APP_API_URL}/blogs/${id}`, requestOptions);
 }
 
 export { getBlogs, getDrafts, getBlog, createBlog, updateBlog, deleteBlog };

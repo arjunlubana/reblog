@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { BlogCard, EmptyBlogs, Spinner } from "components";
-import { getBlogs } from "utils/api";
+import { getBlogs } from "api";
 
 export default function Blogs() {
   const { isLoading, data } = useQuery("blogs", getBlogs);

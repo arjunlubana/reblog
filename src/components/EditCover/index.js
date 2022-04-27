@@ -1,6 +1,5 @@
 import idleImage from "assets/image.svg";
 import { useState } from "react";
-import { BASE_URL } from "utils/api";
 import { FilePond, registerPlugin } from "react-filepond";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import FilePondPluginImageResize from "filepond-plugin-image-resize";
@@ -44,7 +43,7 @@ export default function EditCover({ blog, setBlog }) {
       stylePanelAspectRatio="16:9"
       imageCropAspectRatio="16:9"
       server={{
-        url: BASE_URL,
+        url: `${process.env.REACT_APP_API_URL}`,
         process: {
           url: `./blogs/${blog.id}`,
           method: "PUT",
