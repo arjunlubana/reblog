@@ -1,4 +1,3 @@
-import idleImage from "assets/image.svg";
 import { useState } from "react";
 import { FilePond, registerPlugin } from "react-filepond";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
@@ -16,6 +15,7 @@ registerPlugin(
   FilePondPluginFileValidateType,
   FilePondPluginImageTransform
 );
+
 
 export default function EditCover({ blog, setBlog }) {
   const [files, setFiles] = useState(
@@ -35,9 +35,7 @@ export default function EditCover({ blog, setBlog }) {
         }
       }}
       labelIdle={
-        `<div><img src=${idleImage} alt="idle cover">` +
-        "<p>Upload a cover image.  " +
-        '<span class="filepond--label-action" >Browse files</span></p></div>'
+        '<div class="filepond--label-action" style="display: flex, justify-content: center, align-items:center">Browse files</div>'
       }
       stylePanelLayout="compact"
       stylePanelAspectRatio="16:9"

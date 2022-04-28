@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { Editor } from "draft-js";
-import Container from "@mui/material/Container"
 import { Toolbar } from "components";
 
 import "draft-js/dist/Draft.css";
@@ -17,7 +16,7 @@ export default function BlogBody({ blog, setBlog, readOnly }) {
   };
 
   return (
-    <Container>
+    <>
       <Toolbar
         blog={blog}
         setBlog={setBlog}
@@ -31,6 +30,6 @@ export default function BlogBody({ blog, setBlog, readOnly }) {
         ref={editorRef}
         readOnly={readOnly}
       />
-    </Container>
+    </>
   );
 }

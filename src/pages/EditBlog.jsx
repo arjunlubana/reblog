@@ -1,5 +1,6 @@
 import { IconContext } from "react-icons";
 import { IoTrashOutline, IoCloudUploadOutline } from "react-icons/io5";
+import Box from "@mui/material/Box"
 import useBlog from "hooks/useBlog";
 import { EditCover, BlogTitle, BlogBody } from "components";
 
@@ -12,8 +13,17 @@ export default function EditBlog() {
   }
 
   return (
-    <div className="w-75 mt-5 mx-auto">
-      <IconContext.Provider value={{ size: "24px" }}>
+    <Box sx={{maxWidth: 600, mx: "auto", my: 2}} >
+      <EditCover blog={blog} setBlog={setBlog} />
+      <BlogTitle blog={blog} setBlog={setBlog} readOnly={false} />
+      <BlogBody blog={blog} setBlog={setBlog} readOnly={false} />
+    </Box>
+  );
+}
+
+
+
+{/*<IconContext.Provider value={{ size: "24px" }}>
         <div className="d-flex justify-content-center">
           <button
             className="btn btn-info m-1"
@@ -40,10 +50,4 @@ export default function EditBlog() {
             <span>Delete</span>
           </button>
         </div>
-      </IconContext.Provider>
-      <EditCover blog={blog} setBlog={setBlog} />
-      <BlogTitle blog={blog} setBlog={setBlog} readOnly={false} />
-      <BlogBody blog={blog} setBlog={setBlog} readOnly={false} />
-    </div>
-  );
-}
+      </IconContext.Provider>*/}
