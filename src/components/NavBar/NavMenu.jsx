@@ -38,7 +38,7 @@ export default function NavMenu() {
 			open={isMobileMenuOpen}
 			onClose={handleMobileMenuClose}
 		>
-			<MenuItem component={Link} to="/profile">
+			<MenuItem component={Link} to="/profile" sx={{ py: 0 }}>
 				<IconButton
 					size="large"
 					aria-label="account of current user"
@@ -50,7 +50,7 @@ export default function NavMenu() {
 				</IconButton>
 				<p>Profile</p>
 			</MenuItem>
-			<MenuItem component={Link} to="/drafts">
+			<MenuItem component={Link} to="/drafts" sx={{ py: 0 }}>
 				<IconButton
 					size="large"
 					aria-label="show 4 new mails"
@@ -60,7 +60,7 @@ export default function NavMenu() {
 				</IconButton>
 				<p>Drafts</p>
 			</MenuItem>
-			<MenuItem component={Link} to="/notifications">
+			<MenuItem component={Link} to="/notifications" sx={{ py: 0 }}>
 				<IconButton
 					size="large"
 					aria-label="show 17 new notifications"

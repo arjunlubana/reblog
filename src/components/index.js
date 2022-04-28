@@ -1,4 +1,3 @@
-import Avatar from "components/Avatar";
 import Navbar from "components/NavBar";
 import Toolbar from "components/Toolbar";
 import EmptyBlogs from "components/EmptyBlogs";
@@ -12,7 +11,6 @@ import BlogBody from "./BlogBody";
 import EditCover from "./EditCover";
 
 export {
-	Avatar,
 	Navbar,
 	Toolbar,
 	ViewCover,

@@ -1,14 +1,10 @@
-import { Avatar } from "components";
+import {Box, Avatar, Typography} from "@mui/material"
 
 export default function Profile() {
   return (
-    <div className="container-fluid w-75 mx-auto d-flex flex-column justify-content-center align-items-center">
-      <Avatar />
-      <div className="text-center">
-        <h3>Name</h3>
-        <h4>Email</h4>
-        <h5>Joined on</h5>
-      </div>
-    </div>
+    <Box sx={{maxWidth: 600, mx: "auto", my: 2}}>
+      <Avatar src="./assets/profile.jpg" sx={{width: 200, height: 200, mx: "auto"}} />
+      <Typography component="h1" variant="h3" align="center">Maryanne Singh</Typography>
+    </Box>
   );
 }
