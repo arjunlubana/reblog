@@ -13,7 +13,7 @@ export default function EditBlog() {
   }
 
   return (
-    <Box sx={{maxWidth: 600, mx: "auto", my: 2}} >
+    <Box sx={{maxWidth: 800, mx: "auto", my: 2}} >
       <EditCover blog={blog} setBlog={setBlog} />
       <BlogTitle blog={blog} setBlog={setBlog} readOnly={false} />
       <BlogBody blog={blog} setBlog={setBlog} readOnly={false} />
