@@ -34,7 +34,7 @@ async function createBlog(data) {
 
 async function updateBlog(id, data) {
   const requestOptions = {
-    method: "PUT",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
