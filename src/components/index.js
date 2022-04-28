@@ -4,11 +4,10 @@ import Toolbar from "components/Toolbar";
 import EmptyBlogs from "components/EmptyBlogs";
 import EditCover from "components/EditCover";
 
-
-import StyledLink from "components/StyledLink";
-import BlogCard from "components/BlogCard";
-import BlogsList from "components/BlogsList";
-import ViewCover from "components/ViewCover";
+import StyledLink from "./StyledLink";
+import BlogCard from "./BlogCard";
+import BlogsList from "./BlogsList";
+import ViewCover from "./ViewCover";
 import BlogTitle from "./BlogTitle";
 import BlogBody from "./BlogBody";
 
