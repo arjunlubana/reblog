@@ -23,7 +23,7 @@ export default function BlogTitle({ blog, setBlog, readOnly }) {
     <Editor
       editorState={blog.title}
       onChange={handleChange}
-      placeholder={<h1>Blog Title</h1>}
+      placeholder={<h1 style={{ margin: 0 }}>Title</h1>}
       handleReturn={() => "handled"}
       textAlignment="center"
       readOnly={readOnly}

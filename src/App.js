@@ -6,7 +6,7 @@ import {
   ViewBlog,
   EditBlog,
   Login,
-  PageNotFound,
+  Page404,
   Profile,
   SignUp,
 } from "pages";
@@ -26,7 +26,7 @@ export default function App() {
         <Route path="profile" element={<Profile />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
-        <Route path="*" element={<PageNotFound />} />
+        <Route path="*" element={<Page404 />} />
       </Route>
     </Routes>
   );

@@ -5,7 +5,7 @@ import {
     createBlog,
     updateBlog,
     deleteBlog,
-} from "./ApiRequest";
+} from "./blogsApi";
 
 export {
     getBlogs,
