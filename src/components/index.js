@@ -3,13 +3,14 @@ import Navbar from "components/NavBar";
 import Toolbar from "components/Toolbar";
 import EmptyBlogs from "components/EmptyBlogs";
 import EditCover from "components/EditCover";
-import BlogBody from "components/BlogBody";
+
 
 import StyledLink from "components/StyledLink";
 import BlogCard from "components/BlogCard";
 import BlogsList from "components/BlogsList";
 import ViewCover from "components/ViewCover";
 import BlogTitle from "./BlogTitle";
+import BlogBody from "./BlogBody";
 
 export {
 	Avatar,

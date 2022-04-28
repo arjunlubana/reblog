@@ -1,10 +1,11 @@
-import { Editor } from "draft-js";
-import { Toolbar } from "components";
 import { useRef } from "react";
+import { Editor } from "draft-js";
+import Container from "@mui/material/Container"
+import { Toolbar } from "components";
+
 import "draft-js/dist/Draft.css";
 
 export default function BlogBody({ blog, setBlog, readOnly }) {
-
   const handleChange = (editorState) => {
     setBlog({ ...blog, body: editorState });
   };
@@ -12,26 +13,24 @@ export default function BlogBody({ blog, setBlog, readOnly }) {
   const editorRef = useRef(null);
 
   const focusEditor = () => {
-    editorRef.current.focus()
-  }
+    editorRef.current.focus();
+  };
 
   return (
-    <div className="d-flex flex-column">
+    <Container>
       <Toolbar
         blog={blog}
         setBlog={setBlog}
         focusEditor={focusEditor}
         readOnly={readOnly}
       />
-      <div className="w-75 mx-auto p-4 body-editor">
-        <Editor
-          editorState={blog.body}
-          onChange={handleChange}
-          placeholder="Whats on your mind ..."
-          ref={editorRef}
-          readOnly={readOnly}
-        />
-      </div>
-    </div>
+      <Editor
+        editorState={blog.body}
+        onChange={handleChange}
+        placeholder="Whats on your mind ..."
+        ref={editorRef}
+        readOnly={readOnly}
+      />
+    </Container>
   );
 }
