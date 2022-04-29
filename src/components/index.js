@@ -1,7 +1,5 @@
-import Navbar from "components/NavBar";
-import Toolbar from "components/Toolbar";
-import EmptyBlogs from "components/EmptyBlogs";
-
+import Navbar from "./NavBar";
+import Toolbar from "./Toolbar";
 import StyledLink from "./StyledLink";
 import BlogCard from "./BlogCard";
 import BlogsList from "./BlogsList";
@@ -9,16 +7,18 @@ import ViewCover from "./ViewCover";
 import BlogTitle from "./BlogTitle";
 import BlogBody from "./BlogBody";
 import EditCover from "./EditCover";
+import EmptyBlogs from "./EmptyBlogs";
 
 export {
 	Navbar,
-	Toolbar,
+	BlogsList,
+	EmptyBlogs,
+	BlogCard,
 	ViewCover,
 	EditCover,
 	BlogTitle,
+	Toolbar,
 	BlogBody,
-	BlogCard,
-	EmptyBlogs,
 	StyledLink,
-	BlogsList,
+
 };

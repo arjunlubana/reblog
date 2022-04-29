@@ -13,28 +13,38 @@ import { IoHeartOutline, IoShareSocialOutline } from "react-icons/io5";
 
 import { StyledLink } from "components";
 
-export default function BlogCard({blog}) {
+export default function BlogCard({ blog }) {
     const previewText = (editorState) => {
         return convertFromRaw(editorState).getFirstBlock().getText();
     };
     return (
-        <Card sx={{ maxWidth: 600, mx: "auto", my: 1 }}>
+        <Card
+            sx={{
+                maxWidth: 600,
+                mx: "auto",
+                my: 2,
+                "&:hover": {
+                    transition: "all 300ms ease-in-out",
+                    boxShadow: "2px 2px 10px #00000070"
+                },
+            }}
+        >
             <CardHeader
                 component={StyledLink}
                 to="/profile"
                 avatar={
                     <Avatar aria-label="Author" image="s" alt="A">
-                    A
+                        A
                     </Avatar>
                 }
-                title="Arjun Singh Lubana"
+                title={<Typography variant="body1">Arjun Singh Lubana</Typography>}
                 subheader="September 14, 2016"
             />
             <StyledLink to={`/blog/${blog.id}`}>
                 <CardMedia component="img" image="cover-image.jpg" alt="" />
 
                 <CardContent>
-                <Typography variant="h6" color="text.secondary">
+                    <Typography variant="h6" color="text.secondary">
                         {previewText(blog.title)}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
