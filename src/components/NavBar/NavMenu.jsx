@@ -60,7 +60,7 @@ export default function NavMenu() {
 				</IconButton>
 				<p>Drafts</p>
 			</MenuItem>
-			<MenuItem component={Link} to="/blogs/new" sx={{ py: 0 }}>
+			<MenuItem component={Link} to="/blog/new" sx={{ py: 0 }}>
 				<IconButton
 					size="large"
 					aria-label="create a new blog post"
