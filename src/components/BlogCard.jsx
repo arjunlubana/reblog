@@ -41,7 +41,7 @@ export default function BlogCard({ blog }) {
                 subheader="September 14, 2016"
             />
             <StyledLink to={`/blog/${blog.id}`}>
-                <CardMedia component="img" image="cover-image.jpg" alt="" />
+                <CardMedia component="img" image={blog.cover} alt={blog.cover} />
 
                 <CardContent>
                     <Typography variant="h6" color="text.secondary">

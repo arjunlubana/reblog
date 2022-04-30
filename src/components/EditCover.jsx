@@ -43,8 +43,8 @@ export default function EditCover({ blog, setBlog }) {
       server={{
         url: `${process.env.REACT_APP_API_URL}`,
         process: {
-          url: `./blogs/${blog.id}`,
-          method: "PUT",
+          url: `/blogs/${blog.id}`,
+          method: "PATCH",
           withCredentials: false,
           onload: null,
           onerror: null,

@@ -14,7 +14,7 @@ export default function ViewBlog() {
   }
   return (
     <Box sx={{ maxWidth: 800, mx: "auto", my: 2 }}>
-      <ViewCover src="/cover-image.jpg" alt="Cover" />
+      <ViewCover src={blog.cover} alt={blog.cover} />
       <BlogTitle blog={blog} setBlog={setBlog} readOnly={true} />
       <BlogBody blog={blog} setBlog={setBlog} readOnly={true} />
       <IconContext.Provider value={{ size: 24, color: "white" }}>
