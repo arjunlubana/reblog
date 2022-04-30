@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Box, IconButton, Badge, MenuItem, Menu } from "@mui/material";
+import { Box, IconButton, Button, Badge, MenuItem, Menu } from "@mui/material";
 import {
 	IoNotificationsOutline,
 	IoDocumentTextOutline,
 	IoMenu,
 	IoPersonCircleOutline,
+	IoCreateOutline,
 } from "react-icons/io5";
 
 export default function NavMenu() {
@@ -60,17 +61,15 @@ export default function NavMenu() {
 				</IconButton>
 				<p>Drafts</p>
 			</MenuItem>
-			<MenuItem component={Link} to="/notifications" sx={{ py: 0 }}>
+			<MenuItem component={Link} to="/blogs/new" sx={{ py: 0 }}>
 				<IconButton
 					size="large"
-					aria-label="show 17 new notifications"
+					aria-label="create a new blog post"
 					color="inherit"
 				>
-					<Badge badgeContent={17} color="error">
-						<IoNotificationsOutline />
-					</Badge>
+					<IoCreateOutline />
 				</IconButton>
-				<p>Notifications</p>
+				<p>Write</p>
 			</MenuItem>
 		</Menu>
 	);
@@ -78,25 +77,25 @@ export default function NavMenu() {
 	return (
 		<>
 			<Box sx={{ display: { xs: "none", md: "flex" } }}>
+				<Button
+					variant="contained"
+					component={Link}
+					to="/blogs/new"
+					size="large"
+					aria-label="create a new blog post"
+					startIcon={<IoCreateOutline />}
+					color="secondary"
+				>
+					Write
+				</Button>
 				<IconButton
 					component={Link}
 					to="/drafts"
 					size="large"
-					aria-label="show 4 new mails"
+					aria-label="show unpublished blog posts"
 					color="inherit"
 				>
 					<IoDocumentTextOutline />
-				</IconButton>
-				<IconButton
-					component={Link}
-					to="/notifications"
-					size="large"
-					aria-label="show 17 new notifications"
-					color="inherit"
-				>
-					<Badge badgeContent={17} color="error">
-						<IoNotificationsOutline />
-					</Badge>
 				</IconButton>
 				<IconButton
 					component={Link}
