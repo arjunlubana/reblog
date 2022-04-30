@@ -32,9 +32,8 @@ export default function EditBlog() {
           }}
           icon={
             <SpeedDialIcon
-              icon={<IoSaveOutline />}
+              icon={<IoSaveOutline onClick={() => update_blog(blog.id)} />}
               openIcon={<IoSaveOutline />}
-              onClose={() => update_blog(blog.id)}
             />
           }
         >
