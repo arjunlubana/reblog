@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Box, IconButton, Button, Badge, MenuItem, Menu } from "@mui/material";
+import { Box, IconButton, Button, MenuItem, Menu } from "@mui/material";
 import {
-	IoNotificationsOutline,
 	IoDocumentTextOutline,
 	IoMenu,
 	IoPersonCircleOutline,
