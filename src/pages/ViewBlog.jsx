@@ -4,13 +4,13 @@ import Fab from "@mui/material/Fab";
 import { IoPencilSharp } from "react-icons/io5";
 
 import useBlog from "hooks/useBlog";
-import { ViewCover, BlogTitle, BlogBody, StyledLink } from "components";
+import { ViewCover, BlogTitle, BlogBody, StyledLink, BlogLoader } from "components";
 
 export default function ViewBlog() {
   const { isLoading, blog, setBlog } = useBlog();
 
   if (isLoading) {
-    return <div>...Loading</div>;
+    return <BlogLoader/>
   }
   return (
     <Box sx={{ maxWidth: 800, mx: "auto", my: 2 }}>

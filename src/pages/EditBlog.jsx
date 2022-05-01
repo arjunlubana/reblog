@@ -5,16 +5,15 @@ import {
   IoCloudUploadOutline,
 } from "react-icons/io5";
 import { Box, SpeedDial, SpeedDialIcon, SpeedDialAction } from "@mui/material";
-
 import useBlog from "hooks/useBlog";
-import { EditCover, BlogTitle, BlogBody } from "components";
+import { EditCover, BlogTitle, BlogBody, BlogLoader } from "components";
 
 export default function EditBlog() {
   const { isLoading, blog, setBlog, delete_blog, update_blog, publish_blog } =
     useBlog();
 
   if (isLoading) {
-    return <div>...Loading</div>;
+    return <BlogLoader />;
   }
 
   return (

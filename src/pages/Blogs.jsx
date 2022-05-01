@@ -1,16 +1,15 @@
 import { useQuery } from "react-query";
-import { BlogsList, EmptyBlogs } from "components";
+import { BlogsList, EmptyBlogs, BlogListLoader } from "components";
 import { getBlogs } from "api";
 
 export default function Blogs() {
-   const { isLoading, data } = useQuery("drafts", getBlogs);
+  const { isLoading, data } = useQuery("drafts", getBlogs);
 
   return isLoading ? (
-    <div>...Loading</div>
+    <BlogListLoader />
   ) : data.length === 0 ? (
     <EmptyBlogs />
   ) : (
     <BlogsList blogs={data} />
   );
 }
-

@@ -9,6 +9,8 @@ import BlogBody from "./BlogBody";
 import EditCover from "./EditCover";
 import EmptyBlogs from "./EmptyBlogs";
 
+import { BlogListLoader, BlogLoader } from "./Loaders";
+
 export {
 	Navbar,
 	BlogsList,
@@ -20,5 +22,6 @@ export {
 	Toolbar,
 	BlogBody,
 	StyledLink,
-
+	BlogListLoader,
+	BlogLoader,
 };
