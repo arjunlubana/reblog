@@ -3,7 +3,7 @@ import { BlogsList, EmptyBlogs, BlogListLoader } from "components";
 import { getBlogs } from "api";
 
 export default function Blogs() {
-  const { isLoading, data } = useQuery("drafts", getBlogs);
+  const { isLoading, data } = useQuery("blogs", getBlogs);
 
   return isLoading ? (
     <BlogListLoader />

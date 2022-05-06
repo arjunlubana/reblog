@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 import {
   Home,
   Blogs,
@@ -12,7 +13,6 @@ import {
 } from "pages";
 
 export default function App() {
-  
   return (
     <Routes>
       <Route path="/" element={<Home />}>
@@ -20,12 +20,24 @@ export default function App() {
         <Route path="drafts" element={<Drafts />} />
         <Route path="blog">
           <Route path=":blogId" element={<ViewBlog />} />
-          <Route path=":blogId/edit" element={<EditBlog />} />
-          <Route path="new" element={<EditBlog />} />
+          <Route
+            path=":blogId/edit"
+            element={withAuthenticationRequired(<EditBlog />, {
+              onRedirecting: () => (
+                <div>Redirecting you to the login page...</div>
+              ),
+            })}
+          />
+          <Route
+            path="new"
+            element={withAuthenticationRequired(<EditBlog />, {
+              onRedirecting: () => (
+                <div>Redirecting you to the login page...</div>
+              ),
+            })}
+          />
         </Route>
         <Route path="profile" element={<Profile />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<SignUp />} />
         <Route path="*" element={<Page404 />} />
       </Route>
     </Routes>

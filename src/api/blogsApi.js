@@ -1,5 +1,5 @@
 async function getBlogs() {
-  const response = await fetch(`${process.env.REACT_APP_API_URL}/blogs/all`);
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/blogs`);
   const result = await response.json();
   return result;
 }
