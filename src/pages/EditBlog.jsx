@@ -1,63 +1,24 @@
+import { useParams } from "react-router-dom";
+import { useQuery } from "react-query";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
-import { IconContext } from "react-icons";
-import {
-  IoSaveOutline,
-  IoTrashOutline,
-  IoCloudUploadOutline,
-} from "react-icons/io5";
-import { Box, SpeedDial, SpeedDialIcon, SpeedDialAction } from "@mui/material";
-import useBlog from "hooks/useBlog";
-import { EditCover, BlogTitle, BlogBody, BlogLoader, Redirect } from "components";
+import { BlogEditor, BlogLoader, Redirect } from "components";
+import { reblogApi } from "api";
 
 function EditBlog() {
-  const { isLoading, blog, setBlog, delete_blog, update_blog, publish_blog } =
-    useBlog();
+  const params = useParams();
+  const { isLoading, isError, error, data } = useQuery("blog", () =>
+    reblogApi.get(`/blogs/${params.blogId}`)
+  );
 
   if (isLoading) {
     return <BlogLoader />;
   }
+  if (isError) {
+    return <div>{JSON.stringify(error)}</div>;
+  }
 
-  return (
-    <Box sx={{ maxWidth: 800, mx: "auto", my: 2 }}>
-      <EditCover blog={blog} setBlog={setBlog} />
-      <BlogTitle blog={blog} setBlog={setBlog} readOnly={false} />
-      <BlogBody blog={blog} setBlog={setBlog} readOnly={false} />
-      <IconContext.Provider value={{ size: 24 }}>
-        <SpeedDial
-          ariaLabel="SpeedDial openIcon example"
-          sx={{
-            position: "fixed",
-            bottom: 16,
-            right: { xs: 16, sm: 64, md: 128, lg: 128 },
-          }}
-          icon={
-            <SpeedDialIcon
-              icon={<IoSaveOutline onClick={() => update_blog(blog.id)} />}
-              openIcon={<IoSaveOutline />}
-            />
-          }
-        >
-          {!blog.publish && (
-            <SpeedDialAction
-              icon={<IoCloudUploadOutline />}
-              tooltipTitle="Publish"
-              tooltipOpen
-              onClick={() => publish_blog(blog.id)}
-            />
-          )}
-          <SpeedDialAction
-            icon={<IoTrashOutline />}
-            tooltipTitle="Delete"
-            tooltipOpen
-            onClick={() => delete_blog(blog.id)}
-          />
-        </SpeedDial>
-      </IconContext.Provider>
-    </Box>
-  );
+  return <BlogEditor data={data.data} />;
 }
-
-
 export default withAuthenticationRequired(EditBlog, {
-  onRedirecting: () => <Redirect />
-})
+  onRedirecting: () => <Redirect />,
+});

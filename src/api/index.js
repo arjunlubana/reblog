@@ -1,17 +1,3 @@
-import {
-    getBlogs,
-    getDrafts,
-    getBlog,
-    createBlog,
-    updateBlog,
-    deleteBlog,
-} from "./blogsApi";
+import reblogApi from "./reblogApi";
 
-export {
-    getBlogs,
-    getDrafts,
-    getBlog,
-    createBlog,
-    updateBlog,
-    deleteBlog,
-};
+export { reblogApi };

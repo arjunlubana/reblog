@@ -1,9 +1,9 @@
 import { useQuery } from "react-query";
 import { EmptyBlogs, BlogsList, BlogListLoader } from "components";
-import { getDrafts } from "api";
+import reblogApi from "api/reblogApi";
 
 export default function Drafts() {
-  const { isLoading, data } = useQuery("drafts", getDrafts);
+  const { isLoading, data } = useQuery("drafts", () => reblogApi.get("/drafts"));
 
   return isLoading ? (
     <BlogListLoader />

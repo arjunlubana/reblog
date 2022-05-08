@@ -1,6 +1,7 @@
 import Home from "pages/Home";
 import ViewBlog from "pages/ViewBlog";
 import EditBlog from "pages/EditBlog";
+import NewBlog from "pages/NewBlog";
 import Blogs from "pages/Blogs";
 import Drafts from "pages/Drafts";
 import Login from "pages/Login";
@@ -12,6 +13,7 @@ export {
   Home,
   ViewBlog,
   EditBlog,
+  NewBlog,
   Blogs,
   Drafts,
   Login,

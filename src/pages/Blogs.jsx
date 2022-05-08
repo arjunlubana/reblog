@@ -1,15 +1,15 @@
 import { useQuery } from "react-query";
 import { BlogsList, EmptyBlogs, BlogListLoader } from "components";
-import { getBlogs } from "api";
+import { reblogApi } from "api";
 
 export default function Blogs() {
-  const { isLoading, data } = useQuery("blogs", getBlogs);
+  const { isLoading, data } = useQuery("blogs", () => reblogApi.get("/blogs"));
 
   return isLoading ? (
     <BlogListLoader />
-  ) : data.length === 0 ? (
+  ) : data.data.length === 0 ? (
     <EmptyBlogs />
   ) : (
-    <BlogsList blogs={data} />
+    <BlogsList blogs={data.data} />
   );
 }

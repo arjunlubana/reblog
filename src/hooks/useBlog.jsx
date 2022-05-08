@@ -1,68 +1,13 @@
-import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
-import { createBlog, deleteBlog, getBlog, updateBlog } from "api";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
+import { getEditorState, getRawEditorState } from "utils";
+import reblogApi from "api/reblogApi";
 
-export default function useBlog() {
-  const params = useParams();
+export default function useBlog(data) {
   const navigate = useNavigate();
-  const [blog, setBlog] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-
-  /**
-   * Converts DraftJS EditorState to RawDraftContentState.
-   * The RawDraftContentState can be sent to the server for storage.
-   * @param {EditorState} editorState
-   * @returns {RawDraftContentState} DraftJS RawDraftContentState
-   */
-  const getRawState = (editorState) => {
-    editorState = editorState ? editorState : EditorState.createEmpty();
-    return convertToRaw(editorState.getCurrentContent());
-  };
-
-  /**
-   * Converts DraftJS RawDraftContentState to EditorState.
-   * The EditorState is used by the client to render DraftJS Editor content.
-   * @param {RawDraftContentState} rawState
-   * @returns {EditorState} DraftJS EditorState
-   */
-  const getEditorState = (rawState) => {
-    return EditorState.createWithContent(convertFromRaw(rawState));
-  };
-
-  /**
-   * Effects to run:
-   *
-   * 1. - Check if there are ID params in the URL.
-   *    - Get the blog associated with the ID.
-   *    - Set the blog state with the response.
-   *
-   * 2. - If there are no params i.e New Blog is being created.
-   *    - Create a new blog on the server with empty editor states
-   *      the body & title.
-   *    - Set the blog state with the response.
-   */
-  useEffect(() => {
-    if (params.blogId) {
-      getBlog(params.blogId).then((data) => {
-        setBlog({
-          ...data,
-          title: getEditorState(data.title),
-          body: getEditorState(data.body),
-        });
-        setIsLoading(false);
-      });
-    } else {
-      createBlog({ title: getRawState(), body: getRawState() }).then((data) => {
-        setBlog({
-          ...data,
-          title: getEditorState(data.title),
-          body: getEditorState(data.body),
-        });
-        setIsLoading(false);
-      });
-    }
-  }, [params.blogId]);
+  const [blog, setBlog] = useState();
+  const { getAccessTokenSilently } = useAuth0();
 
   /**
    *
@@ -70,11 +15,17 @@ export default function useBlog() {
    * in regards to the ID passed.
    * @param {number} id
    */
-  const update_blog = (id) => {
-    updateBlog(id, {
-      ...blog,
-      title: getRawState(blog.title),
-      body: getRawState(blog.body),
+  const update_blog = async (id) => {
+    const accessToken = await getAccessTokenSilently();
+    reblogApi({
+      url: `/blogs/${id}`,
+      method: "patch",
+      headers: { Authorization: `Bearer ${accessToken}` },
+      data: {
+        ...blog,
+        title: getRawEditorState(blog.title),
+        body: getRawEditorState(blog.body),
+      },
     });
   };
 
@@ -82,12 +33,18 @@ export default function useBlog() {
    * Updates the blog publish value to true
    * @param {number} id
    */
-  const publish_blog = (id) => {
-    updateBlog(id, {
-      ...blog,
-      publish: true,
-      title: getRawState(blog.title),
-      body: getRawState(blog.body),
+  const publish_blog = async (id) => {
+    const accessToken = await getAccessTokenSilently();
+    reblogApi({
+      url: `/blogs/${id}`,
+      method: "patch",
+      headers: { Authorization: `Bearer ${accessToken}` },
+      data: {
+        ...blog,
+        publish: true,
+        title: getRawEditorState(blog.title),
+        body: getRawEditorState(blog.body),
+      },
     });
   };
 
@@ -95,11 +52,25 @@ export default function useBlog() {
    * Delete a blog with the ID from the UI and Backend
    * @param {number} id
    */
-  const delete_blog = (id) => {
-    deleteBlog(id);
-    // setBlogs(blogs.filter((blog) => blog.id !== id));
+  const delete_blog = async(id) => {
+const accessToken = await getAccessTokenSilently();
+    reblogApi({
+      url: `/blogs/${id}`,
+      method: "delete",
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
     navigate("/", { replace: true });
   };
 
-  return {isLoading, blog, setBlog, delete_blog, update_blog, publish_blog}
+  useEffect(() => {
+    if (data) {
+      setBlog({
+        ...data,
+        title: getEditorState(data.title),
+        body: getEditorState(data.body),
+      });
+    }
+  }, [data]);
+
+  return { blog, setBlog, delete_blog, update_blog, publish_blog };
 }

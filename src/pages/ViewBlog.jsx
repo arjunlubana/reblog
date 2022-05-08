@@ -1,18 +1,46 @@
+import { useState, useEffect } from "react";
+import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
 import { IconContext } from "react-icons";
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
 import { IoPencilSharp } from "react-icons/io5";
 
-import useBlog from "hooks/useBlog";
-import { ViewCover, BlogTitle, BlogBody, StyledLink, BlogLoader } from "components";
+import {
+  ViewCover,
+  BlogTitle,
+  BlogBody,
+  StyledLink,
+  BlogLoader,
+} from "components";
+import { getEditorState } from "utils";
+import { reblogApi } from "api";
 
 export default function ViewBlog() {
-  const { isLoading, blog, setBlog } = useBlog();
+  const [blog, setBlog] = useState();
+  const params = useParams();
+  const { isLoading, isError, error, data } = useQuery("blog", () =>
+    reblogApi.get(`/blogs/${params.blogId}`)
+  );
+
+  useEffect(() => {
+    if (data) {
+      setBlog({
+        ...data,
+        title: getEditorState(data.data.title),
+        body: getEditorState(data.data.body),
+      });
+    }
+  }, [data]);
 
   if (isLoading) {
-    return <BlogLoader/>
+    return <BlogLoader />;
   }
-  return (
+  if (isError) {
+    return <div>{JSON.stringify(error)}</div>;
+  }
+
+  return blog ? (
     <Box sx={{ maxWidth: 800, mx: "auto", my: 2 }}>
       <ViewCover src={blog.cover} alt={blog.cover} />
       <BlogTitle blog={blog} setBlog={setBlog} readOnly={true} />
@@ -20,7 +48,7 @@ export default function ViewBlog() {
       <IconContext.Provider value={{ size: 24, color: "white" }}>
         <Fab
           component={StyledLink}
-          to={`/blog/${blog.id}/edit`}
+          to={`/blog/${params.blogId}/edit`}
           color="success"
           sx={{
             position: "fixed",
@@ -32,5 +60,7 @@ export default function ViewBlog() {
         </Fab>
       </IconContext.Provider>
     </Box>
+  ) : (
+    ""
   );
 }

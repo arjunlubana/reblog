@@ -5,6 +5,7 @@ import {
   Drafts,
   ViewBlog,
   EditBlog,
+  NewBlog,
   Page404,
   Profile,
 } from "pages";
@@ -18,7 +19,7 @@ export default function App() {
         <Route path="blog">
           <Route path=":blogId" element={<ViewBlog />} />
           <Route path=":blogId/edit" element={<EditBlog />} />
-          <Route path="new" element={<EditBlog />} />
+          <Route path="new" element={<NewBlog />} />
         </Route>
         <Route path="profile" element={<Profile />} />
         <Route path="*" element={<Page404 />} />
