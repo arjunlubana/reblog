@@ -15,20 +15,18 @@ const queryClient = new QueryClient();
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Auth0Provider
-			domain={process.env.REACT_APP_AUTH0_DOMAIN}
-			clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
-			redirectUri={window.location.origin}
-			audience={process.env.REACT_APP_AUTH0_MANAGEMENT_API}
-			scope="read:current_user update:current_user_metadata"
-		>
-			<BrowserRouter>
+		<BrowserRouter>
+			<Auth0Provider
+				domain={process.env.REACT_APP_AUTH0_DOMAIN}
+				clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
+				redirectUri={window.location.origin}
+			>
 				<QueryClientProvider client={queryClient}>
 					<CssBaseline />
 					<App />
 				</QueryClientProvider>
-			</BrowserRouter>
-		</Auth0Provider>
+			</Auth0Provider>
+		</BrowserRouter>
 	</React.StrictMode>,
 	document.getElementById("root")
 );

@@ -8,6 +8,7 @@ import BlogTitle from "./BlogTitle";
 import BlogBody from "./BlogBody";
 import EditCover from "./EditCover";
 import EmptyBlogs from "./EmptyBlogs";
+import Redirect from "./Redirect"
 
 import { BlogListLoader, BlogLoader } from "./Loaders";
 
@@ -24,4 +25,5 @@ export {
 	StyledLink,
 	BlogListLoader,
 	BlogLoader,
+	Redirect
 };

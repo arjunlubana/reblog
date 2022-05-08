@@ -1,3 +1,4 @@
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 import { IconContext } from "react-icons";
 import {
   IoSaveOutline,
@@ -6,9 +7,9 @@ import {
 } from "react-icons/io5";
 import { Box, SpeedDial, SpeedDialIcon, SpeedDialAction } from "@mui/material";
 import useBlog from "hooks/useBlog";
-import { EditCover, BlogTitle, BlogBody, BlogLoader } from "components";
+import { EditCover, BlogTitle, BlogBody, BlogLoader, Redirect } from "components";
 
-export default function EditBlog() {
+function EditBlog() {
   const { isLoading, blog, setBlog, delete_blog, update_blog, publish_blog } =
     useBlog();
 
@@ -55,3 +56,8 @@ export default function EditBlog() {
     </Box>
   );
 }
+
+
+export default withAuthenticationRequired(EditBlog, {
+  onRedirecting: () => <Redirect />
+})

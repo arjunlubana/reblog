@@ -1,19 +1,18 @@
+import reblogApi from "./reblogApi";
+
 async function getBlogs() {
-  const response = await fetch(`${process.env.REACT_APP_API_URL}/blogs`);
-  const result = await response.json();
-  return result;
+  const response = await reblogApi.get("/blogs");
+  return response.data;
 }
 
 async function getDrafts() {
-  const response = await fetch(`${process.env.REACT_APP_API_URL}/blogs/drafts`);
-  const result = await response.json();
-  return result;
+  const response = await reblogApi.get("/blogs/drafts");
+  return response.data;
 }
 
 async function getBlog(id) {
-  const response = await fetch(`${process.env.REACT_APP_API_URL}/blogs/${id}`);
-  const result = await response.json();
-  return result;
+  const response = await reblogApi.get(`/blogs/${id}`);
+  return response.data;
 }
 
 async function createBlog(data) {
