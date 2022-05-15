@@ -14,7 +14,7 @@ export default function EmptyBlogs() {
     >
       Oops!
       <br />
-      No published articles.
+      Add a new article
       <br />
     </Typography>
   );
