@@ -22,6 +22,7 @@ function NewBlog() {
 	return <BlogEditor data={data.data} />;
 }
 
-export default withAuthenticationRequired(NewBlog, {
-	onRedirecting: () => <Redirect />,
-});
+// export default withAuthenticationRequired(NewBlog, {
+// 	onRedirecting: () => <Redirect />,
+// });
+export default NewBlog;
