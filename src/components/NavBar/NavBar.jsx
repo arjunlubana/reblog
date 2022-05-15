@@ -35,7 +35,7 @@ export default function NavBar() {
             <Button
               variant="contained"
               component={Link}
-              to="/blogs/new"
+              to="/blog/new"
               aria-label="create a new blog post"
               startIcon={<IoPencilOutline />}
               color="secondary"
