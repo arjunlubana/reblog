@@ -3,13 +3,12 @@ import { EmptyBlogs, BlogsList, BlogListLoader } from "components";
 import reblogApi from "api/reblogApi";
 
 export default function Drafts() {
-  const { isLoading, data } = useQuery("drafts", () => reblogApi.get("/drafts"));
-
+  const { isLoading, data } = useQuery("drafts", () => reblogApi.get("blogs/drafts"));
   return isLoading ? (
     <BlogListLoader />
-  ) : data.length === 0 ? (
+  ) : data.data.length ? (
     <EmptyBlogs />
   ) : (
-    <BlogsList blogs={data} />
+    <BlogsList blogs={data.data.data} />
   );
 }
