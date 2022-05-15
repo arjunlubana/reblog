@@ -11,6 +11,12 @@ export default function PopupMenuItems() {
           aria-label="settings for current user"
           color="primary"
           startIcon=<IoCog />
+          disableRipple={true}
+          sx={{
+            "&:hover": {
+              backgroundColor: "transparent",
+            },
+          }}
         >
           Settings
         </Button>
@@ -20,6 +26,12 @@ export default function PopupMenuItems() {
           aria-label="show user's drafts"
           color="primary"
           startIcon=<IoDocumentText />
+          disableRipple={true}
+          sx={{
+            "&:hover": {
+              backgroundColor: "transparent",
+            },
+          }}
         >
           Drafts
         </Button>

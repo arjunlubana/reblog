@@ -11,7 +11,7 @@ export default function Footer() {
       sx={{
         height: 100,
         width: "100%",
-        backgroundColor: "#000",
+        backgroundColor: "#332c62",
         color: "#ead6db",
         display: "flex",
         flexDirection: "column",
@@ -27,16 +27,16 @@ export default function Footer() {
           fontSize: "1.5rem",
         }}
       >
-        <Link href="https://github.com/arjunlubana">
+        <Link href="https://github.com/arjunlubana" color="#ead6db">
           <IoLogoGithub />
         </Link>
-        <Link href="https://instagram.com/iamjunox">
+        <Link href="https://instagram.com/iamjunox" color="#ead6db">
           <IoLogoLinkedin />
         </Link>
-        <Link href="https://twitter.com/iamjunox">
+        <Link href="https://twitter.com/iamjunox" color="#ead6db">
           <IoLogoTwitter />
         </Link>
-        <Link href="https://instagram.com/iamjunox">
+        <Link href="https://instagram.com/iamjunox" color="#ead6db">
           <IoLogoInstagram />
         </Link>
         

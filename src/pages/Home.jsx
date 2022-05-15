@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Box sx={{minHeight: "90vh"}} >
+      <Box sx={{ minHeight: "90vh" }}>
         <Outlet />
       </Box>
       <Footer />
