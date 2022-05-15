@@ -7,7 +7,7 @@ import NavMobileMenu from "./NavMobileMenu";
 
 export default function NavBar() {
   return (
-    <Box sx={{ flexGrow: 1, position: "sticky", top: 0 }}>
+    <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
           <Typography
@@ -55,7 +55,7 @@ export default function NavBar() {
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <Fab
               variant="extended"
-              color="primary"
+              color="secondary"
               component={Link}
               to="/blog/new"
               sx={{
@@ -67,9 +67,7 @@ export default function NavBar() {
                 fontSize: "1rem",
               }}
             >
-              <IconContext.Provider
-                value={{style: { marginRight: "5px" } }}
-              >
+              <IconContext.Provider value={{ style: { marginRight: "5px" } }}>
                 <IoPencilOutline />
               </IconContext.Provider>
               Write
