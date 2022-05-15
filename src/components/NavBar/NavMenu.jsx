@@ -1,125 +1,44 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Box, IconButton, Button, MenuItem, Menu } from "@mui/material";
-import {
-	IoDocumentTextOutline,
-	IoMenu,
-	IoPersonCircleOutline,
-	IoCreateOutline,
-} from "react-icons/io5";
+import { IconButton, Menu } from "@mui/material";
+import PopupMenuItems from "./PopupMenuItems";
+import NavAvatar from "./NavAvatar";
 
 export default function NavMenu() {
-	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [menuAnchorEl, setMenuAnchorEl] = React.useState(null);
 
-	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const isMenuOpen = Boolean(menuAnchorEl);
 
-	const handleMobileMenuClose = () => {
-		setMobileMoreAnchorEl(null);
-	};
+  const handleMenuClose = () => {
+    setMenuAnchorEl(null);
+  };
 
-	const handleMobileMenuOpen = (event) => {
-		setMobileMoreAnchorEl(event.currentTarget);
-	};
+  const handleMenuOpen = (event) => {
+    setMenuAnchorEl(event.currentTarget);
+  };
 
-	const mobileMenuId = "primary-search-account-menu-mobile";
-	const renderMobileMenu = (
-		<Menu
-			anchorEl={mobileMoreAnchorEl}
-			anchorOrigin={{
-				vertical: "bottom",
-				horizontal: "right",
-			}}
-			id={mobileMenuId}
-			keepMounted
-			transformOrigin={{
-				vertical: "top",
-				horizontal: "right",
-			}}
-			open={isMobileMenuOpen}
-			onClose={handleMobileMenuClose}
-		>
-			<MenuItem component={Link} to="/profile" sx={{ py: 0 }}>
-				<IconButton
-					size="large"
-					aria-label="account of current user"
-					aria-controls="primary-search-account-menu"
-					aria-haspopup="true"
-					color="inherit"
-				>
-					<IoPersonCircleOutline />
-				</IconButton>
-				<p>Profile</p>
-			</MenuItem>
-			<MenuItem component={Link} to="/drafts" sx={{ py: 0 }}>
-				<IconButton
-					size="large"
-					aria-label="show 4 new mails"
-					color="inherit"
-				>
-					<IoDocumentTextOutline />
-				</IconButton>
-				<p>Drafts</p>
-			</MenuItem>
-			<MenuItem component={Link} to="/blog/new" sx={{ py: 0 }}>
-				<IconButton
-					size="large"
-					aria-label="create a new blog post"
-					color="inherit"
-				>
-					<IoCreateOutline />
-				</IconButton>
-				<p>Write</p>
-			</MenuItem>
-		</Menu>
-	);
+  const menuId = "primary-search-account-menu";
+  const renderMenu = (
+    <Menu
+      anchorEl={menuAnchorEl}
+      id={menuId}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+      <PopupMenuItems />
+    </Menu>
+  );
 
-	return (
-		<>
-			<Box sx={{ display: { xs: "none", md: "flex" } }}>
-				<Button
-					variant="contained"
-					component={Link}
-					to="/blogs/new"
-					size="large"
-					aria-label="create a new blog post"
-					startIcon={<IoCreateOutline />}
-					color="secondary"
-				>
-					Write
-				</Button>
-				<IconButton
-					component={Link}
-					to="/drafts"
-					size="large"
-					aria-label="show unpublished blog posts"
-					color="inherit"
-				>
-					<IoDocumentTextOutline />
-				</IconButton>
-				<IconButton
-					component={Link}
-					to="/profile"
-					size="large"
-					edge="end"
-					aria-label="account of current user"
-					color="inherit"
-				>
-					<IoPersonCircleOutline />
-				</IconButton>
-			</Box>
-			<Box sx={{ display: { xs: "flex", md: "none" } }}>
-				<IconButton
-					size="large"
-					aria-label="show more"
-					aria-controls={mobileMenuId}
-					aria-haspopup="true"
-					onClick={handleMobileMenuOpen}
-					color="inherit"
-				>
-					<IoMenu />
-				</IconButton>
-			</Box>
-			{renderMobileMenu}
-		</>
-	);
+  return (
+    <>
+      <IconButton
+        aria-label="show more"
+        aria-controls={menuId}
+        aria-haspopup="true"
+        onClick={handleMenuOpen}
+      >
+        <NavAvatar />
+      </IconButton>
+      {renderMenu}
+    </>
+  );
 }

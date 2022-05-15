@@ -1,10 +1,9 @@
-import { Typography, Button } from "@mui/material";
-import { StyledLink } from "components";
+import { Typography } from "@mui/material";
 
 export default function EmptyBlogs() {
   return (
     <Typography
-      variant="h3"
+      variant="h5"
       color="gray"
       height="80vh"
       display="flex"
@@ -13,19 +12,10 @@ export default function EmptyBlogs() {
       alignItems="center"
       textAlign="center"
     >
-      Sorry!
+      Oops!
       <br />
-      There is nothing to show you.
+      No published articles.
       <br />
-      <Button
-        component={StyledLink}
-        to="/blog/new"
-        variant="outlined"
-        size="large"
-        sx={{ px: 3 , m: 3 }}
-      >
-        <Typography variant="h4">Publish a blog</Typography>
-      </Button>
     </Typography>
   );
 }

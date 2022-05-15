@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { IconContext } from "react-icons";
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
@@ -10,7 +10,6 @@ import {
   ViewCover,
   BlogTitle,
   BlogBody,
-  StyledLink,
   BlogLoader,
 } from "components";
 import { getEditorState } from "utils";
@@ -47,7 +46,7 @@ export default function ViewBlog() {
       <BlogBody blog={blog} setBlog={setBlog} readOnly={true} />
       <IconContext.Provider value={{ size: 24, color: "white" }}>
         <Fab
-          component={StyledLink}
+          component={Link}
           to={`/blog/${params.blogId}/edit`}
           color="success"
           sx={{

@@ -1,4 +1,5 @@
 import { convertFromRaw } from "draft-js";
+import { Link } from "react-router-dom";
 import {
     Card,
     CardHeader,
@@ -11,7 +12,7 @@ import {
 } from "@mui/material";
 import { IoHeartOutline, IoShareSocialOutline } from "react-icons/io5";
 
-import { StyledLink } from "components";
+
 
 export default function BlogCard({ blog }) {
     const previewText = (editorState) => {
@@ -30,7 +31,7 @@ export default function BlogCard({ blog }) {
             }}
         >
             <CardHeader
-                component={StyledLink}
+                component={Link}
                 to="/profile"
                 avatar={
                     <Avatar aria-label="Author" image="s" alt="A">
@@ -40,7 +41,7 @@ export default function BlogCard({ blog }) {
                 title={<Typography variant="body1">Arjun Singh Lubana</Typography>}
                 subheader="September 14, 2016"
             />
-            <StyledLink to={`/blog/${blog.id}`}>
+            <Link to={`/blog/${blog.id}`}>
                 <CardMedia component="img" image={blog.cover} alt={blog.cover} />
 
                 <CardContent>
@@ -51,7 +52,7 @@ export default function BlogCard({ blog }) {
                         {previewText(blog.body)}
                     </Typography>
                 </CardContent>
-            </StyledLink>
+            </Link>
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                     <IoHeartOutline />

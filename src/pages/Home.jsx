@@ -1,10 +1,14 @@
 import { Outlet } from "react-router-dom";
-import { Navbar } from "../components";
+import { Navbar, Footer } from "../components";
+import { Box } from "@mui/material";
 export default function Home() {
   return (
-    <div>
+    <>
       <Navbar />
-      <Outlet />
-    </div>
+      <Box sx={{minHeight: "90vh"}} >
+        <Outlet />
+      </Box>
+      <Footer />
+    </>
   );
 }
