@@ -7,7 +7,7 @@ import reblogApi from "api/reblogApi";
 export default function useBlog(data) {
   const navigate = useNavigate();
   const [blog, setBlog] = useState();
-  const { getAccessTokenSilently } = useAuth0();
+  // const { getAccessTokenSilently } = useAuth0();
 
   /**
    *
@@ -16,11 +16,11 @@ export default function useBlog(data) {
    * @param {number} id
    */
   const update_blog = async (id) => {
-    const accessToken = await getAccessTokenSilently();
+    // const accessToken = await getAccessTokenSilently();
     reblogApi({
       url: `/blogs/${id}`,
       method: "patch",
-      headers: { Authorization: `Bearer ${accessToken}` },
+      headers: { Authorization: `Bearer ` },
       data: {
         ...blog,
         title: getRawEditorState(blog.title),
@@ -34,11 +34,11 @@ export default function useBlog(data) {
    * @param {number} id
    */
   const publish_blog = async (id) => {
-    const accessToken = await getAccessTokenSilently();
+    // const accessToken = await getAccessTokenSilently();
     reblogApi({
       url: `/blogs/${id}`,
       method: "patch",
-      headers: { Authorization: `Bearer ${accessToken}` },
+      headers: { Authorization: `Bearer ` },
       data: {
         ...blog,
         publish: true,
@@ -53,11 +53,11 @@ export default function useBlog(data) {
    * @param {number} id
    */
   const delete_blog = async(id) => {
-const accessToken = await getAccessTokenSilently();
+// const accessToken = await getAccessTokenSilently();
     reblogApi({
       url: `/blogs/${id}`,
       method: "delete",
-      headers: { Authorization: `Bearer ${accessToken}` },
+      headers: { Authorization: `Bearer ` },
     });
     navigate("/", { replace: true });
   };

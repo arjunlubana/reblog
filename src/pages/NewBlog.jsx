@@ -11,7 +11,6 @@ function NewBlog() {
 			body: getRawEditorState(),
 		})
 	);
-	console.log(isLoading, isError, error, data);
 	if (isLoading) {
 		return <BlogLoader />;
 	}
