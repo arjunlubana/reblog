@@ -1,6 +1,5 @@
 import { useQuery } from "react-query";
-import { withAuthenticationRequired } from "@auth0/auth0-react";
-import { BlogEditor, BlogLoader, Redirect } from "components";
+import { BlogEditor, BlogLoader } from "components";
 import { getRawEditorState } from "utils";
 import { reblogApi } from "api";
 
