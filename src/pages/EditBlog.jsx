@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
-import { withAuthenticationRequired } from "@auth0/auth0-react";
 import { BlogEditor, BlogLoader, Redirect } from "components";
 import { reblogApi } from "api";
 
