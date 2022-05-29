@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
-import { BlogEditor, BlogLoader, Redirect } from "components";
+import { BlogEditor, BlogLoader } from "components";
 import { reblogApi } from "api";
 
 function EditBlog() {
