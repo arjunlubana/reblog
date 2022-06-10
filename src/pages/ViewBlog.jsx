@@ -61,7 +61,7 @@ export default function ViewBlog() {
           startIcon={<IoPencilOutline />}
           color="secondary"
           sx={{
-            height: 50,
+            height: 40,
             borderRadius: 10,
             outline: "2px solid #ead6db",
           }}
@@ -75,7 +75,7 @@ export default function ViewBlog() {
           startIcon={<IoTrashOutline />}
           color="secondary"
           sx={{
-            height: 50,
+            height: 40,
             borderRadius: 10,
             outline: "2px solid #ead6db",
           }}
