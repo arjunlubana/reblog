@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import { AppBar, Button, Fab, Box, Toolbar, Typography } from "@mui/material";
+import { AppBar, Button, Box, Toolbar, Typography } from "@mui/material";
 import { IoPencilOutline } from "react-icons/io5";
-import { IconContext } from "react-icons";
 import NavMenu from "./NavMenu";
 import NavMobileMenu from "./NavMobileMenu";
 
@@ -53,25 +52,6 @@ export default function NavBar() {
 
           {/* Small Screens */}
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <Fab
-              variant="extended"
-              color="secondary"
-              component={Link}
-              to="/blog/new"
-              sx={{
-                display: { xs: "flex", md: "none" },
-                position: "fixed",
-                bottom: 16,
-                right: 16,
-                outline: "2px solid #ead6db",
-                fontSize: "1rem",
-              }}
-            >
-              <IconContext.Provider value={{ style: { marginRight: "5px" } }}>
-                <IoPencilOutline />
-              </IconContext.Provider>
-              Write
-            </Fab>
             <NavMobileMenu />
           </Box>
         </Toolbar>

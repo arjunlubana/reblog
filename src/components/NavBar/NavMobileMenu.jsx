@@ -1,5 +1,7 @@
 import React from "react";
-import { IconButton, Menu } from "@mui/material";
+import { Link } from "react-router-dom";
+import { Button, IconButton, Menu, MenuItem } from "@mui/material";
+import { IoPencilOutline } from "react-icons/io5";
 import PopupMenuItems from "./PopupMenuItems";
 import NavAvatar from "./NavAvatar";
 
@@ -15,7 +17,7 @@ export default function NavMobileMenu() {
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
-  
+
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
@@ -25,6 +27,21 @@ export default function NavMobileMenu() {
       onClose={handleMobileMenuClose}
     >
       <PopupMenuItems />
+      <MenuItem component={Link} to="/blog/new">
+        <Button
+          aria-label="show user's drafts"
+          color="primary"
+          startIcon={<IoPencilOutline />}
+          disableRipple={true}
+          sx={{
+            "&:hover": {
+              backgroundColor: "transparent",
+            },
+          }}
+        >
+          Write
+        </Button>
+      </MenuItem>
     </Menu>
   );
 
