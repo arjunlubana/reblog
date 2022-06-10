@@ -8,6 +8,7 @@ import BlogTitle from "./BlogTitle";
 import BlogBody from "./BlogBody";
 import EditCover from "./EditCover";
 import BlogEditor from "./BlogEditor";
+import EditorActionBar from "./EditorActionBar";
 import EmptyBlogs from "./EmptyBlogs";
 import Redirect from "./Redirect";
 
@@ -22,6 +23,7 @@ export {
   ViewCover,
   EditCover,
   BlogEditor,
+  EditorActionBar,
   BlogTitle,
   Toolbar,
   BlogBody,

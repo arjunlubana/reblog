@@ -1,59 +1,25 @@
 import { useBlog } from "hooks";
-import { IconContext } from "react-icons";
-import {
-	IoSaveOutline,
-	IoTrashOutline,
-	IoCloudUploadOutline,
-} from "react-icons/io5";
-import { Box, SpeedDial, SpeedDialIcon, SpeedDialAction } from "@mui/material";
-import { EditCover, BlogTitle, BlogBody } from "components";
+
+import { Box } from "@mui/material";
+import { EditCover, BlogTitle, BlogBody, EditorActionBar } from "components";
 
 export default function BlogEditor({ data }) {
-	const { blog, setBlog, delete_blog, update_blog, publish_blog } =
-		useBlog(data);
+  const { blog, setBlog, delete_blog, update_blog, publish_blog } =
+    useBlog(data);
 
-	return (
-		blog? (
-			<Box sx={{ maxWidth: 800, mx: "auto", my: 2 }}>
-				<EditCover blog={blog} setBlog={setBlog} />
-				<BlogTitle blog={blog} setBlog={setBlog} readOnly={false} />
-				<BlogBody blog={blog} setBlog={setBlog} readOnly={false} />
-				<IconContext.Provider value={{ size: 24 }}>
-					<SpeedDial
-						ariaLabel="SpeedDial openIcon example"
-						sx={{
-							position: "fixed",
-							bottom: 16,
-							right: { xs: 16, sm: 64, md: 128, lg: 128 },
-						}}
-						icon={
-							<SpeedDialIcon
-								icon={
-									<IoSaveOutline
-										onClick={() => update_blog(blog.id)}
-									/>
-								}
-								openIcon={<IoSaveOutline />}
-							/>
-						}
-					>
-						{!blog.publish && (
-							<SpeedDialAction
-								icon={<IoCloudUploadOutline />}
-								tooltipTitle="Publish"
-								tooltipOpen
-								onClick={() => publish_blog(blog.id)}
-							/>
-						)}
-						<SpeedDialAction
-							icon={<IoTrashOutline />}
-							tooltipTitle="Delete"
-							tooltipOpen
-							onClick={() => delete_blog(blog.id)}
-						/>
-					</SpeedDial>
-				</IconContext.Provider>
-			</Box>
-		) : ""
-	);
+  return blog ? (
+    <Box sx={{ maxWidth: 800, mx: "auto", my: 2 }}>
+      <EditCover blog={blog} setBlog={setBlog} />
+      <BlogTitle blog={blog} setBlog={setBlog} readOnly={false} />
+      <BlogBody blog={blog} setBlog={setBlog} readOnly={false} />
+      <EditorActionBar
+        blog={blog}
+        update_blog={update_blog}
+        publish_blog={publish_blog}
+        delete_blog={delete_blog}
+      />
+    </Box>
+  ) : (
+    ""
+  );
 }
