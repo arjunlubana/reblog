@@ -40,49 +40,54 @@ export default function ViewBlog() {
   return blog ? (
     <Box sx={{ maxWidth: 800, mx: "auto", my: 2 }}>
       <ViewCover src={blog.cover} alt={blog.cover} />
-      <BlogTitle blog={blog} setBlog={setBlog} readOnly={true} />
-      <ButtonGroup
+      <Box
         sx={{
           position: "sticky",
-          top: 5,
-          backgroundColor: "white",
+          top: 0,
           zIndex: 20,
-          display: "flex",
-          boxShadow: "0px -10px 20px white",
-          justifyContent: "center",
-          my: 2,
-          height: 70
+          backgroundColor: "white",
         }}
       >
-        <Button
-          variant="contained"
-          component={Link}
-          to={`/blog/${params.blogId}/edit`}
-          startIcon={<IoPencilOutline />}
-          color="secondary"
+        <BlogTitle blog={blog} setBlog={setBlog} readOnly={true} />
+        <ButtonGroup
           sx={{
-            height: 40,
-            borderRadius: 10,
-            outline: "2px solid #ead6db",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            pb: 4
           }}
         >
-          Editor
-        </Button>
-        <Button
-          variant="contained"
-          component={Link}
-          to={`/blog/${params.blogId}/edit`}
-          startIcon={<IoTrashOutline />}
-          color="secondary"
-          sx={{
-            height: 40,
-            borderRadius: 10,
-            outline: "2px solid #ead6db",
-          }}
-        >
-          Delete
-        </Button>
-      </ButtonGroup>
+          <Button
+            variant="contained"
+            component={Link}
+            to={`/blog/${params.blogId}/edit`}
+            startIcon={<IoPencilOutline />}
+            color="secondary"
+            sx={{
+              height: 40,
+              borderRadius: 10,
+              outline: "2px solid #ead6db",
+            }}
+          >
+            Editor
+          </Button>
+          <Button
+            variant="contained"
+            component={Link}
+            to={`/blog/${params.blogId}/edit`}
+            startIcon={<IoTrashOutline />}
+            color="secondary"
+            sx={{
+              height: 40,
+              borderRadius: 10,
+              outline: "2px solid #ead6db",
+            }}
+          >
+            Delete
+          </Button>
+        </ButtonGroup>
+      </Box>
+
       <BlogBody blog={blog} setBlog={setBlog} readOnly={true} />
     </Box>
   ) : (
