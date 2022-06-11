@@ -20,14 +20,17 @@ export default function EditorActionBar({
 }) {
   return (
     <IconContext.Provider value={{ size: 24 }}>
+      {/* Mobile View */}
       <SpeedDial
-        ariaLabel="SpeedDial openIcon example"
+        ariaLabel="SpeedDial openIcon"
         sx={{
           display: { xs: "flex", lg: "none" },
-          position: "fixed",
-          bottom: 16,
-          right: { xs: 16, sm: 64, md: 128, lg: 128 },
+          alignItems: "flex-end",
+          position: "sticky",
+          bottom: 8,
+          mx: 5,
         }}
+        FabProps={{ color: "secondary" }}
         icon={
           <SpeedDialIcon
             icon={<IoSaveOutline onClick={() => update_blog(blog.id)} />}
@@ -40,6 +43,7 @@ export default function EditorActionBar({
             icon={<IoCloudUploadOutline />}
             tooltipTitle="Publish"
             tooltipOpen
+            FabProps={{ color: "secondary" }}
             onClick={() => publish_blog(blog.id)}
           />
         )}
@@ -50,6 +54,7 @@ export default function EditorActionBar({
           onClick={() => delete_blog(blog.id)}
         />
       </SpeedDial>
+      {/* Desktop View */}
       <ButtonGroup
         orientation="vertical"
         aria-label="Blog Editor Desktop Action Bar"
