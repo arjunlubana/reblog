@@ -4,12 +4,13 @@ import { reblogApi } from "api";
 
 export default function Blogs() {
   const { isLoading, data } = useQuery("blogs", () => reblogApi.get("/blogs"));
+  console.log(data)
 
   return isLoading ? (
     <BlogListLoader />
   ) : data.data.length === 0 ? (
     <EmptyBlogs />
   ) : (
-    <BlogsList blogs={data.data} />
+    <BlogsList blogs={data.data.data} />
   );
 }
