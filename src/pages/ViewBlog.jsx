@@ -54,7 +54,12 @@ export default function ViewBlog() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            pb: 4
+            pb: 4,
+            position: { xs: "static", lg: "fixed" },
+            bottom: {lg: "50%"},
+            top: {lg: "50%"},
+            right: {lg: 10},
+            transform: {lg: "translate(-50%, -50%)"},
           }}
         >
           <Button
@@ -64,8 +69,9 @@ export default function ViewBlog() {
             startIcon={<IoPencilOutline />}
             color="secondary"
             sx={{
-              height: 40,
-              borderRadius: 10,
+              height: 50,
+              borderRadius: 5,
+              py: 3,
               outline: "2px solid #ead6db",
             }}
           >
@@ -78,8 +84,9 @@ export default function ViewBlog() {
             startIcon={<IoTrashOutline />}
             color="secondary"
             sx={{
-              height: 40,
-              borderRadius: 10,
+              height: 50,
+              borderRadius: 5,
+              py: 3,
               outline: "2px solid #ead6db",
             }}
           >
