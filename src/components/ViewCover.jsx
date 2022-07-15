@@ -1,10 +1,12 @@
-import { styled } from "@mui/material/styles";
+import React from "react";
+import { CloudinaryContext, Image } from "cloudinary-react";
 
-const ViewCover = styled("img")({
-	display: "Block",
-	maxWidth: "100%",
-	marginLeft: "auto",
-	marginRight: "auto"
-})
-
-export default ViewCover;
+export default function ViewCover() {
+  return (
+    <CloudinaryContext cloudName="djneci6fi">
+      <div>
+        <Image publicId="Reblog/cover_1656483998268_197473747.png" width="720" />
+      </div>
+    </CloudinaryContext>
+  );
+}

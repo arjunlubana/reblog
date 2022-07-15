@@ -11,6 +11,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.26.0",
+    "cloudinary-react": "^1.8.0",
     "draft-js": "^0.11.7",
     "filepond": "^4.30.3",
     "filepond-plugin-file-validate-type": "^1.2.6",
