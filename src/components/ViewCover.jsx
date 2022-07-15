@@ -5,7 +5,7 @@ export default function ViewCover() {
   return (
     <CloudinaryContext cloudName="djneci6fi">
       <div>
-        <Image publicId="Reblog/cover_1656483998268_197473747.png" width="720" />
+        <Image publicId="Reblog/cover_1656483998268_197473747.png" width="100%" />
       </div>
     </CloudinaryContext>
   );
