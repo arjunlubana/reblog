@@ -12,6 +12,8 @@ import {
 } from "@mui/material";
 import { IoHeartOutline, IoShareSocialOutline } from "react-icons/io5";
 
+import {ViewCover} from "components"
+
 
 
 export default function BlogCard({ blog }) {
@@ -42,7 +44,9 @@ export default function BlogCard({ blog }) {
                 subheader="September 14, 2016"
             />
             <Link to={`/blog/${blog.id}`}>
-                <CardMedia component="img" image={blog.cover} alt={blog.cover} />
+                <CardMedia>
+                    <ViewCover/>
+                </CardMedia>
 
                 <CardContent>
                     <Typography variant="h6" color="text.secondary">
