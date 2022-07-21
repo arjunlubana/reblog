@@ -1,12 +1,20 @@
 import React from "react";
-import { CloudinaryContext, Image } from "cloudinary-react";
+import {
+  AdvancedImage,
+  responsive,
+  lazyload,
+  placeholder,
+} from "@cloudinary/react";
+import { useCloudinary } from "hooks";
 
 export default function ViewCover() {
+  const imageStore = useCloudinary();
+  console.log(imageStore);
+  const img = imageStore.image("Reblog/cover_1656483998268_197473747");
   return (
-    <CloudinaryContext cloudName="djneci6fi">
-      <div>
-        <Image publicId="Reblog/cover_1656483998268_197473747.png" width="100%" />
-      </div>
-    </CloudinaryContext>
+    <AdvancedImage
+      cldImg={img}
+      plugins={[lazyload(), responsive(100), placeholder()]}
+    />
   );
 }

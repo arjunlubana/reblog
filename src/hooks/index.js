@@ -1,3 +1,4 @@
 import useBlog from "./useBlog";
+import useCloudinary from "./useCloudinary"
 
-export { useBlog };
+export { useBlog, useCloudinary };
