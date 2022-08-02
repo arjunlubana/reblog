@@ -3,9 +3,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 import NavMenu from "./NavMenu";
 import NavMobileMenu from "./NavMobileMenu";
+import { LoginButton } from "components";
 
 export default function NavBar() {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated } = useAuth0();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -42,7 +43,7 @@ export default function NavBar() {
               </Box>
             </>
           ) : (
-            "Not Authenticated"
+            <LoginButton />
           )}
         </Toolbar>
       </AppBar>
