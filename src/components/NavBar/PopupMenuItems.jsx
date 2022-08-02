@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button, MenuItem } from "@mui/material";
 import { IoCog, IoDocumentText } from "react-icons/io5";
+import { LogoutButton } from "components";
 
 export default function PopupMenuItems() {
   return (
@@ -35,6 +36,9 @@ export default function PopupMenuItems() {
         >
           Drafts
         </Button>
+      </MenuItem>
+      <MenuItem>
+        <LogoutButton />
       </MenuItem>
     </>
   );

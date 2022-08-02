@@ -12,6 +12,7 @@ import EditorActionBar from "./EditorActionBar";
 import EmptyBlogs from "./EmptyBlogs";
 import Redirect from "./Redirect";
 import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton";
 
 import { BlogListLoader, BlogLoader } from "./Loaders";
 
@@ -31,5 +32,6 @@ export {
   BlogListLoader,
   BlogLoader,
   Redirect,
-  LoginButton
+  LoginButton,
+  LogoutButton
 };
