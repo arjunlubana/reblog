@@ -16,7 +16,6 @@ registerPlugin(
   FilePondPluginImageTransform
 );
 
-
 export default function EditCover({ blog, setBlog }) {
   const [files, setFiles] = useState(
     blog.cover ? [{ source: blog.cover, options: { type: "local" } }] : []
@@ -24,40 +23,43 @@ export default function EditCover({ blog, setBlog }) {
 
   return (
     <FilePond
-      name="cover"
+      name="file"
+      labelIdle={'<div class="filepond--label-action" >Browse files</div>'}
+      allowImageResize={true}
+      allowImageCrop={true}
+      imageCropAspectRatio="16:9"
+      imageResizeMode="cover"
+      imagePreviewMaxHeight="480"
       allowMultiple={false}
       acceptedFileTypes={["image/*"]}
       files={files}
       onupdatefiles={setFiles}
-      onprocessfile={(error, file) => {
-        if (!error) {
-          setBlog({ ...blog, cover: file.serverId });
-        }
-      }}
-      labelIdle={
-        '<div class="filepond--label-action" style="display: flex, justify-content: center, align-items:center">Browse files</div>'
-      }
-      stylePanelLayout="compact"
-      stylePanelAspectRatio="16:9"
-      imageCropAspectRatio="16:9"
-      server={{
-        url: `${process.env.REACT_APP_API_URL}`,
-        process: {
-          url: `/blogs/${blog.id}`,
-          method: "PATCH",
-          withCredentials: false,
-          onload: null,
-          onerror: null,
-          ondata: null,
-        },
-        load: async function (source, load, error, progress, abort, headers) {
-          let response = await fetch(source);
-          let file = await response.blob();
-          progress(true, 0, 1024);
-          load(file);
-        },
-      }}
       credits={false}
+      server={{
+        url: process.env.REACT_APP_CLOUDINARY_URL,
+        timeout: 7000,
+        process: {
+          url: "/upload",
+          method: "POST",
+          onload: (response) => response.key,
+          onerror: (response) => response.data,
+          ondata: (formData) => {
+            formData.append(
+              "upload_preset",
+              process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+            );
+            formData.append(
+              "api_key",
+              process.env.REACT_APP_CLOUDINARY_API_KEY
+            );
+            return formData;
+          },
+        },
+        remove: (source, load, error) => {
+          error("oh my goodness");
+          load();
+        },
+      }}
     />
   );
 }
